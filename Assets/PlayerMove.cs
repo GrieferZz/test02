@@ -23,8 +23,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        float horizontal1 = Input.GetAxis("Horizontal");
-        float vertical1 = Input.GetAxis("Vertical");
+        float horizontal1 = Input.GetAxisRaw("Horizontal");
+        float vertical1 = Input.GetAxisRaw("Vertical");
 
         if (Mathf.Approximately(horizontal1, 0) && Mathf.Approximately(vertical1, 0))
         {
