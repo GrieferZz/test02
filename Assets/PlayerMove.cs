@@ -8,7 +8,6 @@ public class PlayerMove : MonoBehaviour
     public float MoveSpeed;
     private Vector3 MoveInput;
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,21 +23,25 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        float Horizontal = Input.GetAxis("Horizontal");
-        float Vertical = Input.GetAxis("Vertical");
+        float horizontal1 = Input.GetAxis("Horizontal");
+        float vertical1 = Input.GetAxis("Vertical");
 
-        if (Horizontal==0&&Vertical==0)
+        if (Mathf.Approximately(horizontal1, 0) && Mathf.Approximately(vertical1, 0))
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = Vector3.zero;
+            anim.SetBool("IsMoving", false); // No input, set IsMoving to false
             return;
         }
-        MoveInput = new Vector3(Horizontal, 0, Vertical);
+
+        MoveInput = new Vector3(horizontal1, 0, vertical1);
         rb.velocity = MoveInput * MoveSpeed * Time.fixedDeltaTime;
+        anim.SetBool("IsMoving", true); // There is input, set IsMoving to true
     }
 
     private void Animate()
     {
-        anim.SetFloat("MovementX",MoveInput.x);
+        anim.SetFloat("MovementX", MoveInput.x);
         anim.SetFloat("MovementZ", MoveInput.z);
     }
+
 }
