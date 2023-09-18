@@ -33,8 +33,8 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        MoveInput = new Vector3(horizontal1, 0, vertical1);
-        rb.velocity = MoveInput * MoveSpeed * Time.fixedDeltaTime;
+        MoveInput = new Vector3(horizontal1, 0, vertical1).normalized;
+        rb.velocity = MoveInput * MoveSpeed * Time.fixedDeltaTime ;
         anim.SetBool("IsMoving", true); // There is input, set IsMoving to true
     }
 
