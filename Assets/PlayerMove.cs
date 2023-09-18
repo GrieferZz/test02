@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -7,6 +9,8 @@ public class PlayerMove : MonoBehaviour
 
     public float MoveSpeed;
     private Vector3 MoveInput;
+    private int combo=0;
+    private bool one=true;
 
     private void Awake()
     {
@@ -18,6 +22,15 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Animate();
+        if(Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("isAttack",true);
+            if(combo>=1)
+            anim.SetTrigger("attack1");
+            combo++;
+            Debug.Log("1");
+            
+        }
     }
 
 
