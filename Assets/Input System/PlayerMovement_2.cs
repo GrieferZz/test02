@@ -1,16 +1,16 @@
-using System;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMovement_2 : MonoBehaviour
 {
     private Rigidbody rb;
     private Animator anim;
 
     public float MoveSpeed;
     private Vector3 MoveInput;
-    private int combo=0;
-    private bool one=true;
+    private int combo = 0;
+    private bool one = true;
 
     private void Awake()
     {
@@ -22,14 +22,14 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Animate();
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            anim.SetBool("isAttack",true);
-            if(combo>=1)
-            anim.SetTrigger("attack1");
+            anim.SetBool("isAttack", true);
+            if (combo >= 1)
+                anim.SetTrigger("attack1");
             combo++;
             Debug.Log("1");
-            
+
         }
     }
 
@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         MoveInput = new Vector3(horizontal1, 0, vertical1).normalized;
-        rb.velocity = MoveInput * MoveSpeed * Time.fixedDeltaTime ;
+        rb.velocity = MoveInput * MoveSpeed * Time.fixedDeltaTime;
         anim.SetBool("IsMoving", true); // There is input, set IsMoving to true
     }
 
