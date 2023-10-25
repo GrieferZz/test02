@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using JetBrains.Annotations;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement_1 : MonoBehaviour
 {
+
+    
+    
     private CharacterController cr;
     private Animator anim;
 
@@ -21,7 +28,9 @@ public class PlayerMovement_1 : MonoBehaviour
     private float sprintTime = 0.0f;
     private Vector3 moveDirection = Vector3.zero;
     private  Vector3 SprintDistance = Vector3.zero;
-
+    
+    public float sprintCooldown = 2.0f; // 冷却时间
+    private bool canSprint=true;
     private void Awake()
     {
         cr = GetComponent<CharacterController>();
@@ -36,9 +45,22 @@ public class PlayerMovement_1 : MonoBehaviour
     {
         inputControl.Disable();
     }
+    void Start() 
+    {
+        MoveSpeed=Player.Instance.Speed;
+        
+    }
     private void Update() 
      {
-        
+        if( MoveInput0.magnitude!=0f)
+        {
+            Player.Instance.NowState=Player.PlayerState.Move;
+            Debug.Log( MoveInput0.magnitude);
+        }
+        else  if(MoveInput0.magnitude==0f)
+        {
+            Player.Instance.NowState=Player.PlayerState.Idle;
+        }
         Animate();
          Sprint();
      }
@@ -60,11 +82,12 @@ public class PlayerMovement_1 : MonoBehaviour
             anim.SetBool("IsMoving", false); // No input, set IsMoving to false
             return;
         }
-
+        
        
         cr.Move(new Vector3(MoveInput0.x*MoveSpeed*Time.deltaTime,-9.81f*Time.deltaTime,MoveInput0.y*MoveSpeed*Time.deltaTime));
         anim.SetBool("IsMoving", true); // There is input, set IsMoving to true
         moveDirection = new Vector3(horizontal1, 0f, vertical1).normalized;
+        
     }
 
     private void Animate()
@@ -74,17 +97,35 @@ public class PlayerMovement_1 : MonoBehaviour
     }
     private void Sprint()
     {
-        
-         if(inputControl.GamePlay.Skill.IsPressed()&& sprintTime <= 0)
+        if(Player.Instance.NowState==Player.PlayerState.Move||Player.Instance.NowState==Player.PlayerState.Idle)
+        {
+         if(inputControl.GamePlay.Skill.IsPressed()&& sprintTime <= 0&&canSprint)
          {
+            StartCoroutine(SprintCd());
             SprintDistance = moveDirection*sprintSpeed;
             sprintTime = sprintDuration;
          }
          if (sprintTime > 0)
         {
+            Player.Instance.NowState=Player.PlayerState.Sprint;
             cr.Move(SprintDistance * Time.deltaTime);
             sprintTime -= Time.deltaTime;
         }
+        else if(sprintTime==0&&Player.Instance.NowState==Player.PlayerState.Sprint)
+        {
+            Player.Instance.NowState=Player.PlayerState.Move;
+        }
+        }
     }
+    IEnumerator SprintCd()
+    {
+       canSprint=false;
+
+       yield return new WaitForSeconds(sprintCooldown);// 等待冷却时间
+       canSprint=true;
+
+    }
+    
+
 
 }

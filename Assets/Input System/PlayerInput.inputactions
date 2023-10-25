@@ -15,18 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dodge",
+                    "name": "Skill",
                     "type": "Button",
-                    "id": "9591f7c0-ffbf-44f0-aa43-143effdfb854",
+                    "id": "5693a4df-820b-42e3-bf99-d75814064878",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skill",
+                    "name": "Attack",
                     "type": "Button",
-                    "id": "5693a4df-820b-42e3-bf99-d75814064878",
+                    "id": "ce91d8e5-217b-47a8-b1a4-ef2739f0ed0f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -168,34 +168,23 @@
                 },
                 {
                     "name": "",
-                    "id": "91cdc458-fd96-42dc-88f0-0181c8e07abf",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41a0c345-d6bc-4ef0-ba0d-fa04bb18f696",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dodge",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "292fe284-7a8a-42f0-8a3c-a375ee4ea130",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41717554-fd83-4d68-9805-72e83a01255e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
