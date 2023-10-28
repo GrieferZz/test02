@@ -9,11 +9,20 @@ public class PlayerAttck : MonoBehaviour
     private Animator anim;
 
     public PlayerInput inputControl;
-    private int combo;
+    public int combo=0;
+    private bool cd;
     private void Awake()
     {
         inputControl=new PlayerInput();
         inputControl.GamePlay.Attack.started+=BasicAttack;
+    }
+     private void OnEnable() 
+    {
+        inputControl.Enable();
+    }
+    private void OnDisable() 
+    {
+        inputControl.Disable();
     }
 
     
@@ -31,8 +40,28 @@ public class PlayerAttck : MonoBehaviour
     }
     private void BasicAttack(InputAction.CallbackContext context)
     {
-        combo++;
-        anim.SetTrigger("attack1");
+            if(combo>3)
+            combo=0;
         
+            combo++;
+            StartCoroutine(ResetAttackState(0.5f));
+            
+            anim.SetTrigger("attack"+combo);
+            Debug.Log("成功");
+
+        
+        
+        
+    }
+    private IEnumerator ResetAttackState(float delay)
+    {
+        int recordcombo=combo;
+        cd = true;
+        yield return new WaitForSeconds(delay);
+        cd = false;
+        if(combo-recordcombo==0)
+        {
+            combo=0;
+        }
     }
 }
