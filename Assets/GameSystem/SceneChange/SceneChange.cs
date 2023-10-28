@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
-
-public class Scene : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class SceneChange : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,14 @@ public class Scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Player"))
+        {
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         
     }
 }

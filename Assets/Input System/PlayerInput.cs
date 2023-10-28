@@ -48,7 +48,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""a5c2f370-7cfc-404e-a13e-810fb9773ace"",
+                    ""id"": ""ce91d8e5-217b-47a8-b1a4-ef2739f0ed0f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -201,7 +201,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cbf463fe-9999-433d-9093-74b84b521c2c"",
+                    ""id"": ""41717554-fd83-4d68-9805-72e83a01255e"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
