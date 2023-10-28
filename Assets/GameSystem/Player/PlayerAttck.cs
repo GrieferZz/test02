@@ -36,15 +36,27 @@ public class PlayerAttck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(Input.GetKeyDown(KeyCode.E))
+       {
+        anim.SetTrigger("Sprint");
+       }
+       if(Input.GetKeyDown(KeyCode.R))
+       {
+        anim.SetTrigger("Hurt");
+       }
+       if(Input.GetKeyDown(KeyCode.T))
+       {
+        anim.SetTrigger("Death");
+       }
     }
     private void BasicAttack(InputAction.CallbackContext context)
     {
+            Player.Instance.NowState=Player.PlayerState.Fight;
             if(combo>3)
             combo=0;
         
             combo++;
-            StartCoroutine(ResetAttackState(0.5f));
+            StartCoroutine(ResetAttackState(1f));
             
             anim.SetTrigger("attack"+combo);
             Debug.Log("成功");
@@ -62,6 +74,7 @@ public class PlayerAttck : MonoBehaviour
         if(combo-recordcombo==0)
         {
             combo=0;
+            Player.Instance.NowState=Player.PlayerState.Idle;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Diagnostics;
 using Cinemachine;
 using JetBrains.Annotations;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
@@ -32,11 +33,13 @@ public class PlayerMovement_1 : MonoBehaviour
     
     public float sprintCooldown = 2.0f; // 冷却时间
     private bool canSprint=true;
+    
     private void Awake()
     {
         cr = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         inputControl=new PlayerInput();
+        
     }
     private void OnEnable() 
     {
@@ -53,15 +56,8 @@ public class PlayerMovement_1 : MonoBehaviour
     }
     private void Update() 
      {
-        if( MoveInput0.magnitude!=0f)
-        {
-            Player.Instance.NowState=Player.PlayerState.Move;
-            Debug.Log( MoveInput0.magnitude);
-        }
-        else  if(MoveInput0.magnitude==0f)
-        {
-            Player.Instance.NowState=Player.PlayerState.Idle;
-        }
+        
+       
         Animate();
          Sprint();
      }
@@ -73,6 +69,8 @@ public class PlayerMovement_1 : MonoBehaviour
 
     private void Move()
     {
+        if(Player.Instance.canMove)
+        {
         MoveInput0=inputControl.GamePlay.Move.ReadValue<Vector2>();
         float horizontal1 = inputControl.GamePlay.Move.ReadValue<Vector2>().x;
         float vertical1 = inputControl.GamePlay.Move.ReadValue<Vector2>().y;
@@ -84,10 +82,22 @@ public class PlayerMovement_1 : MonoBehaviour
             return;
         }
         
-       
+        
         cr.Move(new Vector3(MoveInput0.x*MoveSpeed*Time.deltaTime,-9.81f*Time.deltaTime,MoveInput0.y*MoveSpeed*Time.deltaTime));
         anim.SetBool("IsMoving", true); // There is input, set IsMoving to true
         moveDirection = new Vector3(horizontal1, 0f, vertical1).normalized;
+        if( MoveInput0.magnitude!=0f)
+        {
+            Player.Instance.NowState=Player.PlayerState.Move;
+            UnityEngine.Debug.Log( MoveInput0.magnitude);
+        }
+         else  if(MoveInput0.magnitude==0f)
+        {
+            Player.Instance.NowState=Player.PlayerState.Idle;
+        }
+
+        }
+        
         
     }
 
@@ -136,7 +146,7 @@ public class PlayerMovement_1 : MonoBehaviour
        canSprint=true;
 
     }
-    
+   
 
 
 }
