@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using Cinemachine;
 using JetBrains.Annotations;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
@@ -92,8 +93,18 @@ public class PlayerMovement_1 : MonoBehaviour
 
     private void Animate()
     {
+        //if(Mathf.Abs(MoveInput0.x)>0.0001f)
         anim.SetFloat("MovementX", MoveInput0.x);
+         //if( Mathf.Abs(MoveInput0.y)>0.0001f)
         anim.SetFloat("MovementZ", MoveInput0.y);
+        if(Mathf.Abs(MoveInput0.x)>0.0001f)
+         anim.SetFloat("IdleX", MoveInput0.x);
+         if( Mathf.Abs(MoveInput0.y)>0.0001f)
+         anim.SetFloat("IdleZ", MoveInput0.y);
+         if(MoveInput0.y!=1&&MoveInput0.x!=0)
+         {
+             anim.SetFloat("IdleZ", -1f);
+         }
     }
     private void Sprint()
     {
