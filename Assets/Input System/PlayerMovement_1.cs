@@ -74,7 +74,6 @@ public class PlayerMovement_1 : MonoBehaviour
     }
     private void Sprint()
     {
-        
          if(inputControl.GamePlay.Skill.IsPressed()&& sprintTime <= 0)
          {
             SprintDistance = moveDirection*sprintSpeed;
