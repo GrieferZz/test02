@@ -30,7 +30,7 @@ public class PositionInialize : MonoBehaviour
             Vector3 groundNormal = hit.normal;
 
             // 设置角色位置
-            Player.transform.position = groundPosition + groundNormal * 0.1f; // 0.1f 是为了略微抬高角色，以避免陷入地面
+            Player.transform.position = groundPosition + groundNormal * 0.0f; // 0.1f 是为了略微抬高角色，以避免陷入地面
         }
     }
 }

@@ -36,18 +36,7 @@ public class PlayerAttck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.E))
-       {
-        anim.SetTrigger("Sprint");
-       }
-       if(Input.GetKeyDown(KeyCode.R))
-       {
-        anim.SetTrigger("Hurt");
-       }
-       if(Input.GetKeyDown(KeyCode.T))
-       {
-        anim.SetTrigger("Death");
-       }
+      
     }
     private void BasicAttack(InputAction.CallbackContext context)
     {

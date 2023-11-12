@@ -123,6 +123,7 @@ public class PlayerMovement_1 : MonoBehaviour
          if(inputControl.GamePlay.Skill.IsPressed()&& sprintTime <= 0&&canSprint)
          {
             StartCoroutine(SprintCd());
+            anim.SetTrigger("Roll");
             SprintDistance = moveDirection*sprintSpeed;
             sprintTime = sprintDuration;
          }
