@@ -21,13 +21,36 @@ public class enermybehaviour : MonoBehaviour
     
     private void OnTriggerStay(Collider other) 
     {
-        if(other.gameObject.name=="Player"&&agent.enabled==true)
+        if(other.CompareTag("Player")&&agent.enabled==true)
         {
            agent.destination=player.position;
            ischasing=true;
            Debug.Log(gameObject.name);
         }
         
+    }
+    private void OnCollisionEnter(Collision other) 
+    {
+      
+        if (other.gameObject.CompareTag("Player"))
+        {
+           
+            Debug.Log("停止"); // 子弹碰撞到玩家时销毁子弹对象
+           StartCoroutine(ExecuteAfterDelay(3f));
+        }
+        
+        
+    }
+    IEnumerator ExecuteAfterDelay(float delay)
+    {
+        agent.enabled=false;
+
+        // 然后等待指定的时间
+        yield return new WaitForSeconds(delay);
+
+        // 再执行第二段代码
+       agent.enabled=true;
+
     }
    
    
