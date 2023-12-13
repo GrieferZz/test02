@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PositionInialize : MonoBehaviour
 {
-    private GameObject Player;
+    public GameObject PlayerCharacter;
+    
+    private GameObject ChangeSceneParent;
     public LayerMask groundLayer; // 地面的层级
+    
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        Player=GameObject.Find("Player");
-        Player.transform.position=this.transform.position;
+        PlayerCharacter=GameObject.FindWithTag("Player");
+        PostionChoose();
         AutoPostion();
+        StartCoroutine(DelayedAction(0.5f));
+        
     }
 
     // Update is called once per frame
@@ -19,9 +25,20 @@ public class PositionInialize : MonoBehaviour
     {
         
     }
+    public void PostionChoose()
+    {
+        if(gameObject.GetComponent<Room>().IniatializationPosition!=null)
+        {
+            PlayerCharacter.transform.position=gameObject.GetComponent<Room>().IniatializationPosition.gameObject.transform.position;
+            
+            Debug.Log("位置初始化");
+
+        }
+        
+    }
     public void AutoPostion()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, groundLayer))
+        if (Physics.Raycast(PlayerCharacter.transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, groundLayer))
         {
             // 获取地面上的位置
             Vector3 groundPosition = hit.point;
@@ -30,8 +47,30 @@ public class PositionInialize : MonoBehaviour
             Vector3 groundNormal = hit.normal;
 
             // 设置角色位置
-            Player.transform.position = groundPosition + groundNormal * 0.0f; // 0.1f 是为了略微抬高角色，以避免陷入地面
+            PlayerCharacter.transform.position = groundPosition + groundNormal * 0.0f; // 0.1f 是为了略微抬高角色，以避免陷入地面
+            //Player.Instance.NowState=Player.PlayerState.Idle;
         }
+    }
+    GameObject GetRandomElement(List<GameObject> list)
+    {
+        // 如果列表为空，返回空字符串或者你认为合适的默认值
+        if (list.Count == 0)
+        {
+            return null;
+        }
+
+        // 生成一个随机的索引
+        int randomIndex = Random.Range(0, list.Count);
+
+        // 返回随机选择的元素
+        return list[randomIndex];
+    }
+     IEnumerator DelayedAction(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime); // 等待指定的时间
+
+        // 在这里执行你想要延迟的操作
+         Player.Instance.NowState=Player.PlayerState.Idle;
     }
 }
 

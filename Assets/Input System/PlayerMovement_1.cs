@@ -97,6 +97,11 @@ public class PlayerMovement_1 : MonoBehaviour
         }
 
         }
+        else if(!Player.Instance.canMove)
+        {
+            MoveInput0=new Vector2(0,0);
+             anim.SetBool("IsMoving", false); // No input, set IsMoving to false
+        }
         
         
     }

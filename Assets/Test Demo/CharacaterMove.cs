@@ -15,6 +15,7 @@ public class CharacaterMove : MonoBehaviour
     public PlayerInput inputControl;
     public Vector3  MoveInput;
     public Vector2  MoveInput0;
+    public static bool canmove=true;
     // Start is called before the first frame update
      private void Awake()
     {
@@ -37,7 +38,12 @@ public class CharacaterMove : MonoBehaviour
     }
     private void FixedUpdate() 
     {
-        Move();
+        if(canmove)
+        {
+            Move();
+
+        }
+       
        
     }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
+
 public class enemyspawn : MonoBehaviour
 {
     public GameObject prefabToSpawn;
@@ -74,7 +74,7 @@ public class enemyspawn : MonoBehaviour
     }
     IEnumerator DelayedAction()
     {
-        yield return new WaitForSeconds(2f); // 延迟两秒
+        yield return new WaitForSeconds(1f); // 延迟两秒
 
         // 在这里执行需要延迟执行的操作
           SpawnObjects();

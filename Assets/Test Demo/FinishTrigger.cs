@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class FinishTrigger : MonoBehaviour
 {
-    public GameObject ResetPanel;
+    
+    public GameObject CompeletePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +26,8 @@ public class FinishTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // 子弹碰撞到玩家时销毁子弹对象
-            
-            ResetPanel.SetActive(true);
+            Time.timeScale = 0;
+            CompeletePanel.SetActive(true);
         }
         
     }

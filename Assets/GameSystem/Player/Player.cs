@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player :Singleton<Player>
 {
     
-    public enum PlayerState{Move,Sprint,Fight,Idle,Hurt}
+    public enum PlayerState{Move,Sprint,Fight,Idle,Hurt,Ban}
     public PlayerState NowState;
     public float Health;
     public float Attack;
@@ -38,6 +38,10 @@ public class Player :Singleton<Player>
         break; // 退出switch语句
 
     case PlayerState.Fight:
+        canMove=false;
+        // 执行Attack状态的代码
+        break; // 退出switch语句
+    case PlayerState.Ban:
         canMove=false;
         // 执行Attack状态的代码
         break; // 退出switch语句

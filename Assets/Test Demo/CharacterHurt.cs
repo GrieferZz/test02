@@ -34,7 +34,7 @@ public class CharacterHurt : MonoBehaviour
        if(Health<=0)
        {
          ResetPanel.SetActive(true);
-
+         CharacaterMove.canmove=false;
        }
     }
     private void OnCollisionEnter(Collision other) 
