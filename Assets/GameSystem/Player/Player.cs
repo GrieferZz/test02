@@ -38,7 +38,7 @@ public class Player :Singleton<Player>
         break; // 退出switch语句
 
     case PlayerState.Fight:
-        canMove=false;
+        //canMove=false;
         // 执行Attack状态的代码
         break; // 退出switch语句
     case PlayerState.Ban:
