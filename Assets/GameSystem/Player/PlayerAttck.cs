@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ public class PlayerAttck : MonoBehaviour
     private bool cd;
     public Transform bulletSpawnPoint; // 子弹发射点
     public GameObject bulletPrefab; 
+    public Bullet bulletType;
     public GameObject Plane;   // 子弹预制体
     public float bulletSpeed = 10f;    // 子弹速度
     public float shootInterval = 2f;   // 发射间隔
@@ -23,7 +25,8 @@ public class PlayerAttck : MonoBehaviour
     private void Awake()
     {
         inputControl=new PlayerInput();
-        inputControl.GamePlay.Attack.performed+=BasicAttack;
+        inputControl.GamePlay.Attack.started+=BasicAttack;
+        
         inputControl.GamePlay.HeavyAttack.started+=Hold;
         inputControl.GamePlay.HeavyAttack.canceled += HoldRelease;
     }
@@ -101,6 +104,9 @@ public class PlayerAttck : MonoBehaviour
            
 
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
+            bulletType=bullet.GetComponent<Bullet>();
+            bulletType.attackObject=Bullet.AttackObject.ForEnermy;
+            bulletType.InitiatorStates=gameObject.GetComponent<CharacterStates>();
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
             if (rb != null)

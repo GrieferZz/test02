@@ -28,12 +28,12 @@ public class enemyspawn : MonoBehaviour
         {
             foreach (GameObject spawnArea in spawnAreas)
             {
-                int randomnumber=Random.Range(1,numberOfObjectsToSpawn);
+                int randomnumber=Random.Range(1,numberOfObjectsToSpawn+1);
                 for (int i = 0; i < randomnumber; i++)
             {
                 Vector3 randomPosition = GetRandomPositionInSpawnArea(spawnArea);
                 hasspawnedprefebs.Add(Instantiate(prefabToSpawn, randomPosition, Quaternion.identity)) ;
-                if(hasspawnedprefebs.Count>=numberOfObjectsToSpawn)
+                if(hasspawnedprefebs.Count<=numberOfObjectsToSpawn)
                 {
                     break;
                 }

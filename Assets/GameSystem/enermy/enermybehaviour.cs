@@ -14,6 +14,7 @@ public class enermybehaviour : MonoBehaviour
     
     private GameObject AttackTarget;
     public float SightRadius;
+    public float AttackRadius;
     public float Speed;
     public float LookAtTime;
     private float RemainLootAtTime;
@@ -59,12 +60,18 @@ public class enermybehaviour : MonoBehaviour
         {
             enermyStates=EnermyStates.Chase;
         }
+        if(AttackPlayer())
+        {
+            enermyStates=EnermyStates.Attack;
+        }
         switch(enermyStates)
         {
             case EnermyStates.Guard:
+                 EnermyAttack.canshoot=false;
                  break;
             case EnermyStates.Patrol:
                   agent.speed=Speed*0.5f;
+                  EnermyAttack.canshoot=false;
                   if(Vector3.Distance(WayPoint,transform.position)<=agent.stoppingDistance)
                   {
                     if(RemainLootAtTime>0)
@@ -85,6 +92,7 @@ public class enermybehaviour : MonoBehaviour
                   break;
             case EnermyStates.Chase:
                   agent.speed=Speed;
+                  EnermyAttack.canshoot=false;
                   if(!FoundPlayer())
                   {
                     if(RemainLootAtTime>0)
@@ -108,14 +116,56 @@ public class enermybehaviour : MonoBehaviour
                   }
                   break;
             case EnermyStates.Attack:
+                  agent.speed=0;
+                  EnermyAttack.canshoot=true;
+                  if(!AttackPlayer())
+                  {
+                     
+                    if(RemainLootAtTime>0)
+                    {
+                        
+                       
+                        agent.destination=transform.position;
+                        RemainLootAtTime-=Time.deltaTime;
+
+                    }
+                    else if(enermyType==EnermyType.CloseCombat)
+                    {
+                        enermyStates=EnermyStates.Patrol;
+                        agent.destination=GuardPos;
+                    }
+                      
+
+                  }
+                  else
+                  {
+
+                    agent.destination=AttackTarget.transform.position;
+                  }
                   break;
             case EnermyStates.Dead:
+                  Destroy(gameObject);
                   break;
         }
     }
     bool FoundPlayer()
     {
         var colliders=Physics.OverlapSphere(transform.position,SightRadius);
+        foreach(var target in colliders)
+        {
+            if(target.CompareTag("Player"))
+            {
+                EnermyAttack.player=target.gameObject.transform;
+                AttackTarget=target.gameObject;
+                return true;
+            }
+        }
+        AttackTarget=null;
+        return false;
+    }
+    bool AttackPlayer()
+    {
+        var colliders=Physics.OverlapSphere(transform.position,AttackRadius+1f);
         foreach(var target in colliders)
         {
             if(target.CompareTag("Player"))
@@ -133,6 +183,8 @@ public class enermybehaviour : MonoBehaviour
        Gizmos.DrawWireSphere(transform.position,PatrolRange);
        Gizmos.color=Color.red;
        Gizmos.DrawWireSphere(transform.position,SightRadius);
+       Gizmos.color=Color.yellow;
+       Gizmos.DrawWireSphere(transform.position,AttackRadius);
     
    }
   
