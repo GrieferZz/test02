@@ -25,6 +25,7 @@ public class Target : MonoBehaviour
         newposition = transform.position;
         currentposition = transform.position;
         //oldposition = transform.position;
+        
     }
 
     void Update()
@@ -34,8 +35,8 @@ public class Target : MonoBehaviour
         Vector3 start = body.position + (body.up * footSpacing1) + (body.right * footSpacing2);//+a
         Vector3 end = new Vector3(body.position.x, -2, body.position.z) + (body.forward * footSpacing1) + (body.right * footSpacing2);
         //Vector3 end = new Vector3(into.x, -2, body.position.z) + (body.forward * footSpacing1) + (body.right * footSpacing2);
-        Ray ray = new Ray(start, -body.up);
-      
+        Ray ray = new Ray(start, body.up);
+           Debug.Log(body.up);
         Debug.DrawLine(start, end, Color.red);
 
         if (Physics.Raycast(ray, out RaycastHit info, 20, terrainLayer.value))
@@ -47,7 +48,7 @@ public class Target : MonoBehaviour
 
                 lerp = 0;
                 newposition = info.point;
-                Debug.Log(body.forward);
+                //Debug.Log(body.forward);
             }
 
             if (lerp < 1)
