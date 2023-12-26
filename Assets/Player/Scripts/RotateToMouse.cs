@@ -33,7 +33,7 @@ public class RotateToMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // this.transform.y = 0;
+        // this.transform.y = 0;
         if (camera != null)
         {
             //获取鼠标点位
@@ -43,22 +43,39 @@ public class RotateToMouse : MonoBehaviour
             //用物理引擎的Raycast方法来测试，射线是否能跟物体碰撞
             if (Physics.Raycast(rayMouse.origin, rayMouse.direction, out hit, maxLength))
             {
+                // 获取鼠标指向的点
+                Vector3 mousePoint = hit.point;
+
+                // 计算主角的位置，忽略Y轴
+                Vector3 playerPosition = transform.position;
+                playerPosition.y = 0;
+
+                // 计算鼠标点与主角位置之间的方向
+                Vector3 direction = (mousePoint - playerPosition).normalized;
+
+                // 计算旋转角度
+                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + 180f;
+
+                // 设置主角的旋转，只围绕Y轴旋转
+                transform.rotation = Quaternion.Euler(0, angle, 0);
+
+
+
                 //如果能够碰撞，则让物体自身转向
-                RotateToMouseDirection(gameObject, hit.point);
+                //RotateToMouseDirection(gameObject, hit.point);
             }
             else
             {
                 //如果不能碰撞，则获取射线最远能达到的点
-                var pos = rayMouse.GetPoint(maxLength);
+                // var pos = rayMouse.GetPoint(maxLength);
                 //转向最远的点位
-                RotateToMouseDirection(gameObject, pos);
+                // RotateToMouseDirection(gameObject, pos);
             }
         }
         else
         {
             Debug.Log("No Camera!!!");
         }
-
 
         // 让玩家对象转向鼠标方向
         // obi 到时获取的就是玩家对象

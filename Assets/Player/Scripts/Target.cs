@@ -33,11 +33,11 @@ public class Target : MonoBehaviour
         transform.position = currentposition;
 
         Vector3 start = body.position + (body.up * footSpacing1) + (body.right * footSpacing2);//+a
-        Vector3 end = new Vector3(body.position.x, -2, body.position.z) + (body.forward * footSpacing1) + (body.right * footSpacing2);
+        //Vector3 end = new Vector3(body.position.x, -2, body.position.z) + (body.forward * footSpacing1) + (body.right * footSpacing2);
         //Vector3 end = new Vector3(into.x, -2, body.position.z) + (body.forward * footSpacing1) + (body.right * footSpacing2);
-        Ray ray = new Ray(start, body.up);
+        Ray ray = new Ray(start, -body.up);
            Debug.Log(body.up);
-        Debug.DrawLine(start, end, Color.red);
+       // Debug.DrawLine(start, end, Color.red);
 
         if (Physics.Raycast(ray, out RaycastHit info, 20, terrainLayer.value))
         {
