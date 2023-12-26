@@ -7,8 +7,9 @@ public class GameEventSystem :Singleton<GameEventSystem>
 {
     public static GameEventSystem instance;
     public enum Direction{Up,Down,Left,Right};
-    private void Awake() 
+    protected override void Awake()
     {
+        base.Awake();
         if(instance==null)
         {
             instance =this;
@@ -31,6 +32,9 @@ public class GameEventSystem :Singleton<GameEventSystem>
 
      public event Action onSceneLoad;
      public event Action<Direction> onScenechange;
+     public event Action<GameObject> onHealthBarUpdate;
+     public event Action onWaveClear;
+     public event Action<RoomStates_SO> onRoomCombatFinish;
 
 
 
@@ -54,5 +58,22 @@ public class GameEventSystem :Singleton<GameEventSystem>
         if(onScenechange!=null)
         onScenechange(direction);
         //print("DialogueFinish事件触发");
+    }
+    public void HealthBarUpdate(GameObject target)
+    {
+        onHealthBarUpdate?.Invoke(target);
+        //print("DialogueFinish事件触发");
+    }
+    public void WaveClear()
+    {
+       if(onWaveClear!=null)
+        onWaveClear();
+        //print("DialogueFinish事件触发");
+    }
+     public void RoomCombatFinish(RoomStates_SO roomstate)
+    {
+       if(onRoomCombatFinish!=null)
+        onRoomCombatFinish(roomstate);
+        //print("战斗");
     }
 }
