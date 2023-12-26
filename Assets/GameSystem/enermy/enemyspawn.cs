@@ -4,50 +4,21 @@ using System.Collections.Generic;
 
 public class enemyspawn : MonoBehaviour
 {
-    public RoomStates NowRoomData;
-    public List<GameObject> prefabToSpawns=new List<GameObject>();
-    public int EnermyWaveNumber;
-    public int EnermyNowWaveNumber;
+    public GameObject prefabToSpawn;
     public int numberOfObjectsToSpawn;
-    private bool CombatFinish;
     public GameObject SpawnEditor;
     public  List<GameObject> spawnAreas = new List<GameObject>(); // 生成区域的GameObject
     public List<GameObject> hasspawnedprefebs=new List<GameObject>();
     public LayerMask groundLayer; // 地面的层级
-     void OnEnable() 
-    {
-        GameEventSystem.instance.onWaveClear+=EnermyWave;
-    }
-    void OnDisable() 
-    {
-        GameEventSystem.instance.onWaveClear-=EnermyWave;
-    }
+
     private void Start()
     {
-        
-        NowRoomData=GameManager.Instance.NowRoom.GetComponent<RoomStates>();
-        EnermySpawnInitialization();
+       
         foreach (Transform child in SpawnEditor.transform)
         {
             spawnAreas.Add(child.gameObject);
         }
-        EnermyWave();
-
-    }
-    void EnermySpawnInitialization()
-    {
-        foreach(var prefab in NowRoomData.RoomData.EnermyPool)
-        {
-            prefabToSpawns.Add(prefab);
-            
-        }
-        numberOfObjectsToSpawn= NowRoomData.RoomData.EnermyNumber;
-        EnermyWaveNumber=NowRoomData.RoomData.EnermyWaveNumber;
-        if(NowRoomData.RoomData.roomState==RoomStates_SO.RoomState.Finish)
-        {
-            CombatFinish=true;
-            GameEventSystem.instance.RoomCombatFinish(NowRoomData.RoomData);
-        }
+       StartCoroutine(DelayedAction());
 
     }
 
@@ -57,13 +28,12 @@ public class enemyspawn : MonoBehaviour
         {
             foreach (GameObject spawnArea in spawnAreas)
             {
-                int randomnumber=UnityEngine.Random.Range(1,numberOfObjectsToSpawn);
+                int randomnumber=Random.Range(1,numberOfObjectsToSpawn+1);
                 for (int i = 0; i < randomnumber; i++)
             {
                 Vector3 randomPosition = GetRandomPositionInSpawnArea(spawnArea);
-                hasspawnedprefebs.Add(Instantiate(prefabToSpawns[UnityEngine.Random.Range(0,prefabToSpawns.Count)], randomPosition, Quaternion.identity)) ;
-                
-                if(hasspawnedprefebs.Count==numberOfObjectsToSpawn)
+                hasspawnedprefebs.Add(Instantiate(prefabToSpawn, randomPosition, Quaternion.identity)) ;
+                if(hasspawnedprefebs.Count<=numberOfObjectsToSpawn)
                 {
                     break;
                 }
@@ -108,25 +78,6 @@ public class enemyspawn : MonoBehaviour
 
         // 在这里执行需要延迟执行的操作
           SpawnObjects();
-    }
-    public void EnermyWave()
-    {
-        if(!CombatFinish)
-        {
-            EnermyNowWaveNumber++;
-        if(EnermyNowWaveNumber<=EnermyWaveNumber)
-        {
-             StartCoroutine(DelayedAction());
-        }
-        
-        if(EnermyNowWaveNumber>EnermyWaveNumber)
-        {
-            GameEventSystem.instance.RoomCombatFinish(NowRoomData.RoomData);
-        }
-
-        }
-        
-            
     }
     
 }

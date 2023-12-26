@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
-
 public enum EnermyStates{Guard,Patrol,Chase,Attack,Dead}
 public enum EnermyType{CloseCombat,RemoteCombat}
-[RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(CharacterStates))]
 public class enermybehaviour : MonoBehaviour
 {
     public EnermyStates enermyStates;
     public EnermyType enermyType;
-    public CharacterStates characterStates;
 
     public NavMeshAgent agent;
     
@@ -30,22 +26,18 @@ public class enermybehaviour : MonoBehaviour
     void Awake()
     {
         agent=gameObject.GetComponent<NavMeshAgent>();
-        characterStates=GetComponent<CharacterStates>();
         agent.speed=Speed;
         GuardPos=transform.position;
         RemainLootAtTime=LookAtTime;
     }
-   
     private void Start() 
     {
         enermyStates=EnermyStates.Patrol;
-        GameManager.Instance.RigisterEnermy(characterStates);
         GetNewWayPoint();
     }
     private void Update() 
     {
         SwitchStates();
-        StatesUpdate();
         
     }
     // Update is called once per frame
@@ -64,9 +56,7 @@ public class enermybehaviour : MonoBehaviour
     }
     void SwitchStates()
     {
-        if(enermyStates!=EnermyStates.Dead)
-        {
-            if(FoundPlayer())
+        if(FoundPlayer())
         {
             enermyStates=EnermyStates.Chase;
         }
@@ -74,9 +64,6 @@ public class enermybehaviour : MonoBehaviour
         {
             enermyStates=EnermyStates.Attack;
         }
-
-        }
-        
         switch(enermyStates)
         {
             case EnermyStates.Guard:
@@ -157,10 +144,7 @@ public class enermybehaviour : MonoBehaviour
                   }
                   break;
             case EnermyStates.Dead:
-                  GetComponent<Collider>().enabled=false;
-                  agent.enabled=false;
-                  GameManager.Instance.EnermyDead(characterStates);
-                  Destroy(gameObject,0.5f);
+                  Destroy(gameObject);
                   break;
         }
     }
@@ -203,17 +187,5 @@ public class enermybehaviour : MonoBehaviour
        Gizmos.DrawWireSphere(transform.position,AttackRadius);
     
    }
-   void StatesUpdate()
-    {
-        if(characterStates.currentHealth<=0f)
-        {
-            
-            if(characterStates!=null)
-            {
-                enermyStates=EnermyStates.Dead;
-            }
-
-        }
-    }
   
 }

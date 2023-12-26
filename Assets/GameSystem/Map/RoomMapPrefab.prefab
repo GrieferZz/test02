@@ -225,7 +225,6 @@ GameObject:
   - component: {fileID: 7255117512913595664}
   - component: {fileID: 5137718378415510828}
   - component: {fileID: 6717295263189293035}
-  - component: {fileID: 5460080398549796040}
   m_Layer: 9
   m_Name: RoomMapPrefab
   m_TagString: Untagged
@@ -368,19 +367,6 @@ MonoBehaviour:
   text: {fileID: 5274252254318284449}
   DoorNumber: 0
   Target: {fileID: 1233307075082299937}
-  initializatioonPosition: 4
---- !u!114 &5460080398549796040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044802464603361023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611c5c54a4313294399ac763f22b56e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1233307075082299937
 GameObject:
   m_ObjectHideFlags: 0

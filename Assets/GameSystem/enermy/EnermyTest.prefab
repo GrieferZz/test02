@@ -143,7 +143,9 @@ GameObject:
   - component: {fileID: 7551531146487624911}
   - component: {fileID: 7551531146487624910}
   - component: {fileID: 365851504}
+  - component: {fileID: 1149666379}
   - component: {fileID: 6121259141257473405}
+  - component: {fileID: 7853615104544936630}
   - component: {fileID: 6076416113953131676}
   - component: {fileID: 1149666389}
   m_Layer: 10
@@ -257,7 +259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enermyStates: 0
   enermyType: 0
-  characterStates: {fileID: 0}
   agent: {fileID: 0}
   SightRadius: 6.25
   AttackRadius: 3.79
@@ -278,6 +279,22 @@ CapsuleCollider:
   m_Height: 2.01
   m_Direction: 1
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!114 &1149666379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551531146487624909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf86fde78e6abc5498fd4f3344132575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 7551531146487624899}
+  bulletPrefab: {fileID: 3184801279552154871, guid: 7a943402e7938a242abadd068d3530ea, type: 3}
+  bulletSpeed: 10
+  shootInterval: 1
 --- !u!114 &6121259141257473405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +311,23 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3184801279552154871, guid: 7a943402e7938a242abadd068d3530ea, type: 3}
   bulletSpeed: 10
   shootInterval: 1
+--- !u!114 &7853615104544936630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551531146487624909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb49d9dd94301954d916b876ca16eaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3
+  Attack: 1
+  Defend: 0
+  Speed: 2
+  NowHealth: 3
 --- !u!114 &6076416113953131676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49facf9fdfebf44198727e41c34edb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  templateData: {fileID: 11400000, guid: 8347802b59e0bf94dba378f71bf74a06, type: 2}
-  characterData: {fileID: 0}
+  characterData: {fileID: 11400000, guid: 8347802b59e0bf94dba378f71bf74a06, type: 2}
   attackData: {fileID: 11400000, guid: c04339b71bd811d43bdb4374c473f757, type: 2}
   isCritical: 0
 --- !u!1 &8806171661389757977

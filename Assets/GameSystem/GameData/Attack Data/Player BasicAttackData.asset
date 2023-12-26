@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BasicAttackRange: 1.5
   currentAttackRange: 1.5
-  BaseAttack: 3
-  currentAttack: 3
+  BaseAttack: 1
+  currentAttack: 1
   CriticalMulplier: 2
   currentCriticalMulplier: 2
   CriticalChance: 0.2

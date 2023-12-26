@@ -10,10 +10,14 @@ public class HealthBarScript: MonoBehaviour
 
     public TextMeshProUGUI HPTMP;
 
+    [SerializeField]
+    float currentHP = 100;
+
+    [SerializeField]
+    float maxHP = 100;
     // Start is called before the first frame update
 
     RectTransform rectTran;
-    public CharacterStates playerStates;
     float maxLength;
     void Start()
     {
@@ -24,33 +28,33 @@ public class HealthBarScript: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerStates.currentHealth= (int)HPLimitation(playerStates.currentHealth);
+        currentHP = HPLimitation(currentHP);
         ShowCurrentHP();
         SetBarLength();
     }
 
     void ShowCurrentHP()
     {
-        string healthString = $"{playerStates.currentHealth}/{playerStates.MaxHealth}";
+        string healthString = $"{currentHP}/{maxHP}";
         HPTMP.text = healthString ;
     }
 
     void SetBarLength()
     {
-        rectTran.sizeDelta = new Vector2(maxLength*playerStates.currentHealth/playerStates.MaxHealth, rectTran.sizeDelta.y);
+        rectTran.sizeDelta = new Vector2(maxLength*currentHP/maxHP, rectTran.sizeDelta.y);
     }
 
-    float HPLimitation(int currentHP)
+    float HPLimitation(float currentHP)
     {
-        if (playerStates.currentHealth>playerStates.MaxHealth)
+        if (currentHP>maxHP)
         {
-            return playerStates.MaxHealth;
+            return maxHP;
         }
         
-        if (playerStates.currentHealth< 0)
+        if (currentHP < 0)
         {
             return 0;
         }
-        return playerStates.currentHealth;
+        return currentHP;
     }
 }

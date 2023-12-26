@@ -8,22 +8,13 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     public string LoadedScene;
-    private bool isopen;
     
     // Start is called before the first frame update
     void Start()
     {
          gameObject.GetComponent<BoxCollider>().enabled=false;
-         //StartCoroutine(DelayedOperationCoroutine());
+         StartCoroutine(DelayedOperationCoroutine());
          
-    }
-    void OnEnable() 
-    {
-        GameEventSystem.instance.onRoomCombatFinish+=DoorOpen;
-    }
-    void OnDisable() 
-    {
-        GameEventSystem.instance.onRoomCombatFinish-=DoorOpen;
     }
 
     // Update is called once per frame
@@ -64,21 +55,11 @@ public class SceneChange : MonoBehaviour
         }
         
     }
-    void DoorOpen(RoomStates_SO enermyState)
-    {
-        
-        
-        isopen=true;
-        if(isopen)
-        {
-            StartCoroutine(DelayedOperationCoroutine(3f));
-        }
-    }
-    IEnumerator DelayedOperationCoroutine(float time)
+    IEnumerator DelayedOperationCoroutine()
     {
         // 等待2秒
-        yield return new WaitForSeconds(time);
-        
+        yield return new WaitForSeconds(3f);
+
         // 在等待后执行的操作
         gameObject.GetComponent<BoxCollider>().enabled=true;
 
