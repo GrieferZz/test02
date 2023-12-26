@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Basic Room
   m_EditorClassIdentifier: 
   roomType: 0
+  roomState: 0
+  TerrainPool:
+  - {fileID: 7158312761963728314, guid: 2f4f0c96aa98abd408cbc7bd0c4ac691, type: 3}
   EnermyPool:
   - {fileID: 7551531146487624909, guid: c414c36df0c943045aeab1850c8f6099, type: 3}
   EnermyWaveNumber: 2

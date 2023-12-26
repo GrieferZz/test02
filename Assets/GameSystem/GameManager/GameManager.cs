@@ -62,6 +62,7 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log(NowLayer.BasicRoomTypes.Count);
             room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.BasicRoomTypes[UnityEngine.Random.Range(0,NowLayer.BasicRoomTypes.Count)]);
+            room.GetComponent<RoomStates>().TerrainSelect();
         }
     }
     public void EnermyDead(CharacterStates enermyState)
@@ -77,6 +78,7 @@ public class GameManager : Singleton<GameManager>
        {
              Debug.Log("波次清理");
             GameEventSystem.instance.WaveClear();
+            EnermyStates.Clear();
        }                           
     }
 }

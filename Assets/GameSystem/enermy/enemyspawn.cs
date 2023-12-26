@@ -26,6 +26,7 @@ public class enemyspawn : MonoBehaviour
     {
         
         NowRoomData=GameManager.Instance.NowRoom.GetComponent<RoomStates>();
+        SpawnEditor=GameObject.FindWithTag("SpawnEditor");
         EnermySpawnInitialization();
         foreach (Transform child in SpawnEditor.transform)
         {
@@ -58,6 +59,11 @@ public class enemyspawn : MonoBehaviour
             foreach (GameObject spawnArea in spawnAreas)
             {
                 int randomnumber=UnityEngine.Random.Range(1,numberOfObjectsToSpawn);
+                if(spawnAreas.Count==1)
+                {
+                    randomnumber=numberOfObjectsToSpawn;
+                }
+                
                 for (int i = 0; i < randomnumber; i++)
             {
                 Vector3 randomPosition = GetRandomPositionInSpawnArea(spawnArea);
