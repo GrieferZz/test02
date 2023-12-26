@@ -13,7 +13,7 @@ public class PlayerMovement_1 : MonoBehaviour
 {
 
     
-    
+    private CharacterStates characterStates;
     private CharacterController cr;
     private Animator anim;
 
@@ -39,6 +39,7 @@ public class PlayerMovement_1 : MonoBehaviour
         cr = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         inputControl=new PlayerInput();
+        characterStates=GetComponent<CharacterStates>();
         
     }
     private void OnEnable() 
@@ -51,7 +52,7 @@ public class PlayerMovement_1 : MonoBehaviour
     }
     void Start() 
     {
-        MoveSpeed=Player.Instance.Speed;
+        
         
     }
     private void Update() 
@@ -69,6 +70,7 @@ public class PlayerMovement_1 : MonoBehaviour
 
     private void Move()
     {
+        MoveSpeed=characterStates.currentSpeed;
         if(Player.Instance.canMove)
         {
         MoveInput0=inputControl.GamePlay.Move.ReadValue<Vector2>();

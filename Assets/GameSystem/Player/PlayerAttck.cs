@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,10 +14,19 @@ public class PlayerAttck : MonoBehaviour
     public int combo=0;
     private bool hasIncreased = false;
     private bool cd;
+    public Transform bulletSpawnPoint; // 子弹发射点
+    public GameObject bulletPrefab; 
+    public Bullet bulletType;
+    public GameObject Plane;   // 子弹预制体
+    public float bulletSpeed = 10f;    // 子弹速度
+    public float shootInterval = 2f;   // 发射间隔
+    private float lastShootTime;
+   
     private void Awake()
     {
         inputControl=new PlayerInput();
         inputControl.GamePlay.Attack.started+=BasicAttack;
+        
         inputControl.GamePlay.HeavyAttack.started+=Hold;
         inputControl.GamePlay.HeavyAttack.canceled += HoldRelease;
     }
@@ -45,6 +55,9 @@ public class PlayerAttck : MonoBehaviour
     {
       Charging();
       ChargeRelease();
+      DirectionGet();
+     
+
     }
     private void BasicAttack(InputAction.CallbackContext context)
     {
@@ -57,10 +70,50 @@ public class PlayerAttck : MonoBehaviour
             
             anim.SetTrigger("attack"+combo);
             Debug.Log("成功");
+            if (Time.time - lastShootTime >= shootInterval)
+        {
+            
+            Shoot(DirectionGet());
+            lastShootTime = Time.time;
+        }
 
         
         
         
+    }
+    private Vector3 DirectionGet()
+    {
+        Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(bulletSpawnPoint.transform.position);
+
+        // 获取鼠标在屏幕上的坐标
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+
+        // 计算二维向量
+        Vector2 direction2D = new Vector2(mouseScreenPos.x - playerScreenPos.x, mouseScreenPos.y - playerScreenPos.y);
+
+        // 构建射击方向的三维向量
+        Vector3 shootingDirection = new Vector3(direction2D.x, 0f, direction2D.y);
+        return shootingDirection;
+    }
+    
+
+    private void Shoot(Vector3 shootingDirection)
+    {
+        if (bulletPrefab != null && bulletSpawnPoint != null)
+        {
+           
+
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
+            bulletType=bullet.GetComponent<Bullet>();
+            bulletType.attackObject=Bullet.AttackObject.ForEnermy;
+            bulletType.InitiatorStates=gameObject.GetComponent<CharacterStates>();
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+               rb.velocity = shootingDirection.normalized * bulletSpeed;
+            }
+        }
     }
     private IEnumerator ResetAttackState(float delay)
     {

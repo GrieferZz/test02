@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnermyAttack : MonoBehaviour
 {
-  public Transform bulletSpawnPoint; // 子弹发射点
+    public Transform bulletSpawnPoint; // 子弹发射点
     public GameObject bulletPrefab;    // 子弹预制体
     public float bulletSpeed = 10f;    // 子弹速度
     public float shootInterval = 2f;   // 发射间隔
     private float lastShootTime;
-    private bool canshoot;
-    private Transform player;          // 玩家的Transform
+    public static bool canshoot;
+    public static Transform player;          // 玩家的Transform
+    private Bullet bulletType;
 
     private void Update()
     {
@@ -29,11 +30,14 @@ public class EnermyAttack : MonoBehaviour
 
     private void Shoot()
     {
-        if (bulletPrefab != null && bulletSpawnPoint != null)
+        if (bulletPrefab != null && bulletSpawnPoint != null&&player!=null)
         {
             Vector3 shootDirection = (player.position - bulletSpawnPoint.position).normalized;
 
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootDirection));
+            bulletType=bullet.GetComponent<Bullet>();
+            bulletType.attackObject=Bullet.AttackObject.ForPlayer;
+            bulletType.InitiatorStates=gameObject.GetComponent<CharacterStates>();
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
             if (rb != null)
@@ -42,25 +46,7 @@ public class EnermyAttack : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // 玩家进入物体范围时开始发射子弹
-            // 可以在这里添加更多逻辑，比如根据玩家位置改变发射方向等
-            Debug.Log("进入");
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            canshoot=true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            canshoot=false;
-        }
-    }
+ 
+     
+   
 }

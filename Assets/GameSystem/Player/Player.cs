@@ -7,10 +7,7 @@ public class Player :Singleton<Player>
     
     public enum PlayerState{Move,Sprint,Fight,Idle,Hurt,Ban}
     public PlayerState NowState;
-    public float Health;
-    public float Attack;
-    public float Defence;
-    public float Speed;
+    
     public bool canMove=true;
     protected override void Awake()
     {
