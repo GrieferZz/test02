@@ -48,6 +48,7 @@ public class MapManager : MonoBehaviour
     {
         inputControl.Enable();
         OriginPoint=GeneratorPoint;
+        RoomNumber=GameManager.Instance.NowLayer.RoomNumber;
          GeneratorRooomStart();
          MapOffset();
     }
@@ -77,10 +78,12 @@ public class MapManager : MonoBehaviour
         {
             Rooms.Add(Instantiate(RoomPrefab,GeneratorPoint.transform.position,Quaternion.identity).GetComponent<RoomInformation>());
             Rooms[i].transform.SetParent(Map.transform);
+            GameManager.Instance.RigisterRooms(Rooms[i].gameObject);
             ChangePostionPos();
         }
         Rooms[0].GetComponent<Image>().color=StartColor;
         Nowroom=Rooms[0];
+         GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
         Nowroom.Target.SetActive(true);
         EndRoom=Rooms[0].gameObject;
         foreach(var room in Rooms)
@@ -226,18 +229,22 @@ public class MapManager : MonoBehaviour
             case GameEventSystem.Direction.Up:
                  Nowroom=Physics2D.OverlapCircle(Nowroom.gameObject.transform.position+ new Vector3(0, Yoffset, 0), 0.2f, RoomLayer).gameObject.GetComponent<RoomInformation>();
                  Nowroom.initializatioonPosition=RoomInformation.InitializatioonPosition.Down;
+                 GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
                  break;
             case GameEventSystem.Direction.Down:
                  Nowroom=Physics2D.OverlapCircle(Nowroom.gameObject.transform.position+ new Vector3(0, -Yoffset, 0), 0.2f, RoomLayer).gameObject.GetComponent<RoomInformation>();
                 Nowroom.initializatioonPosition=RoomInformation.InitializatioonPosition.Up;
+                 GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
                  break;
             case GameEventSystem.Direction.Left:
                  Nowroom=Physics2D.OverlapCircle(Nowroom.gameObject.transform.position+ new Vector3(-Xoffset, 0, 0), 0.2f, RoomLayer).gameObject.GetComponent<RoomInformation>();
                 Nowroom.initializatioonPosition=RoomInformation.InitializatioonPosition.Right;
+                 GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
                  break;
             case GameEventSystem.Direction.Right:
                  Nowroom=Physics2D.OverlapCircle(Nowroom.gameObject.transform.position+ new Vector3(Xoffset, 0, 0), 0.2f, RoomLayer).gameObject.GetComponent<RoomInformation>();
                 Nowroom.initializatioonPosition=RoomInformation.InitializatioonPosition.Left;
+                 GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
                  break;
             
             

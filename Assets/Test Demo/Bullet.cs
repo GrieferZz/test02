@@ -71,7 +71,7 @@ public class Bullet : MonoBehaviour
         {
              TargetStates=Target.GetComponent<CharacterStates>();
              TargetStates.ExecuteAttack(InitiatorStates,TargetStates);
-
+             GameEventSystem.instance.HealthBarUpdate(Target);
         }
        
 

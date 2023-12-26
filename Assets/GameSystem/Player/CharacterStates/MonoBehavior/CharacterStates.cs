@@ -7,10 +7,19 @@ using UnityEngine;
 
 public class CharacterStates : MonoBehaviour
 {
+    public CharacterData_SO templateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
+   
     [HideInInspector]
     public bool isCritical;
+    void Awake()
+    {
+        if(templateData!=null)
+        {
+            characterData=Instantiate(templateData);
+        }
+    }
     #region region  Read from Data_SO
     public int MaxHealth
     {
@@ -134,13 +143,22 @@ public class CharacterStates : MonoBehaviour
         return (int)finaldamage;
     }
     #endregion
+    
+    void DataInitialization()
+    {
+        characterData.currentHealth=characterData.MaxHealth;
+        characterData.currentDefence=characterData.BaseDefence;
+        characterData.currentSpeed=characterData.BaseSpeed;
+        attackData.currentAttack=attackData.BaseAttack;
+    }
     void Update()
     {
         ExecutecurrentData();
+        
     }
     void Start() 
     {
-        
+        DataInitialization();
     }
 }
 

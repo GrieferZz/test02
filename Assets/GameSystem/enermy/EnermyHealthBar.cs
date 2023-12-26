@@ -7,15 +7,19 @@ public class EnermyHealthBar : MonoBehaviour
 {
     public GameObject HealthBarPrefab;
     public Transform BarPoint;
-    Image HealthSlider;
+    Image HealthFrontSlider;
+    Image HealthBackSlider;
     Transform HealthUIbar;
 
     Transform cm;
+    Coroutine updateCoroutine;
+    float bufftime=0.5f;
 
-    EnermyInformation enermyInformation;
+    CharacterStates currentStates;
     void Awake()
     {
-        enermyInformation=GetComponent<EnermyInformation>();
+        currentStates=GetComponent<CharacterStates>();
+        GameEventSystem.instance.onHealthBarUpdate+=UpdateHealthBar;
     }
     void OnEnable()
     {
@@ -25,29 +29,60 @@ public class EnermyHealthBar : MonoBehaviour
             if(canvas.renderMode==RenderMode.WorldSpace)
             {
                 HealthUIbar=Instantiate(HealthBarPrefab,canvas.transform).transform;
-                HealthSlider=HealthUIbar.GetChild(0).GetComponent<Image>();
+                HealthFrontSlider=HealthUIbar.GetChild(1).GetComponent<Image>();
+                HealthBackSlider=HealthUIbar.GetChild(0).GetComponent<Image>();
                 HealthUIbar.gameObject.SetActive(false);
             }
 
         }
     }
-
-    public void UpdateHealthBar()
+    void OnDisable() 
     {
-        if(enermyInformation.NowHealth<=0)
+        GameEventSystem.instance.onHealthBarUpdate-=UpdateHealthBar;
+    }
+
+    public void UpdateHealthBar(GameObject target)
+    {
+        if(target==gameObject)
         {
+           
+            HealthUIbar.gameObject.SetActive(true);
+            float sliderPercent=(float)currentStates.currentHealth/currentStates.MaxHealth;
+            HealthFrontSlider.fillAmount=sliderPercent;
+             if(updateCoroutine!=null)
+            {
+                StopCoroutine(updateCoroutine);
+            }
+            updateCoroutine=StartCoroutine(HealthBarSlowDown());
+            if(HealthFrontSlider.fillAmount<=0)
+        {
+            StopCoroutine(updateCoroutine);
             Destroy(HealthUIbar.gameObject);
         }
-        HealthUIbar.gameObject.SetActive(true);
-        float sliderPercent=(float)enermyInformation.NowHealth/enermyInformation.MaxHealth;
-        HealthSlider.fillAmount=sliderPercent;
+
+
+        }
+        
+    }
+    IEnumerator HealthBarSlowDown()
+    {
+        
+        float effectLength=HealthBackSlider.fillAmount-HealthFrontSlider.fillAmount;
+        float elapsedTime=0f;
+        while(elapsedTime<bufftime &&effectLength!=0)
+        {
+            elapsedTime+=Time.deltaTime;
+            HealthBackSlider.fillAmount=Mathf.Lerp(HealthFrontSlider.fillAmount+effectLength,HealthFrontSlider.fillAmount,elapsedTime/bufftime);
+            yield return null;
+        }
+        HealthBackSlider.fillAmount=HealthFrontSlider.fillAmount;
     }
     private void LateUpdate() 
     {
         if(HealthUIbar!=null)
         {
             HealthUIbar.position=BarPoint.position;
-            HealthUIbar.forward=-cm.forward;
+            HealthUIbar.forward=cm.forward;
         }
         
     }

@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - HealthBarPrefab: {fileID: 5599671755446211999, guid: f7e648808c199334b98f4c241af26363, type: 3}
-  executionOrder: 0
+  executionOrder: 1000
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
