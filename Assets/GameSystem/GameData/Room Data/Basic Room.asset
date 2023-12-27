@@ -16,6 +16,8 @@ MonoBehaviour:
   roomState: 0
   TerrainPool:
   - {fileID: 7158312761963728314, guid: 2f4f0c96aa98abd408cbc7bd0c4ac691, type: 3}
+  - {fileID: 1537932836892151210, guid: af4d0a3b9416d584aa87d700ee3fab88, type: 3}
+  - {fileID: 7499244430201989365, guid: aff71fa37fad49f4ca5102e4c28f46a0, type: 3}
   EnermyPool:
   - {fileID: 7551531146487624909, guid: c414c36df0c943045aeab1850c8f6099, type: 3}
   EnermyWaveNumber: 2

@@ -8,7 +8,7 @@ public class Room : MonoBehaviour
     public GameObject IniatializationPosition;
 
     // Start is called before the first frame update
-    private void OnEnable() 
+    private void Start() 
     {
         DoorUp=GameObject.FindWithTag("Up");
         DoorDown=GameObject.FindWithTag("Down");

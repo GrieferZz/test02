@@ -66,13 +66,14 @@ public class enemyspawn : MonoBehaviour
                 
                 for (int i = 0; i < randomnumber; i++)
             {
-                Vector3 randomPosition = GetRandomPositionInSpawnArea(spawnArea);
-                hasspawnedprefebs.Add(Instantiate(prefabToSpawns[UnityEngine.Random.Range(0,prefabToSpawns.Count)], randomPosition, Quaternion.identity)) ;
-                
                 if(hasspawnedprefebs.Count==numberOfObjectsToSpawn)
                 {
                     break;
                 }
+                Vector3 randomPosition = GetRandomPositionInSpawnArea(spawnArea);
+                hasspawnedprefebs.Add(Instantiate(prefabToSpawns[UnityEngine.Random.Range(0,prefabToSpawns.Count)], randomPosition, Quaternion.identity)) ;
+                
+                
             }
 
             }
@@ -122,6 +123,7 @@ public class enemyspawn : MonoBehaviour
             EnermyNowWaveNumber++;
         if(EnermyNowWaveNumber<=EnermyWaveNumber)
         {
+            hasspawnedprefebs.Clear();
              StartCoroutine(DelayedAction());
         }
         
