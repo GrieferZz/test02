@@ -1785,7 +1785,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063280488}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2967,6 +2967,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1063280498}
     m_Modifications:
+    - target: {fileID: 2827276088215132668, guid: c3f952c32efb8214c92ecf52e2eb518e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c10f08f2d3e5744eb4b98a80112076c, type: 2}
     - target: {fileID: 8235761830612991159, guid: c3f952c32efb8214c92ecf52e2eb518e, type: 3}
       propertyPath: m_Data.m_Root
       value: 
@@ -3075,6 +3079,10 @@ PrefabInstance:
       propertyPath: terrainLayer.m_Bits
       value: 2112
       objectReference: {fileID: 0}
+    - target: {fileID: 8235761832458748521, guid: c3f952c32efb8214c92ecf52e2eb518e, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 963194225}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3f952c32efb8214c92ecf52e2eb518e, type: 3}
 --- !u!1 &1831977634
