@@ -5,25 +5,52 @@ using UnityEngine;
 public class PlayerAct : MonoBehaviour
 {
     public float speed = 5;
-    private float slownumber = 1.14f;
+    private float slownumber = 1.14f;//控制八向移动的速度基本相同
     private Transform m_Transform;
+    public bool characterMoving = false;//判断是否在移动
+    private Vector3 previousPosition;//最初位置
+    private Animator _animator;
 
     void Start()
     {
+        previousPosition = transform.position;
+
         m_Transform = this.transform;
+
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         playerMove();
+
+        moveAnimator();
+
+        //判断角色是否在移动
+        if (transform.position != previousPosition)
+        {
+            characterMoving = true;
+            previousPosition = transform.position; // 更新前一帧的位置
+        }
+        else
+        {
+            characterMoving = false;
+        }
+
+        // 输出移动状态
+        Debug.Log("Is Moving: " + characterMoving);
     }
 
     void playerMove()
-    {	//检测四个斜向的按键
+
+    {
+
+
+        //检测四个斜向的按键
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
         {
             //m_Transform.localRotation = Quaternion.Euler(0, -45, 0);//旋转的四元数
-            m_Transform.Translate(new Vector3(-1, 0, 1)/ slownumber * speed * Time.deltaTime, Space.World);
+            m_Transform.Translate(new Vector3(-1, 0, 1) / slownumber * speed * Time.deltaTime, Space.World);
         }
         else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
@@ -62,6 +89,17 @@ public class PlayerAct : MonoBehaviour
                 //m_Transform.localRotation = Quaternion.Euler(0, 90, 0);
                 m_Transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
             }
+        }
+    }
+    void moveAnimator()
+    {
+        if (characterMoving == true)
+        {
+            _animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            _animator.SetBool("isMoving", false);
         }
     }
 }
