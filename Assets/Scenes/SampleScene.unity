@@ -1062,20 +1062,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
   m_PrefabInstance: {fileID: 589025250}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &584414859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584414855}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 027f4d633ba4ed44c9e4cba529389b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  characterMoving: 0
 --- !u!114 &584414860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,6 +1132,19 @@ MonoBehaviour:
   - {fileID: 1471391539}
   - {fileID: 676883514}
   - {fileID: 1288474635}
+--- !u!114 &584414862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584414855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb06194825b53024d8edea82d5405ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMoving: 0
 --- !u!1001 &589025250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1216,7 +1215,7 @@ PrefabInstance:
     - target: {fileID: -7965331398152544644, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 42d168b0496087044b82dcefff60a1b5, type: 2}
+      objectReference: {fileID: 2100000, guid: a7c2fb35253e4b1429bf2c616fd98db9, type: 2}
     - target: {fileID: 919132149155446097, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_Name
       value: player2animation
@@ -1651,6 +1650,7 @@ GameObject:
   - component: {fileID: 958277726}
   - component: {fileID: 958277727}
   - component: {fileID: 958277728}
+  - component: {fileID: 958277729}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1769,7 +1769,6 @@ MonoBehaviour:
   sprintSpeed: 20
   sprintDuration: 0.05
   sprintCooldown: 1
-  characterMoving: 0
 --- !u!143 &958277723
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1864,6 +1863,20 @@ CapsuleCollider:
   m_Height: 10.989999
   m_Direction: 1
   m_Center: {x: -0.32, y: 5.47, z: 0}
+--- !u!114 &958277729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958277712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0d5ed754790ec44a4004cf12051d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  maxLength: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

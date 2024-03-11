@@ -35,12 +35,6 @@ public class PlayerMovement_1 : MonoBehaviour
     private bool canSprint=true;
 
 
-    //动画相关代码（why增添）
-    public bool characterMoving = false;//判断是否在移动
-    private Vector3 previousPosition;//最初位置
-    private Animator _animator;
-    private Transform m_Transform;
-
 
     private void Awake()
     {
@@ -60,32 +54,18 @@ public class PlayerMovement_1 : MonoBehaviour
     }
     void Start() 
     {
-        //判断是否在移动
-        previousPosition = transform.position;
-
-        m_Transform = this.transform;
-
-        _animator = GetComponent<Animator>();
+       
 
     }
     private void Update() 
      {
 
-        moveAnimator(); 
+       
         Animate();
-         Sprint();
-        //判断角色是否在移动
-        if (transform.position != previousPosition)
-        {
-            characterMoving = true;
-            previousPosition = transform.position; // 更新前一帧的位置
-        }
-        else
-        {
-            characterMoving = false;
-        }
+        Sprint();
+ 
 
-
+       
     }
     private void FixedUpdate() 
     {
@@ -180,16 +160,6 @@ public class PlayerMovement_1 : MonoBehaviour
 
     }
 
-    void moveAnimator()
-    {
-        if (characterMoving == true)
-        {
-            _animator.SetBool("isMoving", true);
-        }
-        else
-        {
-            _animator.SetBool("isMoving", false);
-        }
-    }
+
 
 }
