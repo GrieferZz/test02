@@ -4,15 +4,20 @@ using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{   public CharacterStates InitiatorStates;
+{   public Bullet bullet;
+    public CharacterStates InitiatorStates;
     public CharacterStates TargetStates;
     public GameObject Target;
     public enum AttackObject{ForEnermy,ForPlayer,ForOther}
     public AttackObject attackObject;
+    public enum BulletType{Default,Track,Sticky}
+    public BulletType bulletType;
+    public AttackInfo attackInfo;
     // Start is called before the first frame update
     void Start()
     {
-        
+        bullet=this;
+        attackInfo=new AttackInfo();
     }
 
     // Update is called once per frame
@@ -22,6 +27,9 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
+      if(bulletType!=BulletType.Sticky)
+      {
+
       
         if (other.gameObject.CompareTag("Wall"))
         {
@@ -34,9 +42,10 @@ public class Bullet : MonoBehaviour
                 if(other.gameObject.CompareTag("Enermy"))
                 {
                     gameObject.GetComponent<SphereCollider>().enabled=false;
-                    Destroy(gameObject);
+                    
                     Target=other.gameObject;
                     Hit();
+                    Destroy(gameObject);
                     
                 }
                  break;
@@ -44,10 +53,11 @@ public class Bullet : MonoBehaviour
                 if(other.gameObject.CompareTag("Player"))
                 {
                     gameObject.GetComponent<SphereCollider>().enabled=false;
-                    Destroy(gameObject);
+                    
                     Target=other.gameObject;
                     Hit();
                     Debug.Log("击中");
+                    Destroy(gameObject);
                    
                 }
                  break;
@@ -55,23 +65,78 @@ public class Bullet : MonoBehaviour
                 if(other.gameObject.CompareTag("Other"))
                 {
                     gameObject.GetComponent<SphereCollider>().enabled=false;
-                    Destroy(gameObject);
+                    
                     Target=other.gameObject;
                     Hit();
+                    Destroy(gameObject);
                     
                 }
                  break;
         }
-        
+      }
+    }
+    public void StickyBulletHit(GameObject target)
+    {
+        if(bulletType==BulletType.Sticky)
+        {
+            switch(attackObject)
+        {
+            case AttackObject.ForEnermy:
+                if(target.CompareTag("Enermy"))
+                {
+                    gameObject.GetComponent<SphereCollider>().enabled=false;
+                    
+                    Target=target;
+                    Hit();
+                    Debug.Log("爆炸击中");
+                    //Destroy(gameObject);
+                    
+                }
+                 break;
+            case AttackObject.ForPlayer:
+                if(target.CompareTag("Player"))
+                {
+                    gameObject.GetComponent<SphereCollider>().enabled=false;
+                    //Destroy(gameObject);
+                    Target=target.gameObject;
+                    Hit();
+                    
+                    //Destroy(gameObject);
+                   
+                }
+                 break;
+            case AttackObject.ForOther:
+                if(target.CompareTag("Other"))
+                {
+                    gameObject.GetComponent<SphereCollider>().enabled=false;
+                    //Destroy(gameObject);
+                    Target=target.gameObject;
+                    Hit();
+                    //Destroy(gameObject);
+                    
+                }
+                 break;
+        }
+
+        }
+
     }
    
     void Hit()
     {
         if(Target!=null&&InitiatorStates!=null)
         {
+            Debug.Log("攻击发起者"+InitiatorStates);
              TargetStates=Target.GetComponent<CharacterStates>();
-             TargetStates.ExecuteAttack(InitiatorStates,TargetStates);
+             Debug.Log("当前爆炸倍率"+attackInfo.singleAttackMagnification);
+             TargetStates.ExecuteAttack(InitiatorStates,TargetStates,attackInfo);
+             AttackManager.instance.AttackEvent(InitiatorStates.gameObject,Target,bullet);
+            
              GameEventSystem.instance.HealthBarUpdate(Target);
+        }
+        else
+        {
+            Debug.Log("无目标");
         }
        
 

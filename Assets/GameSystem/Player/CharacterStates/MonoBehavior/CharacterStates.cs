@@ -119,10 +119,11 @@ public class CharacterStates : MonoBehaviour
     }
     #endregion
     #region  Character Combat
-    public void ExecuteAttack(CharacterStates attacker,CharacterStates defender)
+    public void ExecuteAttack(CharacterStates attacker,CharacterStates defender,AttackInfo attackInfo)
     {
-       int damage=(int)Mathf.Max(attacker.CurrentDamage()*(1-defender.currentDefence/(defender.currentDefence+10f)),0.1f);
+       int damage=(int)Mathf.Max(attacker.CurrentDamage(attackInfo)*(1-defender.currentDefence/(defender.currentDefence+10f)),0.1f);
        currentHealth=Mathf.Max(currentHealth-damage,0);
+       Debug.Log("单次倍率"+attackInfo.singleAttackMagnification);
        Debug.Log("造成伤害"+damage);
 
     }
@@ -133,9 +134,9 @@ public class CharacterStates : MonoBehaviour
         characterData.currentSpeed=characterData.BaseSpeed*(1+characterData.currentSpeedAddition);
     }
 
-    private int CurrentDamage()
+    private int CurrentDamage(AttackInfo attackInfo)
     {
-        float finaldamage=attackData.currentAttack*(1+attackData.currentAttackMagnification);
+        float finaldamage=attackData.currentAttack*(1+attackData.currentAttackMagnification)*(1+attackInfo.singleAttackMagnification);
         if(isCritical)
         {
             finaldamage*=attackData.currentCriticalMulplier;

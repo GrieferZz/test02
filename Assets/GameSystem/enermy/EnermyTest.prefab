@@ -123,7 +123,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7551531146218319465}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 6121259141257473405}
   - component: {fileID: 6076416113953131676}
   - component: {fileID: 1149666389}
+  - component: {fileID: 6685826175210196715}
   m_Layer: 10
   m_Name: EnermyTest
   m_TagString: Enermy
@@ -324,6 +325,18 @@ MonoBehaviour:
   characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: c04339b71bd811d43bdb4374c473f757, type: 2}
   isCritical: 0
+--- !u!114 &6685826175210196715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551531146487624909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4626ac5159c8c4389d51d8a779588e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8806171661389757977
 GameObject:
   m_ObjectHideFlags: 0

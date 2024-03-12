@@ -13,7 +13,7 @@ public class BulletShow : MonoBehaviour
         int randomChildIndex = Random.Range(0, childCount);
 
         // 循环遍历所有子物体
-        for (int i = 0; i < childCount; i++)
+        for (int i = 1; i < childCount; i++)
         {
             // 获取子物体
             Transform child = transform.GetChild(i);

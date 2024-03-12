@@ -8,14 +8,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttck : MonoBehaviour
 {
+    public enum AttackType{Defalut,Track,Sticky}
+    public AttackType nowAttackType;
+    public int attackTypeIndex = 0;
     private Animator anim;
 
     public PlayerInput inputControl;
+   
     public int combo=0;
     private bool hasIncreased = false;
+    private bool IsHold;
     private bool cd;
     public Transform bulletSpawnPoint; // 子弹发射点
-    public GameObject bulletPrefab; 
+    public  List<GameObject> bulletPrefab=new List<GameObject>(); 
+    public  List<GameObject> stickyBullets=new List<GameObject>(); 
+    private GameObject nowBulletPrefab;
     public Bullet bulletType;
     public GameObject Plane;   // 子弹预制体
     public float bulletSpeed = 10f;    // 子弹速度
@@ -26,12 +33,15 @@ public class PlayerAttck : MonoBehaviour
     {
         inputControl=new PlayerInput();
         inputControl.GamePlay.Attack.started+=BasicAttack;
-        
+        inputControl.GamePlay.Attack.performed+=BasicAttackHold;
+        inputControl.GamePlay.Attack.canceled+=BasicAttackCancel;
+        inputControl.GamePlay.AttackType.started+=AttackTypeChange;
         inputControl.GamePlay.HeavyAttack.started+=Hold;
+         inputControl.GamePlay.HeavyAttack.started+=Detonated;
         inputControl.GamePlay.HeavyAttack.canceled += HoldRelease;
     }
 
-    
+  
 
     private void OnEnable() 
     {
@@ -53,15 +63,23 @@ public class PlayerAttck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      AttackHold();
       Charging();
       ChargeRelease();
       DirectionGet();
-     
+      //StickyBulletUpdate();
 
+
+    }
+    private void AttackTypeChange(InputAction.CallbackContext context)
+    {
+         attackTypeIndex= (attackTypeIndex + 1) % 3;
+         nowAttackType= (AttackType)attackTypeIndex;
     }
     private void BasicAttack(InputAction.CallbackContext context)
     {
-            Player.Instance.NowState=Player.PlayerState.Fight;
+           
+
             if(combo>3)
             combo=0;
         
@@ -70,17 +88,48 @@ public class PlayerAttck : MonoBehaviour
             
             anim.SetTrigger("attack"+combo);
             Debug.Log("成功");
-            if (Time.time - lastShootTime >= shootInterval)
+           
+           
+       // if(context.interaction is UnityEngine.InputSystem.Interactions.HoldInteraction)
+        {
+            Player.Instance.NowState=Player.PlayerState.Fight;
+             if (Time.time - lastShootTime >= shootInterval)
         {
             
             Shoot(DirectionGet());
             lastShootTime = Time.time;
         }
 
+        }
+
         
         
         
     }
+    private void BasicAttackHold(InputAction.CallbackContext context)
+    {
+
+            Player.Instance.NowState=Player.PlayerState.Fight;
+            IsHold=true;
+
+    }
+      private void BasicAttackCancel(InputAction.CallbackContext context)
+    {
+            IsHold=false;
+    }
+    private void AttackHold()
+    {
+        if(IsHold)
+        {
+            if (Time.time - lastShootTime >= shootInterval)
+        {
+            
+            Shoot(DirectionGet());
+            lastShootTime = Time.time;
+        }
+        }
+    }
+  
     private Vector3 DirectionGet()
     {
         Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(bulletSpawnPoint.transform.position);
@@ -101,9 +150,26 @@ public class PlayerAttck : MonoBehaviour
     {
         if (bulletPrefab != null && bulletSpawnPoint != null)
         {
-           
+            switch (nowAttackType)
+            {
+                case AttackType.Defalut:
+                     nowBulletPrefab=bulletPrefab[0];
+                     break;
+                case AttackType.Track:
+                     nowBulletPrefab=bulletPrefab[1];
+                     break;
+                case AttackType.Sticky:
+                     nowBulletPrefab=bulletPrefab[2];
+                     
+                     break;
 
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
+            }
+
+            GameObject bullet = Instantiate(nowBulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
+            if(nowAttackType==AttackType.Sticky)
+            {
+                //StickyBulletLimit(bullet);
+            }
             bulletType=bullet.GetComponent<Bullet>();
             bulletType.attackObject=Bullet.AttackObject.ForEnermy;
             bulletType.InitiatorStates=gameObject.GetComponent<CharacterStates>();
@@ -125,6 +191,37 @@ public class PlayerAttck : MonoBehaviour
         {
             combo=0;
             Player.Instance.NowState=Player.PlayerState.Idle;
+        }
+    }
+    private void Detonated(InputAction.CallbackContext context)
+    {
+         GameEventSystem.instance.Detonation();
+    }
+    private void StickyBulletLimit(GameObject stickybullet)
+    {
+
+        if(stickyBullets.Count<3)
+        {
+            stickyBullets.Add(stickybullet);
+            
+        }
+        else if(stickyBullets.Count>=3)
+        {
+            stickyBullets[0].GetComponent<StickyBullet>().StickyBulletExplode();
+            stickyBullets.RemoveAt(0);
+            stickyBullets.Add(stickybullet);
+        }
+        
+    }
+    private void StickyBulletUpdate()
+    {
+        for(int i=0;i<stickyBullets.Count;i++)
+        {
+             if(stickyBullets[i]==null)
+             {
+                stickyBullets.RemoveAt(i);
+
+             }
         }
     }
      private void Hold(InputAction.CallbackContext context)

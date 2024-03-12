@@ -29,13 +29,22 @@
                     "id": "ce91d8e5-217b-47a8-b1a4-ef2739f0ed0f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
                     "name": "HeavyAttack",
                     "type": "Button",
                     "id": "7d755a26-3287-4276-9185-aa11fc7dc1a2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AttackType",
+                    "type": "Button",
+                    "id": "b3a66050-c7e0-4bd9-a7f8-a0752e13a652",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -205,6 +214,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "HeavyAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ef92f64-1e12-409d-8bfa-460dfd56d43a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AttackType",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
