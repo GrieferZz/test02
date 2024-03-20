@@ -132,7 +132,7 @@ public class PlayerAttck : MonoBehaviour
         }
     }
   
-    private Vector3 DirectionGet()
+    public Vector3 DirectionGet()
     {
         Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(bulletSpawnPoint.transform.position);
 

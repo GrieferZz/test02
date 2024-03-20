@@ -15,6 +15,7 @@ TagManager:
   - Right
   - SpawnEditor
   - ExplosionRange
+  - CameraHandle
   layers:
   - Default
   - TransparentFX
