@@ -28,7 +28,10 @@ public class PlayerAttck : MonoBehaviour
     public float bulletSpeed = 10f;    // 子弹速度
     public float shootInterval = 2f;   // 发射间隔
     private float lastShootTime;
-   
+
+
+
+
     private void Awake()
     {
         inputControl=new PlayerInput();
@@ -58,6 +61,7 @@ public class PlayerAttck : MonoBehaviour
     void Start()
     {
         anim=this.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -102,9 +106,7 @@ public class PlayerAttck : MonoBehaviour
 
         }
 
-        
-        
-        
+                
     }
     private void BasicAttackHold(InputAction.CallbackContext context)
     {

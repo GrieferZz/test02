@@ -1174,6 +1174,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &584414868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584414855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e8208b517515b4a8907876598ad596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isShoot: 0
 --- !u!1001 &589025250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1187,15 +1200,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.66
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.0158646
+      value: 3.3537076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.3688703
+      value: 3.7462575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1203,7 +1216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc6272e1a6ae367419dcae72fb8df381, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4003,7 +4016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalFace: {fileID: 2100000, guid: cfddcf730a648bc46a05f875b9e33502, type: 2}
   knockFace: {fileID: 2100000, guid: 88eacb6317037e94ebbfd361438e7c71, type: 2}
-  delayTime: 0.4
+  delayTime: 0.5
   executed: 0
 --- !u!1 &2028033664
 GameObject:
