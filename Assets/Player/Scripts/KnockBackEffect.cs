@@ -5,29 +5,57 @@ using UnityEngine;
 public class KnockBackEffect : MonoBehaviour
 {
     public Vector3 attackDirection;
-    // Start is called before the first frame update
-    //public Material knockFace;
-    //private SkinnedMeshRenderer skinnedMeshRender;
+    public float knockbackForce = 100f; // 可以根据角色属性或攻击强度调整  
+    private Rigidbody rb;
+    public GameObject Player;
+    void Awake()
+    {
+        if (AttackManager.instance != null)
+        {
+            AttackManager.instance.onAttackEvent += OnAttackEvent;
+            Debug.Log("666666666666666666");
+        }
+        else
+        {
+            Debug.LogError("AttackManager instance is not set!");
+            Debug.Log("7777777777777");
+        }
+        // 获取Rigidbody组件    
+        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component is not found on this GameObject!");
+        }
+    }
+    private void OnAttackEvent(GameObject creator, GameObject target, Bullet bullet)
+    {
+        // 检查target是否等于当前游戏对象    
+        if (target == Player)
+        {
+            // 计算攻击方向    
+            attackDirection = (creator.transform.position - Player.transform.position).normalized;
+            // 应用击退效果    
+            ApplyKnockback();
+        }
+    }
+    private void ApplyKnockback()
+    {
+        // 计算击退方向（攻击方向的反方向）      
+        Vector3 knockbackDirection = -attackDirection;
+        // 应用击退效果到角色的刚体上      
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+    }
+
     void Start()
     {
-        //skinnedMeshRender = this.GetComponent<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            attackDirection = new Vector3(2.0f, 0.0f, 0.0f);
-            OnAttackDetected(attackDirection);
-            Debug.Log ("识别到了老大");
-            //skinnedMeshRender.material = knockFace;
-        }
+
     }
-
-
-    // 假设你有一个方法来检测攻击，并且当攻击发生时调用这个OnAttackDetected方法  
-    void OnAttackDetected(Vector3 attackDirection)
+   /* void OnAttackDetected(Vector3 attackDirection)
     {
         // 计算击退方向（攻击方向的反方向）  
         Vector3 knockbackDirection = -attackDirection;
@@ -39,17 +67,7 @@ public class KnockBackEffect : MonoBehaviour
         // 应用击退效果到角色的刚体上  
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
-        Debug.Log("看看动了吗");
-
-        // 或者直接设置速度（取决于你想要的效果）  
-        // rb.velocity = knockbackDirection * knockbackDistance;  
-
-        // 触发击退动画和粒子效果  
-        //Animator animator = GetComponent<Animator>();
-        //animator.SetTrigger("Knockback");
-
-
-    }
+    }*/
 }
 
 
