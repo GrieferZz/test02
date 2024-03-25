@@ -12,31 +12,40 @@ public class KnockFace : MonoBehaviour
     public float delayTime = 1;
     private float timer = 0;
     public bool executed = false;
+    public GameObject Player;
     void Start()
     {
         skinnedMeshRender = this.GetComponent<SkinnedMeshRenderer>();
     }
-
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (AttackManager.instance != null)
         {
-            //attackDirection = new Vector3(2.0f, 0.0f, 0.0f);
-            //OnAttackDetected(attackDirection);
-            Debug.Log ("识别到了我的脸");
+            AttackManager.instance.onAttackEvent += OnAttackEvent;
+        }
+        else
+        {
+            Debug.LogError("AttackManager instance is not set!");
+        }
+    }
+    // Update is called once per frame
+    private void OnAttackEvent(GameObject creator, GameObject target, Bullet bullet)
+    {
+        // 检查target是否等于当前游戏对象    
+        if (target == Player)
+        {
             skinnedMeshRender.material = knockFace;
             executed = true; // 立即设置executed为true  
-
             // 开始计时，准备在delayTime后将材质改回originalFace  
             StartCoroutine(ResetMaterialAfterDelay());
         }
     }
 
-    void DelayTime()
+    void Update()
     {
-
+       
     }
+
     IEnumerator ResetMaterialAfterDelay()
     {
         // 等待delayTime秒  
@@ -47,31 +56,6 @@ public class KnockFace : MonoBehaviour
         {
             skinnedMeshRender.material = originalFace;
         }
-    }
-
-    // 假设你有一个方法来检测攻击，并且当攻击发生时调用这个OnAttackDetected方法  
-    void OnAttackDetected(Vector3 attackDirection)
-    {
-        // 计算击退方向（攻击方向的反方向）  
-        Vector3 knockbackDirection = -attackDirection;
-
-        // 设定击退距离和力度  
-        //float knockbackDistance = 5f; // 可以根据攻击强度调整  
-        float knockbackForce = 100f; // 可以根据角色属性或攻击强度调整  
-
-        // 应用击退效果到角色的刚体上  
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
-        Debug.Log("看看动了吗");
-
-        // 或者直接设置速度（取决于你想要的效果）  
-        // rb.velocity = knockbackDirection * knockbackDistance;  
-
-        // 触发击退动画和粒子效果  
-        //Animator animator = GetComponent<Animator>();
-        //animator.SetTrigger("Knockback");
-
-
     }
 }
 

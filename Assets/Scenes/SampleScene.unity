@@ -1220,6 +1220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDirection: {x: 0, y: 0, z: 0}
+  knockbackForce: 100
+  Player: {fileID: 958277712}
 --- !u!114 &584414868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,6 +4082,7 @@ MonoBehaviour:
   knockFace: {fileID: 2100000, guid: 88eacb6317037e94ebbfd361438e7c71, type: 2}
   delayTime: 0.5
   executed: 0
+  Player: {fileID: 958277712}
 --- !u!1 &2028033664
 GameObject:
   m_ObjectHideFlags: 0
