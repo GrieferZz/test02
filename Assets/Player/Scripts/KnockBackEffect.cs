@@ -13,12 +13,10 @@ public class KnockBackEffect : MonoBehaviour
         if (AttackManager.instance != null)
         {
             AttackManager.instance.onAttackEvent += OnAttackEvent;
-            Debug.Log("666666666666666666");
         }
         else
         {
             Debug.LogError("AttackManager instance is not set!");
-            Debug.Log("7777777777777");
         }
         // 获取Rigidbody组件    
         rb = GetComponent<Rigidbody>();
