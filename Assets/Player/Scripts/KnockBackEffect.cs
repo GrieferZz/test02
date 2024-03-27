@@ -5,7 +5,7 @@ using UnityEngine;
 public class KnockBackEffect : MonoBehaviour
 {
     public Vector3 attackDirection;
-    public float knockbackForce = 100f; // ¿ÉÒÔ¸ù¾Ý½ÇÉ«ÊôÐÔ»ò¹¥»÷Ç¿¶Èµ÷Õû  
+    public float knockbackForce = 100f; // ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ý½ï¿½É«ï¿½ï¿½ï¿½Ô»ò¹¥»ï¿½Ç¿ï¿½Èµï¿½ï¿½ï¿½  
     private Rigidbody rb;
     public GameObject Player;
     void Awake()
@@ -18,8 +18,8 @@ public class KnockBackEffect : MonoBehaviour
         {
             Debug.LogError("AttackManager instance is not set!");
         }
-        // »ñÈ¡Rigidbody×é¼þ    
-        rb = GetComponent<Rigidbody>();
+        // ï¿½ï¿½È¡Rigidbodyï¿½ï¿½ï¿½    
+        rb =Player. GetComponent<Rigidbody>();
         if (rb == null)
         {
             Debug.LogError("Rigidbody component is not found on this GameObject!");
@@ -27,20 +27,20 @@ public class KnockBackEffect : MonoBehaviour
     }
     private void OnAttackEvent(GameObject creator, GameObject target, Bullet bullet)
     {
-        // ¼ì²étargetÊÇ·ñµÈÓÚµ±Ç°ÓÎÏ·¶ÔÏó    
+        // ï¿½ï¿½ï¿½targetï¿½Ç·ï¿½ï¿½ï¿½Úµï¿½Ç°ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½    
         if (target == Player)
         {
-            // ¼ÆËã¹¥»÷·½Ïò    
+            // ï¿½ï¿½ï¿½ã¹¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½    
             attackDirection = (creator.transform.position - Player.transform.position).normalized;
-            // Ó¦ÓÃ»÷ÍËÐ§¹û    
+            // Ó¦ï¿½Ã»ï¿½ï¿½ï¿½Ð§ï¿½ï¿½    
             ApplyKnockback();
         }
     }
     private void ApplyKnockback()
     {
-        // ¼ÆËã»÷ÍË·½Ïò£¨¹¥»÷·½ÏòµÄ·´·½Ïò£©      
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ò£¨¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½      
         Vector3 knockbackDirection = -attackDirection;
-        // Ó¦ÓÃ»÷ÍËÐ§¹ûµ½½ÇÉ«µÄ¸ÕÌåÉÏ      
+        // Ó¦ï¿½Ã»ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½      
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
     }
 
@@ -55,14 +55,14 @@ public class KnockBackEffect : MonoBehaviour
     }
    /* void OnAttackDetected(Vector3 attackDirection)
     {
-        // ¼ÆËã»÷ÍË·½Ïò£¨¹¥»÷·½ÏòµÄ·´·½Ïò£©  
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ò£¨¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½  
         Vector3 knockbackDirection = -attackDirection;
 
-        // Éè¶¨»÷ÍË¾àÀëºÍÁ¦¶È  
-        //float knockbackDistance = 5f; // ¿ÉÒÔ¸ù¾Ý¹¥»÷Ç¿¶Èµ÷Õû  
-        float knockbackForce = 100f; // ¿ÉÒÔ¸ù¾Ý½ÇÉ«ÊôÐÔ»ò¹¥»÷Ç¿¶Èµ÷Õû  
+        // ï¿½è¶¨ï¿½ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+        //float knockbackDistance = 5f; // ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½Ç¿ï¿½Èµï¿½ï¿½ï¿½  
+        float knockbackForce = 100f; // ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ý½ï¿½É«ï¿½ï¿½ï¿½Ô»ò¹¥»ï¿½Ç¿ï¿½Èµï¿½ï¿½ï¿½  
 
-        // Ó¦ÓÃ»÷ÍËÐ§¹ûµ½½ÇÉ«µÄ¸ÕÌåÉÏ  
+        // Ó¦ï¿½Ã»ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½  
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
     }*/

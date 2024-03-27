@@ -46,23 +46,43 @@ public class GameManager : Singleton<GameManager>
             Rooms.Add(room);
         }
          
-        if(Rooms.Count>=NowLayer.RoomNumber)
-        {
-            Debug.Log(Rooms.Count);
-            RoomsLoad();
-        }
+        
     }
     public void RigisterNowRoom(GameObject room)
     {
            NowRoom=room;
     }
+    public void RigisterOriginRoom(GameObject room)
+    {
+           OriginRoom=room;
+    }
+    public void RigisterFinalRoom(GameObject room)
+    {
+           FinalRoom=room;
+           if(FinalRoom!=null)
+        {
+            Debug.Log(Rooms.Count);
+            RoomsLoad();
+        }
+    }
     public void RoomsLoad()
     {
         foreach(GameObject room in Rooms)
         {
-            Debug.Log(NowLayer.BasicRoomTypes.Count);
-            room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.BasicRoomTypes[UnityEngine.Random.Range(0,NowLayer.BasicRoomTypes.Count)]);
-            room.GetComponent<RoomStates>().TerrainSelect();
+            if(room==OriginRoom)
+            {
+                room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.OriginRoomTypes[UnityEngine.Random.Range(0,NowLayer.OriginRoomTypes.Count)]);
+                room.GetComponent<RoomStates>().TerrainSelect();
+                Debug.Log("初始化初始房间");
+
+            }
+            if(room!=OriginRoom)
+            {
+                room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.BasicRoomTypes[UnityEngine.Random.Range(0,NowLayer.BasicRoomTypes.Count)]);
+                room.GetComponent<RoomStates>().TerrainSelect();
+
+            }
+            
         }
     }
     public void EnermyDead(CharacterStates enermyState)

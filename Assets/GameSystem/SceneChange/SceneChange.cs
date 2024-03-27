@@ -10,10 +10,14 @@ public class SceneChange : MonoBehaviour
     public string LoadedScene;
     private bool isopen;
     
+    
     // Start is called before the first frame update
     void Start()
     {
-         gameObject.GetComponent<BoxCollider>().enabled=false;
+        gameObject.GetComponent<BoxCollider>().enabled=false;
+         if(GameManager.Instance.NowRoom.GetComponent<RoomStates>().RoomData.roomType==RoomStates_SO.RoomType.Origin)
+         StartCoroutine(DelayedOperationCoroutine(3f));
+         
          //StartCoroutine(DelayedOperationCoroutine());
          
     }
@@ -36,7 +40,10 @@ public class SceneChange : MonoBehaviour
         if(other.CompareTag("Player"))
         {
            
-           
+           Player.Instance.NowState=Player.PlayerState.Ban;
+             SceneManager.LoadScene( LoadedScene);
+             //GameEventSystem.instance.SceneLoad();
+             gameObject.GetComponent<BoxCollider>().enabled=false;
             
               switch(gameObject.tag)
             {
@@ -56,10 +63,7 @@ public class SceneChange : MonoBehaviour
 
             }
            
-            Player.Instance.NowState=Player.PlayerState.Ban;
-             SceneManager.LoadScene( LoadedScene);
             
-             gameObject.GetComponent<BoxCollider>().enabled=false;
           
         }
         

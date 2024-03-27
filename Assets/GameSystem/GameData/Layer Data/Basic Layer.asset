@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerNumber: 1
   RoomNumber: 8
-  OriginRoomTypes: []
+  OriginRoomTypes:
+  - {fileID: 11400000, guid: d5c893a2be12b994c98ab9e6100e1bbd, type: 2}
   BasicRoomTypes:
   - {fileID: 11400000, guid: 0526d4e033909ed49b420cd52a5f14d3, type: 2}
   StoreRoomTypes: []

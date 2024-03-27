@@ -53,7 +53,7 @@ public class GameEventSystem :Singleton<GameEventSystem>
     {
         if(onSceneLoad!=null)
         onSceneLoad();
-        //print("DialogueFinish事件触发");
+        print("房间加载");
     }
     public void Detonation()
     {

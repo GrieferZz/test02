@@ -13,12 +13,18 @@ public class CameraHandle : MonoBehaviour
     {
         box=GameObject.FindWithTag("CameraHandle");
         playerTransform=GameObject.FindWithTag("Player").transform;
+        transform.position=playerTransform.position;
+        GameEventSystem.instance.onSceneLoad+=Initialization;
     }
 
     // Update is called once per frame
     void Update()
     {
         limitation();
+    }
+    void Initialization()
+    {
+        box=GameObject.FindWithTag("CameraHandle");
     }
     private void limitation()
     {

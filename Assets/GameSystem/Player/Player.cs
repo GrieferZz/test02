@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,14 @@ public class Player :Singleton<Player>
     {
         NowState=PlayerState.Idle;
         GameManager.Instance.RigisterPlayer(playerStates);
+        //AttackManager.instance.onAttackEvent+=beAttacked;
     }
+
+    private void beAttacked(GameObject object1, GameObject object2, Bullet bullet)
+    {
+        throw new NotImplementedException();
+    }
+
     private void Update() 
     {
         StateChange();
@@ -42,6 +50,9 @@ public class Player :Singleton<Player>
         //canMove=false;
         // 执行Attack状态的代码
         break; // 退出switch语句
+    case PlayerState.Hurt:
+        canMove=false;
+        break;
     case PlayerState.Ban:
         canMove=false;
         // 执行Attack状态的代码
@@ -68,4 +79,5 @@ public class Player :Singleton<Player>
 
         }
     }
-}
+    
+    }

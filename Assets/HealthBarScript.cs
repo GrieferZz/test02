@@ -6,51 +6,73 @@ using TMPro;
 
 public class HealthBarScript: MonoBehaviour
 {
-    public Image Bar;
+     public GameObject HealthBarPrefab;
+   
+    Image HealthFrontSlider;
+    Image HealthBackSlider;
+    Transform HealthUIbar;
 
-    public TextMeshProUGUI HPTMP;
+    
+    Coroutine updateCoroutine;
+    float bufftime=0.5f;
 
-    // Start is called before the first frame update
-
-    RectTransform rectTran;
-    public CharacterStates playerStates;
-    float maxLength;
-    void Start()
+    public CharacterStates currentStates;
+    void Awake()
     {
-        rectTran = Bar.GetComponent<RectTransform>();
-        maxLength = rectTran.sizeDelta.x;
+        
+        AttackManager.instance.onAttackEvent+=UpdateHealthBar;
+    }
+    void OnEnable()
+    {
+        
+                HealthUIbar=HealthBarPrefab.transform;
+                HealthFrontSlider=HealthUIbar.GetChild(2).GetComponent<Image>();
+                HealthBackSlider=HealthUIbar.GetChild(1).GetComponent<Image>();
+               
+            
+
+        
+    }
+    void OnDisable() 
+    {
+         AttackManager.instance.onAttackEvent-=UpdateHealthBar;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateHealthBar(GameObject creater,GameObject target,Bullet bullet)
     {
-        playerStates.currentHealth= (int)HPLimitation(playerStates.currentHealth);
-        ShowCurrentHP();
-        SetBarLength();
-    }
-
-    void ShowCurrentHP()
-    {
-        string healthString = $"{playerStates.currentHealth}/{playerStates.MaxHealth}";
-        HPTMP.text = healthString ;
-    }
-
-    void SetBarLength()
-    {
-        rectTran.sizeDelta = new Vector2(maxLength*playerStates.currentHealth/playerStates.MaxHealth, rectTran.sizeDelta.y);
-    }
-
-    float HPLimitation(int currentHP)
-    {
-        if (playerStates.currentHealth>playerStates.MaxHealth)
+        if(target==currentStates.gameObject)
         {
-            return playerStates.MaxHealth;
+           
+            Debug.Log("血量更新");
+            float sliderPercent=(float)currentStates.currentHealth/currentStates.MaxHealth;
+            HealthFrontSlider.fillAmount=sliderPercent;
+             if(updateCoroutine!=null)
+            {
+                StopCoroutine(updateCoroutine);
+            }
+            updateCoroutine=StartCoroutine(HealthBarSlowDown());
+            if(HealthFrontSlider.fillAmount<=0)
+        {
+            StopCoroutine(updateCoroutine);
+            
+        }
+
+
         }
         
-        if (playerStates.currentHealth< 0)
-        {
-            return 0;
-        }
-        return playerStates.currentHealth;
     }
+    IEnumerator HealthBarSlowDown()
+    {
+        
+        float effectLength=HealthBackSlider.fillAmount-HealthFrontSlider.fillAmount;
+        float elapsedTime=0f;
+        while(elapsedTime<bufftime &&effectLength!=0)
+        {
+            elapsedTime+=Time.deltaTime;
+            HealthBackSlider.fillAmount=Mathf.Lerp(HealthFrontSlider.fillAmount+effectLength,HealthFrontSlider.fillAmount,elapsedTime/bufftime);
+            yield return null;
+        }
+        HealthBackSlider.fillAmount=HealthFrontSlider.fillAmount;
+    }
+    
 }

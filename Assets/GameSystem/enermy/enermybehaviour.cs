@@ -85,7 +85,7 @@ public class enermybehaviour : MonoBehaviour
             case EnermyStates.Patrol:
                   agent.speed=Speed*0.5f;
                   EnermyAttack.canshoot=false;
-                  if(Vector3.Distance(WayPoint,transform.position)<=agent.stoppingDistance)
+                  if(Vector3.Distance(WayPoint,transform.position)<=agent.stoppingDistance*1.5f)
                   {
                     if(RemainLootAtTime>0)
                     {

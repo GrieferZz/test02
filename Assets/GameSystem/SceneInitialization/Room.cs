@@ -14,11 +14,24 @@ public class Room : MonoBehaviour
         DoorDown=GameObject.FindWithTag("Down");
         DoorLeft=GameObject.FindWithTag("Left");
         DoorRight=GameObject.FindWithTag("Right");
-        DoorUp.transform.parent.gameObject.SetActive(MapManager.Nowroom.hasUp);
-        DoorDown.transform.parent.gameObject.SetActive(MapManager.Nowroom.hasDown);
-        DoorLeft.transform.parent.gameObject.SetActive(MapManager.Nowroom.hasLeft);
-        DoorRight.transform.parent.gameObject.SetActive(MapManager.Nowroom.hasRight);
-        IniatializationPosition=GameObject.FindWithTag(MapManager.Nowroom.initializatioonPosition.ToString());
+        if(GameManager.Instance.NowRoom.GetComponent<RoomStates>().RoomData.roomType!=RoomStates_SO.RoomType.Origin)
+        {
+        DoorUp.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasUp);
+        DoorDown.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasDown);
+        DoorLeft.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasLeft);
+        DoorRight.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasRight);
+        IniatializationPosition=GameObject.FindWithTag(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().initializatioonPosition.ToString());
+
+        }
+        else if(GameManager.Instance.NowRoom.GetComponent<RoomStates>().RoomData.roomType==RoomStates_SO.RoomType.Origin)
+        {
+        DoorUp.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasUp);
+        DoorDown.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasDown);
+        DoorLeft.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasLeft);
+        DoorRight.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasRight);
+        IniatializationPosition=GameObject.Find("OriginPosition");
+        }
+        
     }
 
     // Update is called once per frame
@@ -26,4 +39,5 @@ public class Room : MonoBehaviour
     {
         
     }
+    
 }
