@@ -28,11 +28,17 @@ public class enemyspawn : MonoBehaviour
         NowRoomData=GameManager.Instance.NowRoom.GetComponent<RoomStates>();
         SpawnEditor=GameObject.FindWithTag("SpawnEditor");
         EnermySpawnInitialization();
-        foreach (Transform child in SpawnEditor.transform)
+        if(SpawnEditor!=null)
+        {
+            foreach (Transform child in SpawnEditor.transform)
         {
             spawnAreas.Add(child.gameObject);
         }
+
+        }
+        
         EnermyWave();
+        
 
     }
     void EnermySpawnInitialization()
@@ -130,9 +136,15 @@ public class enemyspawn : MonoBehaviour
         if(EnermyNowWaveNumber>EnermyWaveNumber)
         {
             GameEventSystem.instance.RoomCombatFinish(NowRoomData.RoomData);
+            Debug.Log("战斗结束");
         }
-
+         if(EnermyWaveNumber==0)
+        {
+            GameEventSystem.instance.RoomCombatFinish(NowRoomData.RoomData);
+            Debug.Log("战斗结束");
         }
+        }
+        
         
             
     }

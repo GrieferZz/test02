@@ -29,7 +29,12 @@ public class Room : MonoBehaviour
         DoorDown.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasDown);
         DoorLeft.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasLeft);
         DoorRight.transform.parent.gameObject.SetActive(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().hasRight);
+        if(GameManager.Instance.NowRoom.GetComponent<RoomStates>().RoomData.roomState==RoomStates_SO.RoomState.Unload)
         IniatializationPosition=GameObject.Find("OriginPosition");
+        else
+        {
+            IniatializationPosition=GameObject.FindWithTag(GameManager.Instance.NowRoom.GetComponent<RoomInformation>().initializatioonPosition.ToString());
+        }
         }
         
     }

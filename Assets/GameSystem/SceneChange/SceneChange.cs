@@ -40,10 +40,6 @@ public class SceneChange : MonoBehaviour
         if(other.CompareTag("Player"))
         {
            
-           Player.Instance.NowState=Player.PlayerState.Ban;
-             SceneManager.LoadScene( LoadedScene);
-             //GameEventSystem.instance.SceneLoad();
-             gameObject.GetComponent<BoxCollider>().enabled=false;
             
               switch(gameObject.tag)
             {
@@ -63,6 +59,10 @@ public class SceneChange : MonoBehaviour
 
             }
            
+            Player.Instance.NowState=Player.PlayerState.Ban;
+             SceneManager.LoadScene( LoadedScene);
+             //GameEventSystem.instance.SceneLoad();
+             gameObject.GetComponent<BoxCollider>().enabled=false;
             
           
         }
