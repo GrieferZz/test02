@@ -14,9 +14,8 @@ public class SceneChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<BoxCollider>().enabled=false;
-         if(GameManager.Instance.NowRoom.GetComponent<RoomStates>().RoomData.roomType==RoomStates_SO.RoomType.Origin)
-         StartCoroutine(DelayedOperationCoroutine(3f));
+       
+        
          
          //StartCoroutine(DelayedOperationCoroutine());
          
@@ -24,6 +23,7 @@ public class SceneChange : MonoBehaviour
     void OnEnable() 
     {
         GameEventSystem.instance.onRoomCombatFinish+=DoorOpen;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
     }
     void OnDisable() 
     {
@@ -39,9 +39,10 @@ public class SceneChange : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-           
             
-              switch(gameObject.tag)
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            Player.Instance.NowState = Player.PlayerState.Ban;
+            switch (gameObject.tag)
             {
                 case "Up":
                      GameEventSystem.instance.SceneChange(GameEventSystem.Direction.Up);
@@ -59,10 +60,11 @@ public class SceneChange : MonoBehaviour
 
             }
            
-            Player.Instance.NowState=Player.PlayerState.Ban;
+            
              SceneManager.LoadScene( LoadedScene);
-             //GameEventSystem.instance.SceneLoad();
-             gameObject.GetComponent<BoxCollider>().enabled=false;
+             //GameEventSystem.instance.SceneLoad()
+             Debug.Log("传送");
+            
             
           
         }
