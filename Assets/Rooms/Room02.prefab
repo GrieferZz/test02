@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253854770490340272}
-  m_LocalRotation: {x: -0.7071069, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 7.148203, y: -0.20034179, z: 17.158367}
-  m_LocalScale: {x: 153.84203, y: 153.84203, z: 153.84203}
+  m_LocalRotation: {x: -0.70710695, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 7.148204, y: -0.20034179, z: 17.15837}
+  m_LocalScale: {x: 153.84204, y: 153.84201, z: 153.842}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7502081271993865984}
-  m_RootOrder: 0
+  m_Father: {fileID: 3445289973453468078}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1450118252223621394
 MeshFilter:
@@ -274,8 +274,9 @@ Transform:
   - {fileID: 4590279973091596906}
   - {fileID: 9031323372235140860}
   - {fileID: 1269984227489308671}
+  - {fileID: 2273115107824240931}
   m_Father: {fileID: 7502081271993865984}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051308697578746341
 GameObject:
@@ -398,7 +399,7 @@ Transform:
   - {fileID: 3821063338960551381}
   - {fileID: 4225675168167292348}
   m_Father: {fileID: 7502081271993865984}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3050265300597701439
 GameObject:
@@ -430,7 +431,7 @@ Transform:
   m_Children:
   - {fileID: 8610025555911035901}
   m_Father: {fileID: 7502081271993865984}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3081408154068483361
 GameObject:
@@ -1030,7 +1031,7 @@ Transform:
   - {fileID: 4519139050032666973}
   - {fileID: 8069652223225357339}
   m_Father: {fileID: 7502081271993865984}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5184937480074925969
 GameObject:
@@ -1587,7 +1588,6 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2273115107824240931}
   - {fileID: 3445289973453468078}
   - {fileID: 3000041684895918943}
   - {fileID: 6343279311819906465}
@@ -1712,7 +1712,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7502081271993865984}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4687448661377179983
 BoxCollider:
