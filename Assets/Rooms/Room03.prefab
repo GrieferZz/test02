@@ -1750,6 +1750,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3709080035439872567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 91971f5a5c894774385c740fe9c49d26, type: 3}
+  m_PrefabInstance: {fileID: 3253048274089633302}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3075852262249202173}
+  m_Layer: 0
+  m_Name: 'battlescence-3 (Missing Prefab with guid: 91971f5a5c894774385c740fe9c49d26)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3075852262249202173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91971f5a5c894774385c740fe9c49d26, type: 3}
+  m_PrefabInstance: {fileID: 3253048274089633302}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709080035439872567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2169615068309608208}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3821805171606078677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2104,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4388914385321379208}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3410,7 +3441,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8331339017428196050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3729,11 +3760,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91971f5a5c894774385c740fe9c49d26, type: 3}
---- !u!4 &3075852262249202173 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91971f5a5c894774385c740fe9c49d26, type: 3}
-  m_PrefabInstance: {fileID: 3253048274089633302}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4610870351276614203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4319,6 +4345,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3548540967573015638, guid: 2a915b6ce50c2c640a3f5ae359882bdf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4693763169325854946, guid: 2a915b6ce50c2c640a3f5ae359882bdf, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8507923360687054621, guid: 2a915b6ce50c2c640a3f5ae359882bdf, type: 3}
