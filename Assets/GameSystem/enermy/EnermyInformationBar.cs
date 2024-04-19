@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-public class EnermyHealthBar : MonoBehaviour
+public class EnermyInformationBar : MonoBehaviour
 {
     public GameObject HealthBarPrefab;
     public Transform BarPoint;
     Image HealthFrontSlider;
     Image HealthBackSlider;
-    Transform HealthUIbar;
+    GameObject HealthUIbar;
 
     Transform cm;
     Coroutine updateCoroutine;
@@ -28,10 +28,11 @@ public class EnermyHealthBar : MonoBehaviour
         {
             if(canvas.renderMode==RenderMode.WorldSpace)
             {
-                HealthUIbar=Instantiate(HealthBarPrefab,canvas.transform).transform;
-                HealthFrontSlider=HealthUIbar.GetChild(1).GetComponent<Image>();
-                HealthBackSlider=HealthUIbar.GetChild(0).GetComponent<Image>();
-                HealthUIbar.gameObject.SetActive(false);
+                HealthUIbar=Instantiate(HealthBarPrefab,canvas.transform);
+                GetComponent<BuffBarUI>().buffHolder=HealthUIbar.transform.GetChild(1).gameObject;
+                HealthFrontSlider=HealthUIbar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
+                HealthBackSlider=HealthUIbar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+                //HealthUIbar.gameObject.SetActive(false);
             }
 
         }
@@ -81,8 +82,8 @@ public class EnermyHealthBar : MonoBehaviour
     {
         if(HealthUIbar!=null)
         {
-            HealthUIbar.position=BarPoint.position;
-            HealthUIbar.forward=cm.forward;
+            HealthUIbar.transform.position=BarPoint.position;
+            HealthUIbar.transform.forward=cm.forward;
         }
         
     }

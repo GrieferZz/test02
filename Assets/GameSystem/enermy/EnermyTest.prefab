@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 6076416113953131676}
   - component: {fileID: 1149666389}
   - component: {fileID: 6685826175210196715}
+  - component: {fileID: 3752026771796242145}
   m_Layer: 10
   m_Name: EnermyTest
   m_TagString: Enermy
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12019c2e119d3724fb0e7b96d12b9b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarPrefab: {fileID: 5599671755446211999, guid: f7e648808c199334b98f4c241af26363, type: 3}
+  HealthBarPrefab: {fileID: 8638774555168478545, guid: 1b3d475294288ec4fa3fe1e9bc807425, type: 3}
   BarPoint: {fileID: 7074883793548741414}
 --- !u!114 &1149666389
 MonoBehaviour:
@@ -338,6 +339,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4626ac5159c8c4389d51d8a779588e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3752026771796242145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551531146487624909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e018ef8a233e79b46b83322fd43a6745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffHandler: {fileID: 0}
+  buffIconPrefab: {fileID: 179437036336147091, guid: 3a72db4903b09004fa625ac4d2583703, type: 3}
+  buffHolder: {fileID: 0}
 --- !u!1 &8806171661389757977
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074883793548741414}
   m_Layer: 10
-  m_Name: HealthBarPoint
+  m_Name: InformationBarPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

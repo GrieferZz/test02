@@ -7,16 +7,18 @@ public class Bullet : MonoBehaviour
 {   public Bullet bullet;
     public CharacterStates InitiatorStates;
     public CharacterStates TargetStates;
+    public WeaponStates weaponStates;
     public GameObject Target;
     public enum AttackObject{ForEnermy,ForPlayer,ForOther}
     public AttackObject attackObject;
-    public enum BulletType{Default,Track,Sticky}
-    public BulletType bulletType;
+   
+    
     public AttackInfo attackInfo;
     // Start is called before the first frame update
     void Start()
     {
         bullet=this;
+        weaponStates=GetComponent<WeaponStates>();
         attackInfo=new AttackInfo();
     }
 
@@ -27,7 +29,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
-      if(bulletType!=BulletType.Sticky)
+      if(weaponStates.weaponStates.weaponType!=WeaponStates_SO.WeaponType.Sticky)
       {
 
       
@@ -77,7 +79,7 @@ public class Bullet : MonoBehaviour
     }
     public void StickyBulletHit(GameObject target)
     {
-        if(bulletType==BulletType.Sticky)
+        if(weaponStates.weaponStates.weaponType==WeaponStates_SO.WeaponType.Sticky)
         {
             switch(attackObject)
         {

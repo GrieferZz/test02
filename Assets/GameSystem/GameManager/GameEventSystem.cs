@@ -34,6 +34,7 @@ public class GameEventSystem :Singleton<GameEventSystem>
      public event Action onDetonation;
      public event Action<Direction> onScenechange;
      public event Action<GameObject> onHealthBarUpdate;
+     public event Action onBuffUIUpdate;
      public event Action<GameObject,GameObject> onTargetTransmission;
      public event Action onWaveClear;
      public event Action<RoomStates_SO> onRoomCombatFinish;
@@ -71,6 +72,12 @@ public class GameEventSystem :Singleton<GameEventSystem>
     {
         onHealthBarUpdate?.Invoke(target);
         //print("DialogueFinish事件触发");
+    }
+     public void BuffUIUpdate()
+    {
+        if(onBuffUIUpdate!=null)
+        onBuffUIUpdate();
+        print("房间加载");
     }
     public void TargetTransmission(GameObject parent, GameObject target)
     {

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5257710150743816946}
   - component: {fileID: 7544638255370542064}
   - component: {fileID: 8809140144493188493}
+  - component: {fileID: 4453711077624314028}
   m_Layer: 3
   m_Name: Bullet Follow
   m_TagString: bullet
@@ -142,9 +143,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   InitiatorStates: {fileID: 0}
   TargetStates: {fileID: 0}
+  weaponStates: {fileID: 0}
   Target: {fileID: 0}
   attackObject: 0
-  bulletType: 0
 --- !u!114 &7544638255370542064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +171,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 300
+--- !u!114 &4453711077624314028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184801279552154871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55982c6076310e4e9b462237d45f939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateData: {fileID: 11400000, guid: 40d4044451632184d9522b256e040ae2, type: 2}
+  weaponStates: {fileID: 0}
 --- !u!1 &6993661828819396644
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class StickyBombBuff: BaseBuffModule
         if(stickyBombBuff.creator==creator&&stickyBombBuff.target==target)
         {
            
-            if(bullet.bulletType==Bullet.BulletType.Default)
+            if(bullet.weaponStates.weaponStates.weaponType==WeaponStates_SO.WeaponType.Follow)
             {
                  Debug.Log("爆炸");
                 switch (stickyBombBuff.curStack)
