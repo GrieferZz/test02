@@ -65,7 +65,7 @@ public class StickyBuff : MonoBehaviour
         
         sticky.creator=bullet.InitiatorStates.gameObject;
         sticky.target=other.gameObject;   
-        sticky.target.GetComponent<BuffHandler>().AddBuff(sticky);
+        sticky.target.GetComponent<BuffHandler>()?.AddBuff(sticky);
         }
         
     }

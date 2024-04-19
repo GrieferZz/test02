@@ -48,6 +48,7 @@ public class BuffHandler : MonoBehaviour
             RemoveBuff(buffInfo);
 
         }
+        GameEventSystem.instance.BuffUIUpdate();
     }
 
     public void AddBuff(BuffInfo buffInfo)
@@ -84,6 +85,7 @@ public class BuffHandler : MonoBehaviour
 
 
         }
+        GameEventSystem.instance.BuffUIUpdate();
 
     }
     public void RemoveBuff(BuffInfo buffInfo)
@@ -111,6 +113,7 @@ public class BuffHandler : MonoBehaviour
                 break;
            
         }
+        GameEventSystem.instance.BuffUIUpdate();
     }
 
     private BuffInfo FindBuff(int buffDataID)

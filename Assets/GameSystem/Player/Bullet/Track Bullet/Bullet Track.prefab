@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7544638255370542064}
   - component: {fileID: 8809140144493188493}
   - component: {fileID: -5084583437825568349}
+  - component: {fileID: 2015325332385731804}
   m_Layer: 3
   m_Name: Bullet Track
   m_TagString: bullet
@@ -142,9 +143,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   InitiatorStates: {fileID: 0}
   TargetStates: {fileID: 0}
+  weaponStates: {fileID: 0}
   Target: {fileID: 0}
   attackObject: 0
-  bulletType: 1
 --- !u!114 &7544638255370542064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +186,20 @@ MonoBehaviour:
   Target: {fileID: 0}
   rotateSpeed: 300
   trackRange: 5
+--- !u!114 &2015325332385731804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184801279552154871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55982c6076310e4e9b462237d45f939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateData: {fileID: 11400000, guid: b3af9ec96db2d0e438d9a6402d4f0460, type: 2}
+  weaponStates: {fileID: 0}
 --- !u!1 &8549533646834636611
 GameObject:
   m_ObjectHideFlags: 0

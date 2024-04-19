@@ -114,3 +114,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionRange: 0
   Enermies: []
+--- !u!114 &2612542700477417523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8163217803632964130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55982c6076310e4e9b462237d45f939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateData: {fileID: 11400000, guid: 7b1b8b28e7765864d969b5bbe9c43678, type: 2}
+  weaponStates: {fileID: 0}

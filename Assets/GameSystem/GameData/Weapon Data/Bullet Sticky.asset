@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb54a0c0219964f4ebe14ab2e319e9b8, type: 3}
+  m_Name: Bullet Sticky
+  m_EditorClassIdentifier: 
+  weaponType: 2
+  attackMultiplier: 0
+  shootInterval: 0
+  flightSpeed: 0
+  steerSpeed: 0
+  trackRadius: 0
+  attackMultipliers:
+  - 1
+  - 2
+  - 3
+  maxLayers: 0
+  explosionRange:
+  - 0.8
+  - 2.2
+  - 3.5

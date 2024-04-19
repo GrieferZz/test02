@@ -30,7 +30,7 @@ public class RoomInitialization : MonoBehaviour
              {
                 if(NowRoomData.gameObject.GetComponent<RoomInformation>().hasUp)
                 {
-                   terrain.transform.GetChild(0).transform.Rotate(0,-180f,0);
+                   GameObject.FindWithTag("Environment").transform.Rotate(0,-180f,0);
                 }
                  if(NowRoomData.gameObject.GetComponent<RoomInformation>().hasDown)
                 {
@@ -38,11 +38,11 @@ public class RoomInitialization : MonoBehaviour
                 }
                  if(NowRoomData.gameObject.GetComponent<RoomInformation>().hasLeft)
                 {
-                   terrain.transform.GetChild(0).Rotate(0,-270f,0);
+                   GameObject.FindWithTag("Environment").transform.Rotate(0,-270f,0);
                 }
                  if(NowRoomData.gameObject.GetComponent<RoomInformation>().hasRight)
                 {
-                   terrain.transform.GetChild(0).Rotate(0,-90f,0);
+                   GameObject.FindWithTag("Environment").transform.Rotate(0,-90f,0);
                 }
              }
              navMeshSurface.BuildNavMesh();

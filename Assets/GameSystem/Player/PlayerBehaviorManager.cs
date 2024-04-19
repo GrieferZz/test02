@@ -22,10 +22,6 @@ public class PlayerBehaviorManager : MonoBehaviour
     }
     public void AttackDirectionGet(GameObject creator,GameObject target,Bullet bullet)
     {
-        if(creator!=null&&target!=null)
-        {
-            beAttacked=true;
-            attackedDirection=target.transform.position-creator.transform.position;
-        }
+       
     }
 }
