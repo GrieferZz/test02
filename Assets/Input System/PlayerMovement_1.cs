@@ -35,8 +35,8 @@ public class PlayerMovement_1 : MonoBehaviour
     
     public float sprintCooldown = 2.0f; // 冷却时间
     private bool canSprint=true;
-    public int stepCheckRange;
-    public int stepCheckHeight;
+    public float stepCheckRange;
+    public float stepCheckHeight;
     public bool isGrounded;
     public LayerMask groundLayer;
     public float maxStepHeight;
@@ -74,10 +74,11 @@ public class PlayerMovement_1 : MonoBehaviour
         if (IsStep(out hitPointVector))
     {
         // 执行台阶跳跃或其他操作
-        //gameObject.transform.position+=new Vector3(0f,hitPointVector.y-transform.position.y,0f);
-         rb.AddForce(new Vector3(0f,(hitPointVector.y-transform.position.y)*rb.mass*50f,0f),ForceMode.Acceleration);
-        // 在这里执行角色跳跃或移动到台阶位置等操作
-    }
+        //gameObject.transform.position+=new Vector3(0f,hitPointVector.y-transform.position.y+1f,0f);
+        rb.AddForce(new Vector3(0f,(hitPointVector.y-transform.position.y+1f)*rb.mass*50f,0f),ForceMode.Acceleration);
+            // 在这里执行角色跳跃或移动到台阶位置等操作
+            UnityEngine.Debug.Log("施加");
+        }
     else
     {
         // 没有检测到台阶
@@ -191,11 +192,19 @@ public class PlayerMovement_1 : MonoBehaviour
     if (!isGrounded)
         return false;
 
-    if (Physics.Raycast(ray, out hit, stepCheckHeight * 3, groundLayer))
+    if (Physics.Raycast(ray, out hit, stepCheckHeight*3f , groundLayer))
     {
-        float height = hit.point.y - rb.position.y;
-        if (height < 0.06f)
-            return false;
+            UnityEngine.Debug.Log("检测");
+            float height = hit.point.y - (transform.position.y-0.5f);
+            point = hit.point;
+            hitPoint.transform.position = point;
+            UnityEngine.Debug.Log("高度" + height);
+            if (height < 0.06f)
+            {
+               
+                return false;
+            }
+            
 
         if (height <= maxStepHeight)
         {

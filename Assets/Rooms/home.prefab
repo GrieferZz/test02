@@ -4279,6 +4279,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2786534777698132407, guid: 2971d9616188d144d850e1260b585dd4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5148817236446094103, guid: 2971d9616188d144d850e1260b585dd4, type: 3}
       propertyPath: m_Name
       value: Floor
