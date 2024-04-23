@@ -490,20 +490,6 @@
                 },
                 "m_SlotId": 1
             }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "e4bcfe699e6e43f38d3ab53c6fbad3ce"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "6d8d8d553cec49a6b4c91762caaf078e"
-                },
-                "m_SlotId": 1
-            }
         }
     ],
     "m_VertexContext": {
@@ -986,10 +972,10 @@
     "m_Guid": {
         "m_GuidSerialized": "e848921e-be18-4979-97d0-16d2a4cc7185"
     },
-    "m_Name": "Color02",
+    "m_Name": "Color(Edge)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Color02",
-    "m_DefaultReferenceName": "_Color02",
+    "m_RefNameGeneratedByDisplayName": "Color(Edge)",
+    "m_DefaultReferenceName": "_Color_Edge",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1166,7 +1152,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 35.0,
+    "m_Value": 33.400001525878909,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -1421,10 +1407,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -593.0,
-            "y": 969.0000610351563,
+            "x": -622.9999389648438,
+            "y": 969.0,
             "width": 119.99990844726563,
-            "height": 148.99993896484376
+            "height": 149.0
         }
     },
     "m_Slots": [
@@ -1661,7 +1647,7 @@
         "take away"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
@@ -1812,9 +1798,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2026.9998779296875,
-            "y": -114.0,
-            "width": 208.0,
+            "x": -1993.9998779296875,
+            "y": -113.99998474121094,
+            "width": 207.9998779296875,
             "height": 278.0
         }
     },
@@ -2061,7 +2047,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "6c54f848188e46c7899b621c5f83509a",
     "m_Id": 0,
-    "m_DisplayName": "Color01",
+    "m_DisplayName": "Color(Center)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2384,10 +2370,10 @@
     "m_Guid": {
         "m_GuidSerialized": "fd04bd64-c3af-4585-a32f-592662d3779f"
     },
-    "m_Name": "Color01",
+    "m_Name": "Color(Center)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Color01",
-    "m_DefaultReferenceName": "_Color01",
+    "m_RefNameGeneratedByDisplayName": "Color(Center)",
+    "m_DefaultReferenceName": "_Color_Center",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2739,7 +2725,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": -0.10000000149011612,
+        "x": 0.5,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
@@ -2868,7 +2854,7 @@
         "coordinates"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
@@ -3465,7 +3451,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "daf1fa6e691b4e36a7aed51392cbf1fa",
     "m_Id": 0,
-    "m_DisplayName": "Color02",
+    "m_DisplayName": "Color(Edge)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

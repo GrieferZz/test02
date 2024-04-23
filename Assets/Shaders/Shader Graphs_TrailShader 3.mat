@@ -57,6 +57,8 @@ Material:
     m_Colors:
     - _Color01: {r: 0.735849, g: 0.6995112, b: 0.1492524, a: 1}
     - _Color02: {r: 0.4056604, g: 0.376958, b: 0.1473389, a: 0}
+    - _Color_Center: {r: 0.8018868, g: 0.61385643, b: 0.16264686, a: 0}
+    - _Color_Edge: {r: 0.4811321, g: 0.34931725, b: 0.17475079, a: 0}
     - _DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _MainTexSpeed: {r: 0.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
