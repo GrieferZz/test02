@@ -10,6 +10,7 @@ public class PlayerAttck : MonoBehaviour
 {
     public enum AttackType{Defalut,Track,Sticky}
     public AttackType nowAttackType;
+    public GameObject aiming;
     public int attackTypeIndex = 0;
     private Animator anim;
 
@@ -105,7 +106,7 @@ public class PlayerAttck : MonoBehaviour
              if (Time.time - lastShootTime >=nowBulletPrefab.shootInterval)
         {
             
-            Shoot(DirectionGet());
+            Shoot(-(bulletSpawnPoint.transform.position-aiming.transform.GetChild(0).position));
             lastShootTime = Time.time;
         }
 
@@ -131,7 +132,7 @@ public class PlayerAttck : MonoBehaviour
             if (Time.time - lastShootTime >= nowBulletPrefab.shootInterval)
         {
             
-            Shoot(DirectionGet());
+            Shoot(-(bulletSpawnPoint.transform.position-aiming.transform.GetChild(0).position));
             lastShootTime = Time.time;
         }
         }
@@ -153,7 +154,7 @@ public class PlayerAttck : MonoBehaviour
     }
     
 
-    private void Shoot(Vector3 shootingDirection)
+    private void Shoot(Vector3 Direction)
     {
         if (bulletPrefab != null && bulletSpawnPoint != null)
         {
@@ -172,8 +173,7 @@ public class PlayerAttck : MonoBehaviour
 
             }
 
-            GameObject bullet = Instantiate(nowBulletPrefab.weaponPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
-            bullet.GetComponent<WeaponStates>().templateData=nowBulletPrefab;
+            GameObject bullet = Instantiate(nowBulletPrefab.weaponPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(Direction));
             if(nowAttackType==AttackType.Sticky)
             {
                 //StickyBulletLimit(bullet);
@@ -181,12 +181,12 @@ public class PlayerAttck : MonoBehaviour
             bulletType=bullet.GetComponent<Bullet>();
             bulletType.attackObject=Bullet.AttackObject.ForEnermy;
             bulletType.InitiatorStates=gameObject.GetComponent<CharacterStates>();
-            
+            bullet.GetComponent<WeaponStates>().templateData=nowBulletPrefab;
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
             if (rb != null)
             {
-               rb.velocity = shootingDirection.normalized *nowBulletPrefab.flightSpeed;
+               rb.velocity = Direction.normalized *nowBulletPrefab.flightSpeed;
             }
         }
     }
