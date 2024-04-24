@@ -9,6 +9,7 @@ public class WeaponStates_SO : ScriptableObject
         Follow,Track,Sticky
      }
      public WeaponType weaponType;
+     public GameObject weaponPrefab;
      public float attackMultiplier;
      public float shootInterval;
      public float flightSpeed;
@@ -20,4 +21,5 @@ public class WeaponStates_SO : ScriptableObject
      public float[] attackMultipliers=new float[3];
      public int maxLayers;
      public float[] explosionRange =new float[3];
+     
 }

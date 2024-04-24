@@ -21,6 +21,7 @@ public class StickyBombBuff: BaseBuffModule
             stickyBomb.transform.position=buffInfo.target.transform.position;
             stickyBomb.transform.parent=buffInfo.target.transform;
             stickyBomb.GetComponent<Bullet>().InitiatorStates=buffInfo.creator.gameObject.GetComponent<CharacterStates>();
+            stickyBomb.GetComponent<WeaponStates>().weaponStates=buffInfo.self.GetComponent<WeaponStates>().weaponStates;
         }
         
         
@@ -38,16 +39,16 @@ public class StickyBombBuff: BaseBuffModule
                 {
                     
                     case 1:
-                        stickyBomb.gameObject.transform.localScale=new Vector3(0.8f,0.8f,0.8f);
-                        stickyBomb.GetComponent<Bullet>().attackInfo.singleAttackMagnification=0f;
+                        stickyBomb.gameObject.transform.localScale= Vector3.one*stickyBomb.GetComponent<WeaponStates>().weaponStates.explosionRange[0];
+                        stickyBomb.GetComponent<Bullet>().attackInfo.singleAttackMagnification=stickyBomb.GetComponent<WeaponStates>().weaponStates.attackMultipliers[0];
                         break;
                     case 2:
-                        stickyBomb.gameObject.transform.localScale=new Vector3(2.2f,2.2f,2.2f);
-                        stickyBomb.GetComponent<Bullet>().attackInfo.singleAttackMagnification=1f;
+                        stickyBomb.gameObject.transform.localScale=Vector3.one*stickyBomb.GetComponent<WeaponStates>().weaponStates.explosionRange[1];
+                        stickyBomb.GetComponent<Bullet>().attackInfo.singleAttackMagnification=stickyBomb.GetComponent<WeaponStates>().weaponStates.attackMultipliers[1];
                         break;
                     case 3:
-                        stickyBomb.gameObject.transform.localScale=new Vector3(3.5f,3.5f,3.5f);
-                        stickyBomb.GetComponent<Bullet>().attackInfo.singleAttackMagnification=2f;
+                        stickyBomb.gameObject.transform.localScale=Vector3.one*stickyBomb.GetComponent<WeaponStates>().weaponStates.explosionRange[2];
+                        stickyBomb.GetComponent<Bullet>().attackInfo.singleAttackMagnification=stickyBomb.GetComponent<WeaponStates>().weaponStates.attackMultipliers[2];
                         break;
                         
                 }

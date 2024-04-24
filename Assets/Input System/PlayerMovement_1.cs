@@ -75,7 +75,7 @@ public class PlayerMovement_1 : MonoBehaviour
     {
         // 执行台阶跳跃或其他操作
         //gameObject.transform.position+=new Vector3(0f,hitPointVector.y-transform.position.y+1f,0f);
-        rb.AddForce(new Vector3(0f,(hitPointVector.y-transform.position.y+1f)*rb.mass*50f,0f),ForceMode.Acceleration);
+        rb.AddForce(new Vector3(0f,(hitPointVector.y-transform.position.y+1f)*rb.mass*25f,0f),ForceMode.Acceleration);
             // 在这里执行角色跳跃或移动到台阶位置等操作
             UnityEngine.Debug.Log("施加");
         }

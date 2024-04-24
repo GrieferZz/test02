@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5537804289353732532}
-  m_RootOrder: 10
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3729129375356646446
 MeshFilter:
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db7825cdd5fa7f444bc7cdeee8762765, type: 2}
+  - {fileID: -1045332806232473579, guid: 9265621d30263e744825181e998392be, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +106,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1421306566251769419, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3184801279552154871, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
       propertyPath: m_Name
       value: Sticky Buff
@@ -118,6 +122,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4125244294620356627, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125244294620356627, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -1045332806232473579, guid: 9265621d30263e744825181e998392be, type: 3}
     - target: {fileID: 5065501863261347269, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -204,6 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7880188484062877925, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
+    - {fileID: -890061637168545325, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
 --- !u!1 &356158023719411224 stripped
 GameObject:
@@ -226,22 +239,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7869426252408354231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 356158023719411224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9994508a9ec972e4cb8674fab95bcda0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionRange: 0
-  buffData: {fileID: 11400000, guid: 82c9d5859536fe44d9336e96c9364da6, type: 2}
-  currentbuffData: {fileID: 0}
-  Enermies: []
 --- !u!114 &1592278771246754714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,8 +251,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55982c6076310e4e9b462237d45f939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  templateData: {fileID: 11400000, guid: 7b1b8b28e7765864d969b5bbe9c43678, type: 2}
+  templateData: {fileID: 0}
   weaponStates: {fileID: 0}
+--- !u!114 &7869426252408354231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356158023719411224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9994508a9ec972e4cb8674fab95bcda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffData: {fileID: 11400000, guid: 82c9d5859536fe44d9336e96c9364da6, type: 2}
+  currentbuffData: {fileID: 0}
+  Enermies: []
 --- !u!4 &5537804289353732532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7213015764642128731, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}

@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Bullet Sticky
   m_EditorClassIdentifier: 
   weaponType: 2
+  weaponPrefab: {fileID: 356158023719411224, guid: 196334297d7f36f4db7e5f3d1e568969, type: 3}
   attackMultiplier: 0
-  shootInterval: 0
-  flightSpeed: 0
+  shootInterval: 1
+  flightSpeed: 8
   steerSpeed: 0
   trackRadius: 0
   attackMultipliers:
-  - 1
   - 2
-  - 3
-  maxLayers: 0
+  - 4
+  - 6
+  maxLayers: 3
   explosionRange:
   - 0.8
   - 2.2

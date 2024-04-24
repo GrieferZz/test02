@@ -6,13 +6,15 @@ public class BulletTrack : MonoBehaviour
 {
     public Transform Target; // 目标的Transform组件
     
-    public float rotateSpeed = 200f; // 子弹旋转的速度
+    public float rotateSpeed; // 子弹旋转的速度
     // Start is called before the first frame update
     public float  trackRange;
     private Rigidbody rb;
+    private bool isTrack;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(DelayedTrack(0.2f));
        
     }
     private void OnDrawGizmos() 
@@ -26,12 +28,22 @@ public class BulletTrack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GetComponent<WeaponStates>().weaponStates!=null)
+        {
+            rotateSpeed=GetComponent<WeaponStates>().weaponStates.steerSpeed;
+            trackRange=GetComponent<WeaponStates>().weaponStates.trackRadius;
+
+        }
     }
     private void FixedUpdate() 
     {
-        TargetSelect();
-        TrackMove();
+        if(GetComponent<WeaponStates>().weaponStates!=null&&isTrack)
+        {
+             TargetSelect();
+             TrackMove();
+
+        }
+       
     }
     void TargetSelect()
     {
@@ -64,5 +76,13 @@ public class BulletTrack : MonoBehaviour
        {
         Destroy(gameObject);
        }
+    }
+     IEnumerator DelayedTrack(float delaySeconds)
+    {
+        // 等待一定的时间后执行下一步操作
+        yield return new WaitForSeconds(delaySeconds);
+
+        // 在延迟之后执行的操作
+        isTrack=true;
     }
 }

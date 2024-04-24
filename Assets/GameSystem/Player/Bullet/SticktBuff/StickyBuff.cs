@@ -5,7 +5,7 @@ using UnityEngine;
 public class StickyBuff : MonoBehaviour
 {
     //public int maxStickyAmount;
-    public float explosionRange;
+    
     public BuffInfo sticky;
     public BuffData buffData;
     public BuffData currentbuffData;
@@ -60,9 +60,10 @@ public class StickyBuff : MonoBehaviour
         {
             currentbuffData=Instantiate(buffData);
             sticky.buffData=currentbuffData;
+            sticky.buffData.maxStack=GetComponent<WeaponStates>().weaponStates.maxLayers;
 
         }
-        
+        sticky.self=gameObject;
         sticky.creator=bullet.InitiatorStates.gameObject;
         sticky.target=other.gameObject;   
         sticky.target.GetComponent<BuffHandler>()?.AddBuff(sticky);

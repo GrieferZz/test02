@@ -7,9 +7,9 @@ public class WeaponStates : MonoBehaviour
     public WeaponStates_SO templateData;
     [HideInInspector]
     public WeaponStates_SO weaponStates;
-    void Awake()
+    void Update()
     {
-        if(templateData!=null)
+        if(templateData!=null&&weaponStates==null)
         {
             weaponStates=Instantiate(templateData);
         }

@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4125244294620356627, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7213015764642128731, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -100,20 +104,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7959539957027052197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8163217803632964130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71ef81f27804d0541b9f81f6b4545e6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionRange: 0
-  Enermies: []
 --- !u!114 &2612542700477417523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +118,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   templateData: {fileID: 11400000, guid: 7b1b8b28e7765864d969b5bbe9c43678, type: 2}
   weaponStates: {fileID: 0}
+--- !u!114 &7959539957027052197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8163217803632964130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ef81f27804d0541b9f81f6b4545e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRange: 0
+  Enermies: []

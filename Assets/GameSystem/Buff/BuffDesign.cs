@@ -17,6 +17,7 @@ public class BuffInfo
 {
     public BuffData buffData;
     public GameObject creator;
+    public GameObject self;
     public GameObject target;
     public float durationTimer;
     public float tickTimer;

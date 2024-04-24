@@ -20,14 +20,14 @@ public class PlayerAttck : MonoBehaviour
     private bool IsHold;
     private bool cd;
     public Transform bulletSpawnPoint; // 子弹发射点
-    public  List<GameObject> bulletPrefab=new List<GameObject>(); 
+    public  List<WeaponStates_SO> bulletPrefabTemplete=new List<WeaponStates_SO>(); 
+    [HideInInspector]
+    public  List<WeaponStates_SO> bulletPrefab=new List<WeaponStates_SO>(); 
     public  List<GameObject> stickyBullets=new List<GameObject>(); 
-    private GameObject nowBulletPrefab;
+    private WeaponStates_SO nowBulletPrefab;
     public Bullet bulletType;
     public GameObject Plane;   // 子弹预制体
-    public float bulletSpeed = 10f;    // 子弹速度
-    public float shootInterval = 2f;   // 发射间隔
-    private float lastShootTime;
+        private float lastShootTime;
 
 
 
@@ -61,7 +61,12 @@ public class PlayerAttck : MonoBehaviour
     void Start()
     {
         anim=this.GetComponent<Animator>();
-
+        
+        for(int i=0;i<bulletPrefab.Count;i++)
+        {
+           bulletPrefab[i]=Instantiate(bulletPrefabTemplete[i]);
+        }
+        nowBulletPrefab=bulletPrefab[0];
     }
 
     // Update is called once per frame
@@ -97,7 +102,7 @@ public class PlayerAttck : MonoBehaviour
        // if(context.interaction is UnityEngine.InputSystem.Interactions.HoldInteraction)
         {
             Player.Instance.NowState=Player.PlayerState.Fight;
-             if (Time.time - lastShootTime >= shootInterval)
+             if (Time.time - lastShootTime >=nowBulletPrefab.shootInterval)
         {
             
             Shoot(DirectionGet());
@@ -123,7 +128,7 @@ public class PlayerAttck : MonoBehaviour
     {
         if(IsHold)
         {
-            if (Time.time - lastShootTime >= shootInterval)
+            if (Time.time - lastShootTime >= nowBulletPrefab.shootInterval)
         {
             
             Shoot(DirectionGet());
@@ -167,7 +172,8 @@ public class PlayerAttck : MonoBehaviour
 
             }
 
-            GameObject bullet = Instantiate(nowBulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
+            GameObject bullet = Instantiate(nowBulletPrefab.weaponPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(shootingDirection));
+            bullet.GetComponent<WeaponStates>().templateData=nowBulletPrefab;
             if(nowAttackType==AttackType.Sticky)
             {
                 //StickyBulletLimit(bullet);
@@ -175,11 +181,12 @@ public class PlayerAttck : MonoBehaviour
             bulletType=bullet.GetComponent<Bullet>();
             bulletType.attackObject=Bullet.AttackObject.ForEnermy;
             bulletType.InitiatorStates=gameObject.GetComponent<CharacterStates>();
+            
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
             if (rb != null)
             {
-               rb.velocity = shootingDirection.normalized * bulletSpeed;
+               rb.velocity = shootingDirection.normalized *nowBulletPrefab.flightSpeed;
             }
         }
     }

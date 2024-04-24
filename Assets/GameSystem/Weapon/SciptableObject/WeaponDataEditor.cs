@@ -10,7 +10,7 @@ public class WeaponDataEditor : Editor
         // 强制转换为WeaponData对象
         WeaponStates_SO weaponStates = (WeaponStates_SO)target;
         weaponStates.weaponType = (WeaponStates_SO.WeaponType)EditorGUILayout.EnumPopup("Weapon Type", weaponStates.weaponType);
-
+        weaponStates.weaponPrefab =  (GameObject)EditorGUILayout.ObjectField("WeaponPrefab", weaponStates.weaponPrefab ,typeof(GameObject), true);
         // 根据武器类型显示不同的武器数据变量
         switch (weaponStates.weaponType)
         {
