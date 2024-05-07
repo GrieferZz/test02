@@ -106,7 +106,7 @@ public class PlayerAttck : MonoBehaviour
              if (Time.time - lastShootTime >=nowBulletPrefab.shootInterval)
         {
             
-            Shoot(-(bulletSpawnPoint.transform.position-aiming.transform.GetChild(0).position));
+            Shoot(new Vector3(-(bulletSpawnPoint.transform.position.x-aiming.transform.GetChild(0).position.x),0f,-(bulletSpawnPoint.transform.position.z-aiming.transform.GetChild(0).position.z)));
             lastShootTime = Time.time;
         }
 
@@ -132,7 +132,7 @@ public class PlayerAttck : MonoBehaviour
             if (Time.time - lastShootTime >= nowBulletPrefab.shootInterval)
         {
             
-            Shoot(-(bulletSpawnPoint.transform.position-aiming.transform.GetChild(0).position));
+            Shoot(new Vector3(-(bulletSpawnPoint.transform.position.x-aiming.transform.GetChild(0).position.x),0f,-(bulletSpawnPoint.transform.position.z-aiming.transform.GetChild(0).position.z)));
             lastShootTime = Time.time;
         }
         }

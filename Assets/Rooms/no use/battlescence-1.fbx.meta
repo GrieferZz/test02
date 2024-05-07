@@ -3,12 +3,97 @@ guid: 95137d2e464fb304eb5183cb04b248c0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor001
+    second: {fileID: 2100000, guid: ed303e7080a881f439ba9ccb18a09783, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor002
+    second: {fileID: 2100000, guid: 25a4d51406b2e994e9300180d1166706, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor003
+    second: {fileID: 2100000, guid: e1ccf88a67572604da88ec776f80429b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor004
+    second: {fileID: 2100000, guid: a5c486dc36d5117408a6b4ff1d755c87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor005
+    second: {fileID: 2100000, guid: e7abd29888e877d41b205bcb130174f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor006
+    second: {fileID: 2100000, guid: 358258cda11a8d4419e1f03bb63e37af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor007
+    second: {fileID: 2100000, guid: e13a7d14dc2160d4c9b86d62022fb9e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor008
+    second: {fileID: 2100000, guid: 8c79077266045a949a6e449dd2a61d97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor008-2
+    second: {fileID: 2100000, guid: 9c442ffcae3df2544ad1fe23b59db2a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor009
+    second: {fileID: 2100000, guid: 765226b0a8d84fb438c9bd95571e552c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor010
+    second: {fileID: 2100000, guid: d39b1ff79cf05814099b624e95d5b2c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor011
+    second: {fileID: 2100000, guid: 63c9d11870864bc419b14028cb6789d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor012
+    second: {fileID: 2100000, guid: 0c19009dd0a551e46a55d1823e796dad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor013
+    second: {fileID: 2100000, guid: b971dae6c35a6404489728d67be51557, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor13-2
+    second: {fileID: 2100000, guid: 610285a8e5ee6c349a263a6c3f0b8c18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pipe1
+    second: {fileID: 2100000, guid: fde781e7c56dd6c41ba2566caeb0be4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pipe2
+    second: {fileID: 2100000, guid: c1f71c95b5c3a32458c28a65564430be, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
-    materialSearch: 1
-    materialLocation: 1
+    materialSearch: 0
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -32,7 +117,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

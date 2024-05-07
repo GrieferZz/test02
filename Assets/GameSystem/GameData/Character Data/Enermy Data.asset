@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f834214d07ccc5a4386a7411c6f0fef4, type: 3}
   m_Name: Enermy Data
   m_EditorClassIdentifier: 
-  MaxHealth: 10
+  MaxHealth: 30
   currentHealth: 0
   BaseDefence: 0
   currentDefence: 0

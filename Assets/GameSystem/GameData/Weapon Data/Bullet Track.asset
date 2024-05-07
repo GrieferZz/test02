@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb54a0c0219964f4ebe14ab2e319e9b8, type: 3}
   m_Name: Bullet Track
   m_EditorClassIdentifier: 
-  weaponType: 0
-  attackMultiplier: 0
-  shootInterval: 0
-  flightSpeed: 0
-  steerSpeed: 0
-  trackRadius: 0
+  weaponType: 1
+  weaponPrefab: {fileID: 3184801279552154871, guid: 3ff489a40a6b5ba4f9c82d9ecf8a144f, type: 3}
+  attackMultiplier: 0.5
+  shootInterval: 0.2
+  flightSpeed: 10
+  steerSpeed: 300
+  trackRadius: 5
   attackMultipliers:
   - 0
   - 0
   - 0
   maxLayers: 0
-  exlosionRangenew:
+  explosionRange:
   - 0
   - 0
   - 0

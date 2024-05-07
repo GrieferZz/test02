@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Bullet Follow
   m_EditorClassIdentifier: 
   weaponType: 0
-  attackMultiplier: 0
-  shootInterval: 0
-  flightSpeed: 0
+  weaponPrefab: {fileID: 3184801279552154871, guid: 7a943402e7938a242abadd068d3530ea, type: 3}
+  attackMultiplier: 2
+  shootInterval: 1.5
+  flightSpeed: 50
   steerSpeed: 0
   trackRadius: 0
   attackMultipliers:
@@ -23,7 +24,7 @@ MonoBehaviour:
   - 0
   - 0
   maxLayers: 0
-  exlosionRangenew:
+  explosionRange:
   - 0
   - 0
   - 0
