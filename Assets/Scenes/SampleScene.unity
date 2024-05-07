@@ -2481,6 +2481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nowAttackType: 0
+  aiming: {fileID: 0}
   attackTypeIndex: 0
   combo: 0
   bulletSpawnPoint: {fileID: 465459125}
