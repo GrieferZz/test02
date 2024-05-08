@@ -9,6 +9,7 @@ public class AttackManager : Singleton<AttackManager>
 {
     public static AttackManager instance;
     public event Action<GameObject,GameObject,Bullet> onAttackEvent;
+    public event Action<GameObject,GameObject> onHurtEvent;
     public event Action onTest;
     protected override void Awake()
     {
@@ -30,6 +31,11 @@ public class AttackManager : Singleton<AttackManager>
     {
          if(onAttackEvent!=null)
         onAttackEvent(creator,target,bullet);
+    }
+    public void HurtEvent(GameObject creator,GameObject target)
+    {
+         if(onHurtEvent!=null)
+        onHurtEvent(creator,target);
     }
     public void Test()
     {

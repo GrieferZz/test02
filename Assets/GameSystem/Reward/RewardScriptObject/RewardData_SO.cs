@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName ="New Reward",menuName ="RewardData/Data")]
-public class RewardSpawn : MonoBehaviour
+public class RewardData_SO : ScriptableObject
 {
     public string rewardName;
+     [TextArea(3, 10)]
     public string effectDescription;
     public string backgroundDescription;
     public Sprite rewardicon;
     public GameObject rewardPrefab;
-    public BuffData rewardBuffData;
+    public BuffData rewardExert;
+
+    public static implicit operator GameObject(RewardData_SO v)
+    {
+        throw new NotImplementedException();
+    }
 }

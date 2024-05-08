@@ -11,7 +11,7 @@ public class CharacterData_SO : ScriptableObject
     public int currentDefence;
     public int BaseSpeed;
     public int currentSpeed;
-    public int currentDefenceAddition;
-    public int currentSpeedAddition;
+    public float currentDefenceAddition;
+    public float currentSpeedAddition;
 
 }

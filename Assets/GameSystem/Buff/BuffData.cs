@@ -52,6 +52,12 @@ public class BuffData : ScriptableObject
         if(OnCreatePrototype!=null)
         {
             OnCreate=Instantiate(OnCreatePrototype);
+            Debug.Log("Module名"+OnCreatePrototype.name);
+        }
+        if(OnRemovePrototype!=null)
+        {
+            OnRemove=Instantiate(OnRemovePrototype);
+            Debug.Log("Module名"+OnRemovePrototype.name);
         }
     }
     

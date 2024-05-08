@@ -61,6 +61,9 @@ public class StickyBombBuff: BaseBuffModule
        
     }
 
-   
+    public override void Remove()
+    {
+        
+    }
 }
 

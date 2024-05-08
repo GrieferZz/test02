@@ -46,6 +46,7 @@ public class BuffHandler : MonoBehaviour
         foreach (var buffInfo in deleteBuffList)
         {
             RemoveBuff(buffInfo);
+            deleteBuffList.Remove(buffInfo);
 
         }
         GameEventSystem.instance.BuffUIUpdate();
@@ -78,7 +79,12 @@ public class BuffHandler : MonoBehaviour
         {
             buffInfo.durationTimer=buffInfo.buffData.duration;
             //buffInfo.tickTimer=buffInfo.buffData.tickTime;
+            if(buffInfo.buffData.OnCreate==null)
+            {
+               Debug.Log("为空"+buffInfo.buffData.name);
+            }
             buffInfo.buffData.OnCreate.Apply(buffInfo);
+            
             buffList.AddLast(buffInfo);
             //Bufflist排序
             InsertionSortLinkedList(buffList);
@@ -93,6 +99,7 @@ public class BuffHandler : MonoBehaviour
         switch (buffInfo.buffData.buffRemoveStackUpdate)
         {
             case BuffRemoveStackUpdateEnum.Clear:
+                buffInfo.buffData.OnCreate?.Remove();
                 buffInfo.buffData.OnRemove?.Apply(buffInfo);
                 buffList.Remove(buffInfo);
                 break;
@@ -102,7 +109,7 @@ public class BuffHandler : MonoBehaviour
 
                 if(buffInfo.curStack==0)
                 {
-                    
+                    buffInfo.buffData.OnCreate?.Remove();
                     buffList.Remove(buffInfo);
 
                 }

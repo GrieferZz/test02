@@ -122,6 +122,10 @@ public class CharacterStates : MonoBehaviour
     public void ExecuteAttack(CharacterStates attacker,CharacterStates defender,AttackInfo attackInfo)
     {
        int damage=(int)Mathf.Max(attacker.CurrentDamage(attackInfo)*(1-defender.currentDefence/(defender.currentDefence+10f)),0.1f);
+       if(damage>0)
+       {
+        AttackManager.instance.HurtEvent(attacker.gameObject,gameObject);
+       }
        currentHealth=Mathf.Max(currentHealth-damage,0);
        Debug.Log("单次倍率"+attackInfo.singleAttackMagnification);
        Debug.Log("造成伤害"+damage);
@@ -130,8 +134,8 @@ public class CharacterStates : MonoBehaviour
     private void ExecutecurrentData()
     {
         attackData.currentAttack=attackData.BaseAttack*(1+attackData.currentAttackAddition);
-        characterData.currentDefence=characterData.BaseDefence*(1+characterData.currentDefenceAddition);
-        characterData.currentSpeed=characterData.BaseSpeed*(1+characterData.currentSpeedAddition);
+        characterData.currentDefence= (int)(characterData.BaseDefence*(1+characterData.currentDefenceAddition));
+        characterData.currentSpeed= (int)(characterData.BaseSpeed*(1+characterData.currentSpeedAddition));
     }
 
     private int CurrentDamage(AttackInfo attackInfo)
