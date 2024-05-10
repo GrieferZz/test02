@@ -188,6 +188,7 @@ public class PlayerAttck : MonoBehaviour
             {
                rb.velocity = Direction.normalized *nowBulletPrefab.flightSpeed;
             }
+            AttackManager.instance.Shoot();
         }
     }
     private IEnumerator ResetAttackState(float delay)
