@@ -12,5 +12,5 @@ public class RoomStates_SO : ScriptableObject
     public List<GameObject> EnermyPool=new List<GameObject>();
     public int  EnermyWaveNumber;
     public int EnermyNumber;
-    public List<GameObject> Properties =new List<GameObject>();
+    //public List<RewardData_SO> Properties =new List<RewardData_SO>();
 }

@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351c7393f391f684da8c524b619ab9fd, type: 3}
   m_Name: "\u6D4B\u8BD5\u9053\u51771_Effect"
   m_EditorClassIdentifier: 
-  testreward1Buff: {fileID: 0}
   buffData: {fileID: 11400000, guid: 56f6582e43d1e3d419bef950918234b2, type: 2}

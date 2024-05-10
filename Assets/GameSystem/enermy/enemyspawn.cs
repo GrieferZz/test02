@@ -141,6 +141,7 @@ public class enemyspawn : MonoBehaviour
          if(EnermyWaveNumber==0)
         {
             GameEventSystem.instance.RoomCombatFinish(NowRoomData.RoomData);
+            
             Debug.Log("战斗结束");
         }
         }

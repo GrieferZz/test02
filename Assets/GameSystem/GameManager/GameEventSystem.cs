@@ -37,6 +37,9 @@ public class GameEventSystem :Singleton<GameEventSystem>
      public event Action onBuffUIUpdate;
      public event Action<GameObject,GameObject> onTargetTransmission;
      public event Action onWaveClear;
+     public event Action onEnermyClear;
+     public event Action onRewardPick;
+      public event Action<RewardData_SO> onRewardChoose;
      public event Action<RoomStates_SO> onRoomCombatFinish;
 
      
@@ -89,6 +92,24 @@ public class GameEventSystem :Singleton<GameEventSystem>
        if(onWaveClear!=null)
         onWaveClear();
         //print("DialogueFinish事件触发");
+    }
+    public void EnermyClear()
+    {
+       if(onEnermyClear!=null)
+        onEnermyClear();
+        //print("DialogueFinish事件触发");
+    }
+      public void RewardPick()
+    {
+        if(onRewardPick!=null)
+        onRewardPick();
+       
+    }
+     public void RewardChoose(RewardData_SO rewardData_SO)
+    {
+        if(onRewardChoose!=null)
+        onRewardChoose( rewardData_SO);
+       
     }
      public void RoomCombatFinish(RoomStates_SO roomstate)
     {

@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New Reward",menuName ="RewardData/Data")]
 public class RewardData_SO : ScriptableObject
 {
+    public string rewardId;
     public string rewardName;
+
      [TextArea(3, 10)]
     public string effectDescription;
     public string backgroundDescription;

@@ -14,7 +14,7 @@ public class RewardStates : MonoBehaviour
     public Image rewardImage;
     public TextMeshProUGUI rewardName;
     public TextMeshProUGUI rewardEffect;
-    public BuffInfo buffInfo;
+    
     public GameObject Player;
     
     private void Update()
@@ -34,17 +34,15 @@ public class RewardStates : MonoBehaviour
             rewardImage.sprite=rewardData.rewardicon;
             rewardName.text=rewardData.rewardName;
             rewardEffect.text=rewardData.effectDescription;
-            Player=GameObject.FindWithTag("Player");
-            buffInfo=new BuffInfo();
-            buffInfo.creator=gameObject;
-            buffInfo.buffData=Instantiate(rewardData.rewardExert);
+           
+            
         }
     }
     public void RewardChoose()
     {
-        Debug.Log("选择"+buffInfo.buffData.name);
-       
-        Player.GetComponent<BuffHandler>()?.AddBuff(buffInfo);
+        
+        GameManager.Instance.RewardPoolUpdate(rewardData);
+        GameEventSystem.instance.RewardChoose(rewardData);
    
         
     }

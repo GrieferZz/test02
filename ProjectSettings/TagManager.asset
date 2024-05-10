@@ -17,6 +17,7 @@ TagManager:
   - ExplosionRange
   - CameraHandle
   - Environment
+  - RewardSpawn
   layers:
   - Default
   - TransparentFX

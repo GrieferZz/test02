@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+
 
 public class GameManager : Singleton<GameManager>
 {
     public CharacterStates playerStates;
     public List<CharacterStates> EnermyStates=new List<CharacterStates>();
     public List<LayerStates_SO> LayerData= new List<LayerStates_SO>();
+    public RewardPool_SO rewardPool;
+    [HideInInspector]
+    public RewardPool_SO currentrewardPool;
     public LayerStates_SO NowLayer;
     public GameObject NowRoom;
     public GameObject OriginRoom;
@@ -18,6 +23,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         RigisterLayer();
+        RigisterRewardPool();
     }
     
     public void RigisterPlayer(CharacterStates player)
@@ -38,6 +44,11 @@ public class GameManager : Singleton<GameManager>
     {    
         NowLayer=LayerData[NowLayerindex];
 
+    }
+    public void RigisterRewardPool()
+    {    
+        currentrewardPool=Instantiate(rewardPool);
+       
     }
     public void RigisterRooms(GameObject room)
     {
@@ -61,7 +72,7 @@ public class GameManager : Singleton<GameManager>
            FinalRoom=room;
            if(FinalRoom!=null)
         {
-            Debug.Log(Rooms.Count);
+            UnityEngine.Debug.Log(Rooms.Count);
             RoomsLoad();
         }
     }
@@ -73,7 +84,7 @@ public class GameManager : Singleton<GameManager>
             {
                 room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.OriginRoomTypes[UnityEngine.Random.Range(0,NowLayer.OriginRoomTypes.Count)]);
                 room.GetComponent<RoomStates>().TerrainSelect();
-                Debug.Log("初始化初始房间");
+                UnityEngine.Debug.Log("初始化初始房间");
 
             }
             if(room!=OriginRoom)
@@ -96,9 +107,22 @@ public class GameManager : Singleton<GameManager>
         }
        if( EnermyStates.TrueForAll(element => element == null)&&EnermyStates.Count!=0)
        {
-             Debug.Log("波次清理");
+             UnityEngine.Debug.Log("波次清理");
             GameEventSystem.instance.WaveClear();
             EnermyStates.Clear();
        }                           
     }
+
+    
+    public void RewardPoolUpdate(RewardData_SO rewardData_SO)
+{
+   for(int i=0;i<currentrewardPool.rewardPool.Count;i++)
+   {
+       if(rewardData_SO.rewardId==currentrewardPool.rewardPool[i].rewardId)
+       {
+           currentrewardPool.rewardPool.Remove(currentrewardPool.rewardPool[i]);
+       }
+   }
+
+}
 }
