@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.702592, y: 3.9236298, z: 10.860614}
-  m_Center: {x: 0.79266274, y: 1.4618138, z: 0.27109435}
+  m_Size: {x: 9.526853, y: 3.9236298, z: 9.591769}
+  m_Center: {x: 0.204793, y: 1.4618138, z: -0.02975655}
 --- !u!1 &1749695256989145475
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6655761233144509239}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4774444322063912361
 MeshFilter:
@@ -454,7 +454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6655761231624059018
 Transform:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6655761231679432993
 Transform:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6655761232351829348
 Transform:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 6655761233144509239}
   m_Layer: 0
   m_Name: Environment
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -638,7 +638,6 @@ Transform:
   m_Children:
   - {fileID: 6976804900258621779}
   - {fileID: 5418042872403017026}
-  - {fileID: 8516273045794095913}
   - {fileID: 3939738288809822173}
   m_Father: {fileID: 7158889142962909775}
   m_RootOrder: 0
@@ -659,7 +658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6655761233255686796
 Transform:
   m_ObjectHideFlags: 0
@@ -704,7 +703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6655761233349204176
 Transform:
   m_ObjectHideFlags: 0
@@ -749,7 +748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6655761233429886280
 Transform:
   m_ObjectHideFlags: 0
@@ -789,7 +788,7 @@ GameObject:
   - component: {fileID: 6655761233434378896}
   m_Layer: 0
   m_Name: AirWalls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -812,6 +811,7 @@ Transform:
   - {fileID: 6655761231679432993}
   - {fileID: 6655761233255686796}
   - {fileID: 6655761233349204176}
+  - {fileID: 8516273045794095913}
   m_Father: {fileID: 7158889142962909775}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2564,11 +2564,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6655761233144509239}
+    m_TransformParent: {fileID: 6655761233434378896}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 93c270f4f4b47cf449e237327af81803, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93c270f4f4b47cf449e237327af81803, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2617,6 +2617,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 93c270f4f4b47cf449e237327af81803, type: 3}
       propertyPath: m_Name
       value: battlescence-4-collision
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93c270f4f4b47cf449e237327af81803, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c270f4f4b47cf449e237327af81803, type: 3}
