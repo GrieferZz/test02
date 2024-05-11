@@ -18,6 +18,10 @@ TagManager:
   - CameraHandle
   - Environment
   - RewardSpawn
+  - FxTemporaire
+  - Obstacle
+  - Obstcales
+  - InteractionPoint
   layers:
   - Default
   - TransparentFX

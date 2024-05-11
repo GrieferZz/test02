@@ -9,6 +9,7 @@ public class RewardPanel : MonoBehaviour
 {
     public GameObject rewardChooseUnit;
     public GameObject rewardGroup;
+    public GameObject rewardPanel;
    public  List<RewardData_SO> rewardDatas=new List<RewardData_SO>();
 
     private void Awake() 
@@ -23,16 +24,16 @@ public class RewardPanel : MonoBehaviour
         }
         GameEventSystem.instance.onRewardPick+=RewardPick;
         GameEventSystem.instance.onRewardChoose+=RewardChoose;
-        gameObject.GetComponent<UnityEngine.UI.Image>().enabled=false;
+        rewardPanel.GetComponent<UnityEngine.UI.Image>().enabled=false;
     }
 
     
 
     public void RewardPick()
     {
-        gameObject.GetComponent<UnityEngine.UI.Image>().enabled=true;
+        rewardPanel.GetComponent<UnityEngine.UI.Image>().enabled=true;
         rewardGroup.SetActive(true);
-        
+        rewardPanel.GetComponent<Animation>().Play("RewardPanelOpen");
     }
     public void RewardLoad(List<RewardData_SO> rewardData_SOs)
     {
@@ -49,11 +50,23 @@ public class RewardPanel : MonoBehaviour
            rewardChoose.transform.SetParent(rewardGroup.transform);
            rewardChoose.GetComponent<RewardStates>().rewardDataTemplete=rewardDatas[i];
         }
+        RewardPanelUIUpdate();
         rewardGroup.SetActive(false);
         
     }
     private void RewardChoose(RewardData_SO sO)
     {
+        
+        StartCoroutine(RewardPanelCloseUI());
+
+    }
+    IEnumerator RewardPanelCloseUI()
+    {
+        rewardPanel.GetComponent<Animation>().Play("RewardPanelClose");
+        while (true)
+        {
+           if(!rewardPanel.GetComponent<Animation>().IsPlaying("RewardPanelClose"))
+        {
         for (int i = rewardGroup.transform.childCount - 1; i >= 0; i--)
         {
             // 获取子物体
@@ -62,6 +75,18 @@ public class RewardPanel : MonoBehaviour
             // 销毁子物体
             Destroy(child.gameObject);
         }
-        gameObject.GetComponent<UnityEngine.UI.Image>().enabled=false;
+        
+        rewardPanel.GetComponent<UnityEngine.UI.Image>().enabled=false;
+        break;
+
+        }
+
+            // 等待一秒钟
+            yield return null;
+        }
+    }
+    public void RewardPanelUIUpdate()
+    {
+        rewardPanel.GetComponent<RectTransform>().sizeDelta=new Vector2(150+250*rewardDatas.Count, gameObject.GetComponent<RectTransform>().sizeDelta.y);
     }
 }

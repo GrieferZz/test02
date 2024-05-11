@@ -24,7 +24,29 @@ public class RewardUnitShow : MonoBehaviour
             rewardImage.sprite=rewardData.rewardicon;
             rewardName.text=rewardData.rewardName;
             rewardEffect.text=rewardData.effectDescription;
+            gameObject.GetComponent<Animation>().Play("RewardShow");
+
            
+        }
+    }
+    public void UnitClose()
+    {
+        StartCoroutine(RewardCloseUI());
+    }
+     IEnumerator RewardCloseUI()
+    {
+        gameObject.GetComponent<Animation>().Play("RewardClose");
+        while (true)
+        {
+           if(!gameObject.GetComponent<Animation>().IsPlaying("RewardClose"))
+        {
+        Destroy(gameObject);
+        break;
+
+        }
+
+            // 等待一秒钟
+            yield return null;
         }
     }
 }

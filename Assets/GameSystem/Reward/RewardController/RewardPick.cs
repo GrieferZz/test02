@@ -8,6 +8,11 @@ public class RewardPick : MonoBehaviour
 {
     private bool canPick;
     public PlayerInput inputControl;
+    public GameObject interactionPrefab;
+    private GameObject interactionPoint; 
+    GameObject interaction;
+    Transform cm;
+    
     public void Awake()
     {
         inputControl=new PlayerInput();
@@ -16,7 +21,11 @@ public class RewardPick : MonoBehaviour
     }
     public void OnEnable()
     {
-        inputControl.Enable();
+        inputControl.Enable();      
+        interactionPoint=GameObject.FindWithTag("InteractionPoint");
+        cm=Camera.main.transform;
+        
+    
     }
     private void OnDisable() 
     {
@@ -29,6 +38,9 @@ public class RewardPick : MonoBehaviour
         {
              GameEventSystem.instance.RewardPick();
              Debug.Log("拾取");
+             Destroy(interaction);
+             Destroy(gameObject);
+             
 
         }
        
@@ -41,6 +53,23 @@ public class RewardPick : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             canPick=true;
+            foreach(Canvas canvas in FindObjectsOfType<Canvas>())
+        {
+            if(canvas.renderMode==RenderMode.WorldSpace)
+            {
+                interaction=Instantiate(interactionPrefab,canvas.transform);
+                
+                //HealthUIbar.gameObject.SetActive(false);
+            }
+
+        }
+        }
+    }
+    void OnTriggerStay(Collider other) 
+    {
+         if(other.CompareTag("Player"))
+        {
+            StartCoroutine(InteracitonUpdate());
         }
     }
     private void OnTriggerExit(Collider other) 
@@ -48,6 +77,23 @@ public class RewardPick : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             canPick=false;
+            StopCoroutine(InteracitonUpdate());
+            Destroy(interaction);
+        }
+    }
+   
+     IEnumerator InteracitonUpdate()
+    {
+        while (true)
+        {
+            // 在每一帧结束时暂停协程，然后在下一帧开始时继续执行
+            yield return null;
+
+            if(interaction!=null)
+        {
+            interaction.transform.position=interactionPoint.transform.position;
+            interaction.transform.forward=cm.forward;
+        }
         }
     }
     

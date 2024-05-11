@@ -14,7 +14,7 @@ public class RewardSpawn : MonoBehaviour
     private void Start() 
     {
         rewardSpawn=GameObject.FindWithTag("RewardSpawn");
-        rewardPanel=GameObject.Find("RewardPanel");
+        rewardPanel=GameObject.Find("RewardUI");
         
         roomStates=gameObject.GetComponent<RoomInitialization>().NowRoomData;
         GameEventSystem.instance.onRoomCombatFinish+=RewardShow;
@@ -31,7 +31,9 @@ public class RewardSpawn : MonoBehaviour
     }
     public void RewardChoose()
     {
-        switch(roomStates.RoomData.roomType)
+        if(GameManager.Instance.currentrewardPool.rewardPool.Count>=1)
+        {
+            switch(roomStates.RoomData.roomType)
         {
             case RoomStates_SO.RoomType.Basic:
                 while (rewardDatas.Count<1)
@@ -45,11 +47,15 @@ public class RewardSpawn : MonoBehaviour
                 
             break;
         }
-       rewardPanel.GetComponent<RewardPanel>().RewardLoad(rewardDatas);
+        rewardPanel.GetComponent<RewardPanel>().RewardLoad(rewardDatas);
+
+        }
+        
+       
     }
      public void RewardShow(RoomStates_SO sO)
     {
-        if(reward==null&&rewardSpawn!=null)
+        if(reward==null&&rewardSpawn!=null&&rewardDatas.Count>=1)
         reward=Instantiate(rewardPrefab, rewardSpawn.transform.position, Quaternion.identity);
 
     }

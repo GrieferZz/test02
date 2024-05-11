@@ -50,6 +50,7 @@ public class RewardBag : MonoBehaviour
         bagGroup.SetActive(true);
         bagOpen.SetActive(false);
         bagClose.SetActive(true);
+       
         for (int i = bagGroup.transform.childCount - 1; i >= 0; i--)
         {
             // 获取子物体
@@ -64,14 +65,43 @@ public class RewardBag : MonoBehaviour
             rewardShow.transform.SetParent(bagGroup.transform);
             rewardShow.GetComponent<RewardUnitShow>().UnitLoad(rewardBag[i]);
          }
+          bagGroup.GetComponent<Animation>().Play("RewardBagOpen");
 
 
     }
     public void RewardBagClose()
     {
-        bagGroup.SetActive(false);
+        StartCoroutine(RewardBagCloseUI());
+        
+        
+    }
+     IEnumerator RewardBagCloseUI()
+    {
+        bagGroup.GetComponent<Animation>().Play("RewardBagClose");
+        for (int i = bagGroup.transform.childCount - 1; i >= 0; i--)
+        {
+            // 获取子物体
+            bagGroup.transform.GetChild(i).gameObject.GetComponent<RewardUnitShow>().UnitClose();
+            
+            // 销毁子物体
+           
+        }
+        while (true)
+        {
+           if(!bagGroup.GetComponent<Animation>().IsPlaying("RewardBagClose"))
+        {
+         
+        
+        //bagGroup.SetActive(false);
         bagOpen.SetActive(true);
         bagClose.SetActive(false);
+        break;
+
+        }
+
+            // 等待一秒钟
+            yield return null;
+        }
     }
      
 }
