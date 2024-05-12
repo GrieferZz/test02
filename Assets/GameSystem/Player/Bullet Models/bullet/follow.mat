@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: stabfloor
+  m_Name: follow
   m_Shader: {fileID: -6465566751694194690, guid: 169921f4e64e72f4392ce5c38c21010d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DiffuseTexture:
-        m_Texture: {fileID: 2800000, guid: 907b39fe39649d945a680aa5b6112bf0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e1b8c915d00ca944b9829e6230c5c2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonRamp:
