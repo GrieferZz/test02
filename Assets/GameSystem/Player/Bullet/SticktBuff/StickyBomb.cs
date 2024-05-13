@@ -48,6 +48,7 @@ public class StickyBomb : MonoBehaviour
     {
         
         explosion.SetActive(true);
+        GameEventSystem.instance.MusicPlay("explosion");
         //rb.isKinematic=true;
     }
     void TargetGet(GameObject parent,GameObject target)

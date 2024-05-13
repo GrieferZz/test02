@@ -41,7 +41,7 @@ public class GameEventSystem :Singleton<GameEventSystem>
      public event Action onRewardPick;
       public event Action<RewardData_SO> onRewardChoose;
      public event Action<RoomStates_SO> onRoomCombatFinish;
-
+      public event Action<string> onMusicPlay;
      
 
 
@@ -115,6 +115,12 @@ public class GameEventSystem :Singleton<GameEventSystem>
     {
        if(onRoomCombatFinish!=null)
         onRoomCombatFinish(roomstate);
+        //print("战斗");
+    }
+     public void MusicPlay(string musicname )
+    {
+       if(onMusicPlay!=null)
+        onMusicPlay(musicname);
         //print("战斗");
     }
 }

@@ -37,6 +37,7 @@ public class RewardPick : MonoBehaviour
         if(canPick)
         {
              GameEventSystem.instance.RewardPick();
+             GameEventSystem.instance.MusicPlay("pick");
              Debug.Log("拾取");
              Destroy(interaction);
              Destroy(gameObject);

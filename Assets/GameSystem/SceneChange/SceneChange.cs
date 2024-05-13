@@ -62,6 +62,7 @@ public class SceneChange : MonoBehaviour
            
             
              SceneManager.LoadScene( LoadedScene);
+             GameEventSystem.instance.MusicPlay("newroom");
              //GameEventSystem.instance.SceneLoad()
              Debug.Log("传送");
             

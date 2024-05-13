@@ -49,6 +49,7 @@ public class StickyBuff : MonoBehaviour
     {
         if(!other.gameObject.CompareTag("Player"))
         {
+            GetComponent<SphereCollider>().enabled=false;
             GetComponent<Rigidbody>().isKinematic = true;
             foreach(Transform child in transform)
         {
@@ -67,6 +68,7 @@ public class StickyBuff : MonoBehaviour
         sticky.creator=bullet.InitiatorStates.gameObject;
         sticky.target=other.gameObject;   
         sticky.target.GetComponent<BuffHandler>()?.AddBuff(sticky);
+        Debug.Log("施加buff");
         }
         
     }

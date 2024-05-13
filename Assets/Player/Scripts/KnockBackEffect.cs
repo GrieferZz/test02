@@ -30,6 +30,7 @@ public class KnockBackEffect : MonoBehaviour
         // ���target�Ƿ���ڵ�ǰ��Ϸ����    
         if (target == Player)
         {
+            GameEventSystem.instance.MusicPlay("playerhurt");
             // ���㹥������    
             attackDirection = (creator.transform.position - Player.transform.position).normalized;
             // Ӧ�û���Ч��    

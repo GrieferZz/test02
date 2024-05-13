@@ -20,8 +20,9 @@ public class StickyBombBuff: BaseBuffModule
             stickyBomb=Instantiate(stickyBombPrefab);
             stickyBomb.transform.position=buffInfo.target.transform.position;
             stickyBomb.transform.parent=buffInfo.target.transform;
-            stickyBomb.GetComponent<Bullet>().InitiatorStates=buffInfo.creator.gameObject.GetComponent<CharacterStates>();
+           
             stickyBomb.GetComponent<WeaponStates>().weaponStates=buffInfo.self.GetComponent<WeaponStates>().weaponStates;
+            stickyBomb.GetComponent<Bullet>().InitiatorStates=buffInfo.creator.gameObject.GetComponent<CharacterStates>();
         }
         
         

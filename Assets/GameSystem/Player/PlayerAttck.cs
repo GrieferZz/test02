@@ -162,12 +162,15 @@ public class PlayerAttck : MonoBehaviour
             {
                 case AttackType.Defalut:
                      nowBulletPrefab=bulletPrefab[0];
+                     GameEventSystem.instance.MusicPlay("follow");
                      break;
                 case AttackType.Track:
                      nowBulletPrefab=bulletPrefab[1];
+                     GameEventSystem.instance.MusicPlay("trace");
                      break;
                 case AttackType.Sticky:
                      nowBulletPrefab=bulletPrefab[2];
+                     GameEventSystem.instance.MusicPlay("sticky");
                      
                      break;
 

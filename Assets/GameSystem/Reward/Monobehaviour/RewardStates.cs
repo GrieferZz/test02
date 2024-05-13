@@ -43,7 +43,7 @@ public class RewardStates : MonoBehaviour
         
         GameManager.Instance.RewardPoolUpdate(rewardData);
         GameEventSystem.instance.RewardChoose(rewardData);
-   
+        GameEventSystem.instance.MusicPlay("choosereward");
         
     }
 }
