@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,31 +11,34 @@ public class ShootAnimator : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        AttackManager.instance.onShoot+=Shoot;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (!_isShoot)
+         if (!_isShoot)
             {
                 _isShoot = true;
                 _animator.SetBool("isShoot", true);
             }
             else
             {
-                _animator.Play("player_animation_shoot", 0, 0f); // Ç¿ÖÆ¶¯»­´ÓÍ·¿ªÊ¼²¥·Å
+                _animator.Play("player_animation_shoot", 0, 0f); // Ç¿ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
             }
-            // ´¥·¢×ßÂ·¶¯»­µÄ½øÈë  
-        }
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("player_animation_shoot") && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+             if (_animator.GetCurrentAnimatorStateInfo(0).IsName("player_animation_shoot") && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            // ¶¯»­²¥·ÅÍê³É
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             _isShoot = false;
             _animator.SetBool("isShoot", false);
 
         }
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
+       
     }
 }

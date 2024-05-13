@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Enermy Data
   m_EditorClassIdentifier: 
   MaxHealth: 30
-  currentHealth: 0
+  BaseHealth: 30
+  currentHealth: 30
   BaseDefence: 0
   currentDefence: 0
   BaseSpeed: 2
   currentSpeed: 2
+  currentHealthAddition: 0
   currentDefenceAddition: 0
   currentSpeedAddition: 0

@@ -114,7 +114,8 @@ public class MapManager : MonoBehaviour
                  break;
         }*/
         FindEndRoom();
-        EndRoom.GetComponent<Image>().color=EndColor;
+        EndRoom.transform.GetChild(0).gameObject.SetActive(false);
+        EndRoom.transform.GetChild(1).gameObject.SetActive(true);
         GameManager.Instance.RigisterFinalRoom(EndRoom.gameObject);
     }
     public void ChangePostionPos()
@@ -199,7 +200,7 @@ public class MapManager : MonoBehaviour
         Rooms.Add(Instantiate(RoomPrefab,GeneratorPoint.transform.position,Quaternion.identity).GetComponent<RoomInformation>());
         Rooms[Rooms.Count-1].transform.SetParent(Map.transform);
         GameManager.Instance.RigisterRooms(Rooms[Rooms.Count-1].gameObject);
-        Rooms[Rooms.Count-1].GetComponent<Image>().color=StartColor;
+        Rooms[Rooms.Count-1].transform.GetChild(0).gameObject.GetComponent<Image>().color=StartColor;
         Nowroom=Rooms[Rooms.Count-1];
         GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
         GameManager.Instance.RigisterOriginRoom(Rooms[Rooms.Count-1].gameObject);

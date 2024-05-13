@@ -7,18 +7,22 @@ using UnityEngine;
 
 public class CharacterStates : MonoBehaviour
 {
-    public CharacterData_SO templateData;
+    public CharacterData_SO templateCharacterData;
+    
     public CharacterData_SO characterData;
+    
     public AttackData_SO attackData;
-   
+   public AttackData_SO templateattackData;
     [HideInInspector]
     public bool isCritical;
     void Awake()
     {
-        if(templateData!=null)
+        if( templateCharacterData!=null)
         {
-            characterData=Instantiate(templateData);
+            characterData=Instantiate( templateCharacterData);
+            attackData=Instantiate(templateattackData);
         }
+        
     }
     #region region  Read from Data_SO
     public int MaxHealth
@@ -127,6 +131,10 @@ public class CharacterStates : MonoBehaviour
         AttackManager.instance.HurtEvent(attacker.gameObject,gameObject);
        }
        currentHealth=Mathf.Max(currentHealth-damage,0);
+       if(currentHealth<=0f)
+       {
+        AttackManager.instance.KillEvent(attacker.gameObject,gameObject);
+       }
        Debug.Log("单次倍率"+attackInfo.singleAttackMagnification);
        Debug.Log("造成伤害"+damage);
 
@@ -134,6 +142,7 @@ public class CharacterStates : MonoBehaviour
     private void ExecutecurrentData()
     {
         attackData.currentAttack=attackData.BaseAttack*(1+attackData.currentAttackAddition);
+        characterData.MaxHealth= (int)(characterData.BaseHealth*(1+characterData.currentHealthAddition));
         characterData.currentDefence= (int)(characterData.BaseDefence*(1+characterData.currentDefenceAddition));
         characterData.currentSpeed= (int)(characterData.BaseSpeed*(1+characterData.currentSpeedAddition));
     }

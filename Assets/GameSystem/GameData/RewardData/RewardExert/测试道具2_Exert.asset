@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e11b8f8360d54747a640aea0b530053, type: 3}
+  m_Name: "\u6D4B\u8BD5\u9053\u51772_Exert"
+  m_EditorClassIdentifier: 
+  id: 102
+  buffName: 
+  description: 
+  icon: {fileID: 0}
+  priority: 0
+  maxStack: 1
+  isForever: 1
+  duration: 0
+  tickTime: 0
+  buffUpdateTime: 1
+  buffRemoveStackUpdate: 0
+  OnCreatePrototype: {fileID: 11400000, guid: c264bad04469ed744b0e198c0505fdfe, type: 2}
+  OnCreate: {fileID: 0}
+  OnRemovePrototype: {fileID: 0}
+  OnRemove: {fileID: 0}
+  OnTickPrototype: {fileID: 0}
+  OnTick: {fileID: 0}
+  OnHitPrototype: {fileID: 0}
+  OnHit: {fileID: 0}
+  OnBeHurtPrototype: {fileID: 0}
+  OnBeHurt: {fileID: 0}
+  OnKillPrototype: {fileID: 0}
+  OnKill: {fileID: 0}
+  OnBeKillPrototype: {fileID: 0}
+  OnBeKill: {fileID: 0}

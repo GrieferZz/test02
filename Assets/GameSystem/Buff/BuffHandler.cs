@@ -46,7 +46,7 @@ public class BuffHandler : MonoBehaviour
         foreach (var buffInfo in deleteBuffList)
         {
             RemoveBuff(buffInfo);
-            deleteBuffList.Remove(buffInfo);
+            buffList.Remove(buffInfo);
 
         }
         GameEventSystem.instance.BuffUIUpdate();

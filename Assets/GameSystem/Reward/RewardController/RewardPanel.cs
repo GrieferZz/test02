@@ -87,6 +87,6 @@ public class RewardPanel : MonoBehaviour
     }
     public void RewardPanelUIUpdate()
     {
-        rewardPanel.GetComponent<RectTransform>().sizeDelta=new Vector2(150+250*rewardDatas.Count, gameObject.GetComponent<RectTransform>().sizeDelta.y);
+        rewardPanel.GetComponent<RectTransform>().sizeDelta=new Vector2(200+300*rewardDatas.Count, gameObject.GetComponent<RectTransform>().sizeDelta.y);
     }
 }

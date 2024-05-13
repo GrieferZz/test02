@@ -6,11 +6,13 @@ public class CharacterData_SO : ScriptableObject
 {
     [Header("Stats Info")]
     public int MaxHealth;
+    public int BaseHealth;
     public int currentHealth;
     public int BaseDefence;
     public int currentDefence;
     public int BaseSpeed;
     public int currentSpeed;
+    public float currentHealthAddition;
     public float currentDefenceAddition;
     public float currentSpeedAddition;
 

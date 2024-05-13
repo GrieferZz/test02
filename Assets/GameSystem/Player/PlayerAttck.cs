@@ -63,7 +63,7 @@ public class PlayerAttck : MonoBehaviour
     {
         anim=this.GetComponent<Animator>();
         
-        for(int i=0;i<bulletPrefab.Count;i++)
+        for(int i=0;i<bulletPrefabTemplete.Count;i++)
         {
            bulletPrefab[i]=Instantiate(bulletPrefabTemplete[i]);
         }
@@ -189,6 +189,7 @@ public class PlayerAttck : MonoBehaviour
                rb.velocity = Direction.normalized *nowBulletPrefab.flightSpeed;
             }
             AttackManager.instance.Shoot();
+            
         }
     }
     private IEnumerator ResetAttackState(float delay)

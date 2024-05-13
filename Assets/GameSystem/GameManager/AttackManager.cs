@@ -10,6 +10,7 @@ public class AttackManager : Singleton<AttackManager>
     public static AttackManager instance;
     public event Action<GameObject,GameObject,Bullet> onAttackEvent;
     public event Action<GameObject,GameObject> onHurtEvent;
+    public event Action<GameObject,GameObject> onKillEvent;
     public event Action onShoot;
     public event Action onTest;
     protected override void Awake()
@@ -37,6 +38,11 @@ public class AttackManager : Singleton<AttackManager>
     {
          if(onHurtEvent!=null)
         onHurtEvent(creator,target);
+    }
+    public void KillEvent(GameObject creator,GameObject target)
+    {
+         if(onKillEvent!=null)
+        onKillEvent(creator,target);
     }
     public void Shoot()
     {
