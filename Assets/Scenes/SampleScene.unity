@@ -2362,8 +2362,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5558,6 +5558,10 @@ PrefabInstance:
     - target: {fileID: 5894901874768886285, guid: 51f3acc17ab96ef468a7bfdbbf7a5cdf, type: 3}
       propertyPath: m_Name
       value: CartoonWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894901874768886285, guid: 51f3acc17ab96ef468a7bfdbbf7a5cdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5894901874768886385, guid: 51f3acc17ab96ef468a7bfdbbf7a5cdf, type: 3}
       propertyPath: m_RootOrder
