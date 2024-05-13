@@ -16,6 +16,7 @@ public class MapManager : MonoBehaviour
     public Color StartColor,EndColor,NowColor;
     private GameObject EndRoom;
     private GameObject FirstRoom;
+    public GameObject AwardRoom;
 
     public Transform GeneratorPoint;
     public static Transform OriginPoint;
@@ -116,8 +117,14 @@ public class MapManager : MonoBehaviour
         FindEndRoom();
         EndRoom.transform.GetChild(0).gameObject.SetActive(false);
         EndRoom.transform.GetChild(1).gameObject.SetActive(true);
+        FindAwardRoom();
+        AwardRoom.transform.GetChild(2).gameObject.SetActive(true);
         GameManager.Instance.RigisterFinalRoom(EndRoom.gameObject);
+        GameManager.Instance.RigisterAwardRoom(AwardRoom);
     }
+
+    
+
     public void ChangePostionPos()
     {
         do
@@ -299,7 +306,20 @@ public class MapManager : MonoBehaviour
         {
             EndRoom=Farrooms[Random.Range(0,Farrooms.Count)];
         }
+        
 
+    }
+    private void FindAwardRoom()
+    {
+        while (AwardRoom==null)
+        {
+                 RoomInformation random = Rooms[Random.Range(0, Rooms.Count)];
+                 if(random!=FirstRoom&&random!=EndRoom)
+                 {
+                    AwardRoom=random.gameObject;
+                 }
+        }
+        
     }
     public void MapOffset()
     {

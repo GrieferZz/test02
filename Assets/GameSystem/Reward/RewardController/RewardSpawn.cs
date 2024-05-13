@@ -46,6 +46,17 @@ public class RewardSpawn : MonoBehaviour
                 }
                 
             break;
+            case RoomStates_SO.RoomType.Reward:
+                while (rewardDatas.Count<3)
+                {
+                 int randomIndex = Random.Range(0, GameManager.Instance.currentrewardPool.rewardPool.Count); // 生成一个随机索引
+                 RewardData_SO rewardData = GameManager.Instance.currentrewardPool.rewardPool[randomIndex]; // 获取随机抽取的元素
+                 if(!rewardDatas.Contains(rewardData))
+                 rewardDatas.Add(rewardData); // 将元素添加到选定列表中
+                 //GameManager.Instance.currentrewardPool.rewardPool.RemoveAt(randomIndex); // 从原始列表中移除已选择的元素
+                }
+                
+            break;
         }
         rewardPanel.GetComponent<RewardPanel>().RewardLoad(rewardDatas);
 
@@ -55,9 +66,10 @@ public class RewardSpawn : MonoBehaviour
     }
      public void RewardShow(RoomStates_SO sO)
     {
+         Debug.Log("道具房");
         if(reward==null&&rewardSpawn!=null&&rewardDatas.Count>=1)
         reward=Instantiate(rewardPrefab, rewardSpawn.transform.position, Quaternion.identity);
-
+       
     }
     
    

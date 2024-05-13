@@ -19,5 +19,6 @@ MonoBehaviour:
   BasicRoomTypes:
   - {fileID: 11400000, guid: 0526d4e033909ed49b420cd52a5f14d3, type: 2}
   StoreRoomTypes: []
-  RewardRoomTypes: []
+  RewardRoomTypes:
+  - {fileID: 11400000, guid: b1049498505d96041afda155c1674d5d, type: 2}
   BossRoomTypes: []

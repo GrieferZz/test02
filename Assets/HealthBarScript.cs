@@ -51,7 +51,7 @@ public class HealthBarScript: MonoBehaviour
                 StopCoroutine(updateCoroutine);
             }
             updateCoroutine=StartCoroutine(HealthBarSlowDown());
-            if(HealthFrontSlider.fillAmount<=0)
+            if(HealthBackSlider.fillAmount<=0)
         {
             StopCoroutine(updateCoroutine);
             

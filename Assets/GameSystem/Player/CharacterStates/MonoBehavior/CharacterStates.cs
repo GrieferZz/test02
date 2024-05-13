@@ -125,10 +125,11 @@ public class CharacterStates : MonoBehaviour
     #region  Character Combat
     public void ExecuteAttack(CharacterStates attacker,CharacterStates defender,AttackInfo attackInfo)
     {
-       int damage=(int)Mathf.Max(attacker.CurrentDamage(attackInfo)*(1-defender.currentDefence/(defender.currentDefence+10f)),0.1f);
+       int damage=(int)Mathf.Max(attacker.CurrentDamage(attackInfo)*(1-defender.currentDefence/(defender.currentDefence+10f))*(1+attackInfo.additionAttackMagnification),0.1f);
        if(damage>0)
        {
-        AttackManager.instance.HurtEvent(attacker.gameObject,gameObject);
+        AttackManager.instance.HurtEvent(attacker.gameObject,gameObject,attackInfo);
+        
        }
        currentHealth=Mathf.Max(currentHealth-damage,0);
        if(currentHealth<=0f)
@@ -149,7 +150,7 @@ public class CharacterStates : MonoBehaviour
 
     private int CurrentDamage(AttackInfo attackInfo)
     {
-        float finaldamage=attackData.currentAttack*(1+attackData.currentAttackMagnification)*(1+attackInfo.singleAttackMagnification);
+        float finaldamage=attackData.currentAttack*(1+attackData.currentAttackMagnification)*(attackInfo.singleAttackMagnification);
         if(isCritical)
         {
             finaldamage*=attackData.currentCriticalMulplier;

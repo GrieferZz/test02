@@ -38,7 +38,7 @@ public class ExplostionCheck : MonoBehaviour
     IEnumerator TargetCycle()
     {
 
-        yield return new WaitForSeconds(0.1f); // 等待指定的延迟时间
+        //yield return new WaitForSeconds(0.1f); // 等待指定的延迟时间
 
         // 在这里编写需要延迟执行的函数逻辑
         GetComponent<SphereCollider>().enabled=true;

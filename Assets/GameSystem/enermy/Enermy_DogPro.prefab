@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   templateCharacterData: {fileID: 11400000, guid: 8347802b59e0bf94dba378f71bf74a06, type: 2}
   characterData: {fileID: 0}
-  attackData: {fileID: 11400000, guid: c04339b71bd811d43bdb4374c473f757, type: 2}
+  attackData: {fileID: 0}
   templateattackData: {fileID: 11400000, guid: c04339b71bd811d43bdb4374c473f757, type: 2}
   isCritical: 0
 --- !u!114 &6685826175210196715
@@ -423,15 +423,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5401206230757817055, guid: aa6123cc985488945b6f466de77e2ef1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5401206230757817055, guid: aa6123cc985488945b6f466de77e2ef1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5401206230757817055, guid: aa6123cc985488945b6f466de77e2ef1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5401206230757817055, guid: aa6123cc985488945b6f466de77e2ef1, type: 3}
       propertyPath: m_LocalPosition.x

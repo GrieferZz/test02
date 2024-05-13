@@ -12,7 +12,7 @@ public class KnockBackEffect : MonoBehaviour
     {
         if (AttackManager.instance != null)
         {
-            AttackManager.instance.onAttackEvent += OnAttackEvent;
+            AttackManager.instance.onHurtEvent += OnAttackEvent;
         }
         else
         {
@@ -25,7 +25,7 @@ public class KnockBackEffect : MonoBehaviour
             Debug.LogError("Rigidbody component is not found on this GameObject!");
         }
     }
-    private void OnAttackEvent(GameObject creator, GameObject target, Bullet bullet)
+    private void OnAttackEvent(GameObject creator, GameObject target, AttackInfo attackInfo)
     {
         // ���target�Ƿ���ڵ�ǰ��Ϸ����    
         if (target == Player)
@@ -34,15 +34,15 @@ public class KnockBackEffect : MonoBehaviour
             // ���㹥������    
             attackDirection = (creator.transform.position - Player.transform.position).normalized;
             // Ӧ�û���Ч��    
-            ApplyKnockback();
+            ApplyKnockback(attackInfo.strength);
         }
     }
-    private void ApplyKnockback()
+    private void ApplyKnockback(float strength)
     {
         // ������˷��򣨹�������ķ�����      
         Vector3 knockbackDirection = -attackDirection;
         // Ӧ�û���Ч������ɫ�ĸ�����      
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+        rb.AddForce(knockbackDirection * knockbackForce*strength, ForceMode.Impulse);
     }
 
     void Start()

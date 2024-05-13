@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a8b81b495a716b45bdf70d33fabed9a, type: 3}
-  m_Name: Basic Room
+  m_Name: Reward Room
   m_EditorClassIdentifier: 
-  roomType: 1
-  roomState: 0
+  roomType: 3
+  roomState: 1
   TerrainPool:
-  - {fileID: 1537932836892151210, guid: af4d0a3b9416d584aa87d700ee3fab88, type: 3}
+  - {fileID: 7499244430201989365, guid: f27abc38421c18348927e8f515ff9f4a, type: 3}
   EnermyPool:
-  - {fileID: 7551531146487624909, guid: c414c36df0c943045aeab1850c8f6099, type: 3}
-  - {fileID: 7551531146487624909, guid: e0eb0e9157910174fae59b722d783aa4, type: 3}
-  EnermyWaveNumber: 2
-  EnermyNumber: 5
+  - {fileID: 0}
+  EnermyWaveNumber: 0
+  EnermyNumber: 0

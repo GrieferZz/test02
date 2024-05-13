@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardId: 
   rewardName: "\u6D4B\u8BD5\u9053\u51774"
-  effectDescription: "\u666E\u901A\u5B50\u5F39\u5BF9\u4E8E90%\u751F\u547D\u503C\u4EE5\u4E0A\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\u500D\u7387\u589E\u52A0100%"
+  effectDescription: "\u666E\u901A\u5B50\u5F39\u5BF9\u4E8E90%\u751F\u547D\u503C\u4EE5\u4E0A\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\u589E\u52A0100%"
   backgroundDescription: 
   rewardicon: {fileID: 839525159, guid: 073632e99adb9c84eb26a20107e87325, type: 3}
   rewardPrefab: {fileID: 0}

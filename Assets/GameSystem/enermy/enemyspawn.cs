@@ -54,6 +54,7 @@ public class enemyspawn : MonoBehaviour
         {
             CombatFinish=true;
             GameEventSystem.instance.RoomCombatFinish(NowRoomData.RoomData);
+            
         }
 
     }

@@ -9,7 +9,7 @@ public class AttackManager : Singleton<AttackManager>
 {
     public static AttackManager instance;
     public event Action<GameObject,GameObject,Bullet> onAttackEvent;
-    public event Action<GameObject,GameObject> onHurtEvent;
+    public event Action<GameObject,GameObject,AttackInfo> onHurtEvent;
     public event Action<GameObject,GameObject> onKillEvent;
     public event Action onShoot;
     public event Action onTest;
@@ -34,10 +34,10 @@ public class AttackManager : Singleton<AttackManager>
          if(onAttackEvent!=null)
         onAttackEvent(creator,target,bullet);
     }
-    public void HurtEvent(GameObject creator,GameObject target)
+    public void HurtEvent(GameObject creator,GameObject target,AttackInfo attackInfo)
     {
          if(onHurtEvent!=null)
-        onHurtEvent(creator,target);
+        onHurtEvent(creator,target,attackInfo);
     }
     public void KillEvent(GameObject creator,GameObject target)
     {

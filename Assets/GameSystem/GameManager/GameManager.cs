@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject NowRoom;
     public GameObject OriginRoom;
     public GameObject FinalRoom;
+    public GameObject AwardRoom;
     private int NowLayerindex=0;
     public List<GameObject> Rooms= new List<GameObject>();
     protected override void Awake()
@@ -70,7 +71,12 @@ public class GameManager : Singleton<GameManager>
     public void RigisterFinalRoom(GameObject room)
     {
            FinalRoom=room;
-           if(FinalRoom!=null)
+           
+    }
+    public void RigisterAwardRoom(GameObject room)
+    {
+           AwardRoom=room;
+           if(AwardRoom!=null)
         {
             UnityEngine.Debug.Log(Rooms.Count);
             RoomsLoad();
@@ -87,12 +93,28 @@ public class GameManager : Singleton<GameManager>
                 UnityEngine.Debug.Log("初始化初始房间");
 
             }
-            if(room!=OriginRoom)
+              
+            else if(room==AwardRoom)
+            {
+                room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.RewardRoomTypes[UnityEngine.Random.Range(0,NowLayer.RewardRoomTypes.Count)]);
+                room.GetComponent<RoomStates>().TerrainSelect();
+
+            }
+                
+            else
             {
                 room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.BasicRoomTypes[UnityEngine.Random.Range(0,NowLayer.BasicRoomTypes.Count)]);
                 room.GetComponent<RoomStates>().TerrainSelect();
 
             }
+              
+                
+
+               
+            
+            
+
+            
             
         }
     }

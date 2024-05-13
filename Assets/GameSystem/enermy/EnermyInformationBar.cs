@@ -55,7 +55,7 @@ public class EnermyInformationBar : MonoBehaviour
                 StopCoroutine(updateCoroutine);
             }
             updateCoroutine=StartCoroutine(HealthBarSlowDown());
-            if(HealthFrontSlider.fillAmount<=0)
+            if(HealthBackSlider.fillAmount<=0)
         {
             StopCoroutine(updateCoroutine);
             Destroy(HealthUIbar.gameObject);
@@ -84,6 +84,11 @@ public class EnermyInformationBar : MonoBehaviour
         {
             HealthUIbar.transform.position=BarPoint.position;
             HealthUIbar.transform.forward=cm.forward;
+            if(HealthBackSlider.fillAmount<=0)
+        {
+            StopCoroutine(updateCoroutine);
+            Destroy(HealthUIbar.gameObject);
+        }
         }
         
     }

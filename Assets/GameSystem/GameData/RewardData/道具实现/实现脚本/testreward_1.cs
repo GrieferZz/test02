@@ -30,7 +30,7 @@ public class testreward_1 : BaseBuffModule
          AttackManager.instance.onHurtEvent-=TriggerCheck;
     }
 
-    public void TriggerCheck(GameObject attacker,GameObject defender)
+    public void TriggerCheck(GameObject attacker,GameObject defender,AttackInfo attackInfo)
     {
         if(attacker==testBuffInfo.target)
         {

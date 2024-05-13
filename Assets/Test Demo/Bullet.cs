@@ -130,10 +130,12 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("攻击发起者"+InitiatorStates);
              TargetStates=Target.GetComponent<CharacterStates>();
+             if( weaponStates.weaponStates.weaponType!=WeaponStates_SO.WeaponType.Sticky)
              attackInfo.singleAttackMagnification=weaponStates.weaponStates.attackMultiplier;
              Debug.Log("当前爆炸倍率"+attackInfo.singleAttackMagnification);
-             TargetStates.ExecuteAttack(InitiatorStates,TargetStates,attackInfo);
              AttackManager.instance.AttackEvent(InitiatorStates.gameObject,Target,bullet);
+             TargetStates.ExecuteAttack(InitiatorStates,TargetStates,attackInfo);
+             
             
              GameEventSystem.instance.HealthBarUpdate(Target);
         }
