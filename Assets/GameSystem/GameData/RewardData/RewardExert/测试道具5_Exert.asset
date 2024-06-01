@@ -23,7 +23,7 @@ MonoBehaviour:
   tickTime: 0
   buffUpdateTime: 1
   buffRemoveStackUpdate: 0
-  OnCreatePrototype: {fileID: 11400000, guid: 212581bbc7c369147b74d732f8fa319a, type: 2}
+  OnCreatePrototype: {fileID: 11400000, guid: 55df559d56989a44495f728be7f6166f, type: 2}
   OnCreate: {fileID: 0}
   OnRemovePrototype: {fileID: 0}
   OnRemove: {fileID: 0}

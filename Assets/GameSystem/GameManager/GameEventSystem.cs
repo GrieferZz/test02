@@ -42,7 +42,7 @@ public class GameEventSystem :Singleton<GameEventSystem>
       public event Action<RewardData_SO> onRewardChoose;
      public event Action<RoomStates_SO> onRoomCombatFinish;
       public event Action<string> onMusicPlay;
-     
+     public event Action onSecondUpdate;
 
 
 
@@ -63,6 +63,12 @@ public class GameEventSystem :Singleton<GameEventSystem>
     {
         if(onDetonation!=null)
         onDetonation();
+        //print("DialogueFinish事件触发");
+    }
+    public void SecondUpdate()
+    {
+        if(onSecondUpdate!=null)
+        onSecondUpdate();
         //print("DialogueFinish事件触发");
     }
     public void SceneChange(Direction direction)

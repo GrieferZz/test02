@@ -33,4 +33,12 @@ public class SingletonExample : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    public static void DestroyAllInstances()
+    {
+        foreach (var instance in _instances.Values)
+        {
+            Destroy(instance.gameObject);
+        }
+        _instances.Clear();
+    }
 }

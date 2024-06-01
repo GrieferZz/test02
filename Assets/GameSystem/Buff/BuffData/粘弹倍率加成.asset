@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e11b8f8360d54747a640aea0b530053, type: 3}
-  m_Name: "\u6D4B\u8BD5\u9053\u51776_Exert"
+  m_Name: "\u7C98\u5F39\u500D\u7387\u52A0\u6210"
   m_EditorClassIdentifier: 
-  id: 106
-  buffName: 
+  id: 7
+  buffName: "\u7C98\u5F39\u500D\u7387\u52A0\u6210"
   description: 
   icon: {fileID: 0}
   priority: 0
@@ -21,9 +21,9 @@ MonoBehaviour:
   isForever: 1
   duration: 0
   tickTime: 0
-  buffUpdateTime: 1
+  buffUpdateTime: 0
   buffRemoveStackUpdate: 0
-  OnCreatePrototype: {fileID: 11400000, guid: 9e8a005d634b2e242b55e0b2ec0fdce3, type: 2}
+  OnCreatePrototype: {fileID: 11400000, guid: e8da119f3f3e6724383f23b119a9ccae, type: 2}
   OnCreate: {fileID: 0}
   OnRemovePrototype: {fileID: 0}
   OnRemove: {fileID: 0}

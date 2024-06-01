@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameControlUI : MonoBehaviour
 {
     public GameObject pause;
@@ -43,6 +43,12 @@ public class GameControlUI : MonoBehaviour
 
 
     }
+	public void BackMenu()
+	{
+		 Time.timeScale = 1;
+         SceneManager.LoadScene("Menu");
+		 SingletonExample.DestroyAllInstances();
+	}
     /*private IEnumerator WaitForAnimation(string anim,GameObject item,System.Action onComplete)
     {
         

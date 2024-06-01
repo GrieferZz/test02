@@ -25,6 +25,7 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
         RigisterLayer();
         RigisterRewardPool();
+        
     }
     
     public void RigisterPlayer(CharacterStates player)
@@ -147,4 +148,5 @@ public class GameManager : Singleton<GameManager>
    }
 
 }
+
 }

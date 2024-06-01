@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a80fa09c95120b45896c5f019221df0, type: 3}
-  m_Name: testRewardPool
+  m_Script: {fileID: 11500000, guid: bab0f5f3c2dfea44cab0c5cf33718228, type: 3}
+  m_Name: "\u6D4B\u8BD5\u9053\u51776_Effect"
   m_EditorClassIdentifier: 
-  rewardPool:
-  - {fileID: 11400000, guid: 92f18637c6ac52a41ad32831cd96baa3, type: 2}
-  - {fileID: 11400000, guid: e2b59b82605b3704fba20194a50c742d, type: 2}
+  buffData: {fileID: 11400000, guid: 179e7f9c604ef3e4496d0c16277fcf16, type: 2}

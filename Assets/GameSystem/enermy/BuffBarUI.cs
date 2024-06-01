@@ -58,7 +58,7 @@ public class BuffBarUI : MonoBehaviour
                 }
                 else
                 {
-                    buffIcon.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text="null";
+                    buffIcon.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text="";
                 }
             }
             
