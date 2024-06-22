@@ -13,6 +13,8 @@ public class CharacterStates : MonoBehaviour
     
     public AttackData_SO attackData;
    public AttackData_SO templateattackData;
+   public ItemsData_SO templateItemsData;
+   public ItemsData_SO itemsData;
     [HideInInspector]
     public bool isCritical;
     void Awake()
@@ -21,6 +23,8 @@ public class CharacterStates : MonoBehaviour
         {
             characterData=Instantiate( templateCharacterData);
             attackData=Instantiate(templateattackData);
+            if(templateItemsData!=null)
+            itemsData=Instantiate(templateItemsData);
         }
         
     }
@@ -89,7 +93,7 @@ public class CharacterStates : MonoBehaviour
             characterData.currentDefence=value;
         }
     }
-     public int BaseSpeed
+     public float BaseSpeed
     {
         get
         {
@@ -105,7 +109,7 @@ public class CharacterStates : MonoBehaviour
             characterData.BaseSpeed=value;
         }
     }
-    public int currentSpeed
+    public float currentSpeed
     {
         get
         {
@@ -128,10 +132,11 @@ public class CharacterStates : MonoBehaviour
        int damage=(int)Mathf.Max(attacker.CurrentDamage(attackInfo)*(1-defender.currentDefence/(defender.currentDefence+10f))*(1+attackInfo.additionAttackMagnification),0.1f);
        if(damage>0)
        {
-        AttackManager.instance.HurtEvent(attacker.gameObject,gameObject,attackInfo);
+         currentHealth=Mathf.Max(currentHealth-damage,0);
+         AttackManager.instance.HurtEvent(attacker.gameObject,gameObject,attackInfo);
         
        }
-       currentHealth=Mathf.Max(currentHealth-damage,0);
+      
        if(currentHealth<=0f)
        {
         AttackManager.instance.KillEvent(attacker.gameObject,gameObject);
@@ -145,7 +150,7 @@ public class CharacterStates : MonoBehaviour
         attackData.currentAttack=attackData.BaseAttack*(1+attackData.currentAttackAddition);
         characterData.MaxHealth= (int)(characterData.BaseHealth*(1+characterData.currentHealthAddition));
         characterData.currentDefence= (int)(characterData.BaseDefence*(1+characterData.currentDefenceAddition));
-        characterData.currentSpeed= (int)(characterData.BaseSpeed*(1+characterData.currentSpeedAddition));
+        characterData.currentSpeed=(characterData.BaseSpeed*(1+characterData.currentSpeedAddition));
     }
 
     private int CurrentDamage(AttackInfo attackInfo)

@@ -20,7 +20,7 @@ MonoBehaviour:
   currentCriticalMulplier: 2
   CriticalChance: 0.2
   currentCriticalChance: 0.2
-  AttackSpeed: 5
-  currentAttackSpeed: 5
+  AttackSpeed: 1
+  currentAttackSpeed: 1
   currentAttackAddition: 0
   currentAttackMagnification: 0

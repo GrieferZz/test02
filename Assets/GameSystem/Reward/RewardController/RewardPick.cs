@@ -9,16 +9,22 @@ public class RewardPick : MonoBehaviour
     private bool canPick;
     public PlayerInput inputControl;
     public GameObject interactionPrefab;
+    public GameObject treasure;
     private GameObject interactionPoint; 
     GameObject interaction;
     Transform cm;
+  
     
     public void Awake()
     {
         inputControl=new PlayerInput();
         inputControl.GamePlay.Pick.started+=Pick;
+        GameEventSystem.instance.onRewardChoose+=RewardDestroy;
 
     }
+
+    
+
     public void OnEnable()
     {
         inputControl.Enable();      
@@ -30,17 +36,24 @@ public class RewardPick : MonoBehaviour
     private void OnDisable() 
     {
          inputControl.GamePlay.Pick.started-=Pick;
+         GameEventSystem.instance.onRewardChoose-=RewardDestroy;
          inputControl.Disable();
     }
     private void Pick(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         if(canPick)
         {
+            if(transform.parent == null)
+            {
              GameEventSystem.instance.RewardPick();
              GameEventSystem.instance.MusicPlay("pick");
+            Player.Instance.NowState=Player.PlayerState.Ban;
+              GameObject.FindWithTag("Player").GetComponent<PlayerAttck>().enabled=false;
+            }
+            
+             treasure.GetComponent<Animator>().SetBool("Open",true);
              Debug.Log("拾取");
-             Destroy(interaction);
-             Destroy(gameObject);
+             
              
 
         }
@@ -96,6 +109,15 @@ public class RewardPick : MonoBehaviour
             interaction.transform.forward=cm.forward;
         }
         }
+    }
+    public void RewardDestroy(RewardData_SO sO)
+    {
+            GetComponent<BoxCollider>().enabled=false;
+            Player.Instance.NowState=Player.PlayerState.Idle;
+            GameObject.FindWithTag("Player").GetComponent<PlayerAttck>().enabled=true;
+            Destroy(interaction);
+            Destroy(gameObject,2f);
+
     }
     
 }

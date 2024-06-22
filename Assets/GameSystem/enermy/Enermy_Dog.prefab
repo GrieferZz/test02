@@ -149,6 +149,8 @@ GameObject:
   - component: {fileID: 6685826175210196715}
   - component: {fileID: 3752026771796242145}
   - component: {fileID: 2907695492417916746}
+  - component: {fileID: 1956426341}
+  - component: {fileID: 60366750540538846}
   m_Layer: 10
   m_Name: Enermy_Dog
   m_TagString: Enermy
@@ -254,7 +256,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7551531146487624909}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d804859be24da1b43894ff16817dae91, type: 3}
   m_Name: 
@@ -301,6 +303,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  nowBulletPrefab: {fileID: 0}
 --- !u!114 &6076416113953131676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +334,8 @@ MonoBehaviour:
   characterData: {fileID: 0}
   attackData: {fileID: 0}
   templateattackData: {fileID: 11400000, guid: c04339b71bd811d43bdb4374c473f757, type: 2}
+  templateItemsData: {fileID: 11400000, guid: 1c286c961d5c8d6449f19851f9bcd591, type: 2}
+  itemsData: {fileID: 0}
   isCritical: 0
 --- !u!114 &6685826175210196715
 MonoBehaviour:
@@ -375,6 +380,81 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1956426341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551531146487624909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 1
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: EnermyBehavior_Normal
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(148,-13.6484957)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-10.000103,149.999939)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnermyRigister","NodeData":{"Offset":"(-161.523682,104.749725)"},"ID":2,"Name":"Enermy
+        Rigister","Instant":true,"CharacterStatescharacterStates":0},{"Type":"EnermyInformationIn","NodeData":{"Offset":"(-7.71429443,110.637085)"},"ID":3,"Name":"Enermy
+        Information In","Instant":true,"EnermyInformationBarenermyInformationBar":1,"Booleanvisibility":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(120,119.999954)"},"ID":4,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-215.95816,129.185944)"},"ID":5,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"IsDead","NodeData":{"Offset":"(-188.666138,118.977417)"},"ID":6,"Name":"Is
+        Dead","Instant":true,"CharacterStatescharacterStates":2},{"Type":"Dead","NodeData":{"Offset":"(-2.04113388,121.712494)"},"ID":7,"Name":"Dead","Instant":true,"CharacterStatescharacterStates":3,"NavMeshAgentagent":4,"InstantiationHelperinstantiationHelper":5}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(89.1317139,137.654022)"},"ID":8,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-216.3858,161.108337)"},"ID":9,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"IsInAttackRange","NodeData":{"Offset":"(-88.4928741,142.030334)"},"ID":10,"Name":"Is
+        In Attack Range","Instant":true,"SharedGameObjectattackTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackTarget","IsShared":true},"SharedFloatattackRadius":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4}},{"Type":"EnermyAttack_1","NodeData":{"Offset":"(93.78551,137.212158)"},"ID":11,"Name":"Enermy
+        Attack  1","Instant":true,"NavMeshAgentagent":6,"EnermyAttackenermyAttack":7,"SharedGameObjectattackTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackTarget","IsShared":true},"CharacterStatescharacterStates":8}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(123.521942,158.768433)"},"ID":12,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"IsInChaseRange","NodeData":{"Offset":"(-113.809471,144.2857)"},"ID":13,"Name":"Is
+        In Chase Range","Instant":true,"SharedGameObjectattackTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackTarget","IsShared":true},"SharedFloatsightRadius":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":6.25}},{"Type":"EnermyChase","NodeData":{"Offset":"(30.4762363,144.2857)"},"ID":14,"Name":"Enermy
+        Chase","Instant":true,"NavMeshAgentagent":9,"CharacterStatescharacterStates":10,"SharedGameObjectattackTarget":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackTarget","IsShared":true}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(400,170)"},"ID":15,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnermyPatrol","NodeData":{"Offset":"(-2.33084869,129.699158)"},"ID":16,"Name":"Enermy
+        Patrol","Instant":true,"CharacterStatescharacterStates":11,"SharedFloatPatrolRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4.7},"SharedFloatLookAtTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1.5},"SharedVector3GuardPos":{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"GuardPos","IsShared":true,"Vector3mValue":"(0,0,0)"},"NavMeshAgentagent":12}]}]}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedObject","Name":"self","IsShared":true,"ObjectmValue":13},{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"GuardPos","IsShared":true,"Vector3mValue":"(0,0,0)"},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"AttackTarget","IsShared":true}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects:
+        - {fileID: 1149666389}
+        - {fileID: 6076416113953131676}
+        - {fileID: 1149666389}
+        - {fileID: 1149666389}
+        - {fileID: 7551531146487624911}
+        - {fileID: 60366750540538846}
+        - {fileID: 7551531146487624911}
+        - {fileID: 6121259141257473405}
+        - {fileID: 1149666389}
+        - {fileID: 7551531146487624911}
+        - {fileID: 1149666389}
+        - {fileID: 1149666389}
+        - {fileID: 7551531146487624911}
+        - {fileID: 7551531146487624909}
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.1
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
+--- !u!114 &60366750540538846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7551531146487624909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d70bdd07d9334242a508fca231d98ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affiliatedItems: []
 --- !u!1 &8806171661389757977
 GameObject:
   m_ObjectHideFlags: 0

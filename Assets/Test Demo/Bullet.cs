@@ -100,7 +100,7 @@ public class Bullet : MonoBehaviour
                 {
                     gameObject.GetComponent<SphereCollider>().enabled=false;
                     //Destroy(gameObject);
-                    Target=target.gameObject;
+                    Target=target;
                     Hit();
                     
                     //Destroy(gameObject);

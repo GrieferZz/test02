@@ -181,6 +181,7 @@ MonoBehaviour:
   roomStates: {fileID: 0}
   rewardPanel: {fileID: 0}
   rewardPrefab: {fileID: 6705905654766112590, guid: 62c5819df93ceee4aaae07299f75b488, type: 3}
+  rewardEnermyPrefab: {fileID: 1456625097130768903, guid: a7459b29c49aaf546b58952d869b0f11, type: 3}
   reward: {fileID: 0}
 --- !u!114 &41972887
 MonoBehaviour:

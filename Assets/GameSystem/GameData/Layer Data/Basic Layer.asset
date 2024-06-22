@@ -18,7 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5c893a2be12b994c98ab9e6100e1bbd, type: 2}
   BasicRoomTypes:
   - {fileID: 11400000, guid: 0526d4e033909ed49b420cd52a5f14d3, type: 2}
-  StoreRoomTypes: []
+  StoreRoomTypes:
+  - {fileID: 11400000, guid: f9e7e551dec411c4f8e213d8372512c5, type: 2}
   RewardRoomTypes:
   - {fileID: 11400000, guid: b1049498505d96041afda155c1674d5d, type: 2}
   BossRoomTypes: []

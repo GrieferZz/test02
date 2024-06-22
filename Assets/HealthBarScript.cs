@@ -20,7 +20,8 @@ public class HealthBarScript: MonoBehaviour
     void Awake()
     {
         
-        AttackManager.instance.onAttackEvent+=UpdateHealthBar;
+       // AttackManager.instance.onAttackEvent+=UpdateHealthBar;
+        AttackManager.instance.onHurtEvent+=UpdateHealthBar;
     }
     void OnEnable()
     {
@@ -35,23 +36,24 @@ public class HealthBarScript: MonoBehaviour
     }
     void OnDisable() 
     {
-         AttackManager.instance.onAttackEvent-=UpdateHealthBar;
+         AttackManager.instance.onHurtEvent-=UpdateHealthBar;
     }
 
-    public void UpdateHealthBar(GameObject creater,GameObject target,Bullet bullet)
+    public void UpdateHealthBar(GameObject creater,GameObject target,AttackInfo attackInfo)
     {
         if(target==currentStates.gameObject)
         {
            
-            Debug.Log("血量更新");
+          
             float sliderPercent=(float)currentStates.currentHealth/currentStates.MaxHealth;
             HealthFrontSlider.fillAmount=sliderPercent;
+            Debug.Log("血量更新"+HealthFrontSlider.fillAmount);
              if(updateCoroutine!=null)
             {
                 StopCoroutine(updateCoroutine);
             }
             updateCoroutine=StartCoroutine(HealthBarSlowDown());
-            if(HealthBackSlider.fillAmount<=0)
+            if(HealthBackSlider.fillAmount<=0&&updateCoroutine!=null)
         {
             StopCoroutine(updateCoroutine);
             

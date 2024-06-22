@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject OriginRoom;
     public GameObject FinalRoom;
     public GameObject AwardRoom;
+    public GameObject StoreRoom;
     private int NowLayerindex=0;
     public List<GameObject> Rooms= new List<GameObject>();
     protected override void Awake()
@@ -77,7 +78,12 @@ public class GameManager : Singleton<GameManager>
     public void RigisterAwardRoom(GameObject room)
     {
            AwardRoom=room;
-           if(AwardRoom!=null)
+          
+    }
+    public void RigisterStoreRoom(GameObject room)
+    {
+           StoreRoom=room;
+           if(StoreRoom!=null)
         {
             UnityEngine.Debug.Log(Rooms.Count);
             RoomsLoad();
@@ -98,6 +104,12 @@ public class GameManager : Singleton<GameManager>
             else if(room==AwardRoom)
             {
                 room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.RewardRoomTypes[UnityEngine.Random.Range(0,NowLayer.RewardRoomTypes.Count)]);
+                room.GetComponent<RoomStates>().TerrainSelect();
+
+            }
+            else if(room==StoreRoom)
+            {
+                room.GetComponent<RoomStates>().RoomData=Instantiate(NowLayer.StoreRoomTypes[UnityEngine.Random.Range(0,NowLayer.StoreRoomTypes.Count)]);
                 room.GetComponent<RoomStates>().TerrainSelect();
 
             }
@@ -139,11 +151,13 @@ public class GameManager : Singleton<GameManager>
     
     public void RewardPoolUpdate(RewardData_SO rewardData_SO)
 {
+    NowRoom.GetComponent<RoomStates>().RoomData.roomState=RoomStates_SO.RoomState.Ban;
    for(int i=0;i<currentrewardPool.rewardPool.Count;i++)
    {
        if(rewardData_SO.rewardId==currentrewardPool.rewardPool[i].rewardId)
        {
            currentrewardPool.rewardPool.Remove(currentrewardPool.rewardPool[i]);
+           
        }
    }
 

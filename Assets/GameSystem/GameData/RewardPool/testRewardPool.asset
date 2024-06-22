@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: testRewardPool
   m_EditorClassIdentifier: 
   rewardPool:
+  - {fileID: 11400000, guid: d247ebf94efe68e43b08a75534374db5, type: 2}
+  - {fileID: 11400000, guid: ffd8741be60de8449813a17eb94b1412, type: 2}
+  - {fileID: 11400000, guid: 0ba1446455c939043845390fa1e1cd91, type: 2}
+  - {fileID: 11400000, guid: aac2da538e3bf8042bbb8e7f332c842f, type: 2}
   - {fileID: 11400000, guid: 92f18637c6ac52a41ad32831cd96baa3, type: 2}
   - {fileID: 11400000, guid: e2b59b82605b3704fba20194a50c742d, type: 2}

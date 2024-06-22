@@ -17,5 +17,6 @@ MonoBehaviour:
   effectDescription: "\u7C98\u5F39\u7684\u4F24\u5BB3\u500D\u7387+100%"
   backgroundDescription: 
   rewardicon: {fileID: 301817055, guid: 32d693eaa7c8a634ab2233b09c02cb9d, type: 3}
+  rewardCoin: 100
   rewardPrefab: {fileID: 0}
   rewardExert: {fileID: 11400000, guid: 787f90612de99df4194c96deaaf15cd1, type: 2}

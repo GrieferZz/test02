@@ -12,6 +12,7 @@ public class RewardData_SO : ScriptableObject
     public string effectDescription;
     public string backgroundDescription;
     public Sprite rewardicon;
+    public int rewardCoin;
     public GameObject rewardPrefab;
     public BuffData rewardExert;
 

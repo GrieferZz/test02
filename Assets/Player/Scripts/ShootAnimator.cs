@@ -25,20 +25,20 @@ public class ShootAnimator : MonoBehaviour
             {
                 _animator.Play("player_animation_shoot", 0, 0f); // ǿ�ƶ�����ͷ��ʼ����
             }
-             if (_animator.GetCurrentAnimatorStateInfo(0).IsName("player_animation_shoot") && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        {
-            // �����������
-            _isShoot = false;
-            _animator.SetBool("isShoot", false);
-
-        }
+             
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+       if (_animator.GetCurrentAnimatorStateInfo(0).IsName("player_animation_shoot") && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            // �����������
+            _isShoot = false;
+            _animator.SetBool("isShoot", false);
+
+        }
        
     }
 }

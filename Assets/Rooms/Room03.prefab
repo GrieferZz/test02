@@ -199,6 +199,8 @@ MonoBehaviour:
   characterData: {fileID: 0}
   attackData: {fileID: 0}
   templateattackData: {fileID: 11400000, guid: ee9d95e4f92f01c4685a9154745beb02, type: 2}
+  templateItemsData: {fileID: 0}
+  itemsData: {fileID: 0}
   isCritical: 0
 --- !u!114 &3390608188745735048
 MonoBehaviour:

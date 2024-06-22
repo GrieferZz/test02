@@ -21,7 +21,7 @@ public class BuffBarUI : MonoBehaviour
     void OnDisable()
     {
          GameEventSystem.instance.onBuffUIUpdate-=BuffUIUpdate;
-
+        Destroy(buffHolder.gameObject);
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class BuffBarUI : MonoBehaviour
         }
         if(buffHandler!=null&&buffHolder!=null)
         {
-              
+            
              foreach(var buff in buffHandler.buffList)
         {
             if(!buffIcons.Contains(buff))

@@ -41,8 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1020946109151775923}
-  - component: {fileID: 5198696412082291541}
-  - component: {fileID: 5198696412082291542}
+  - component: {fileID: 1839914367}
   m_Layer: 0
   m_Name: mimic-animation
   m_TagString: Untagged
@@ -59,30 +58,15 @@ Transform:
   m_GameObject: {fileID: 387575371140126217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2812936702378430055}
   - {fileID: 7198769057482594534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &5198696412082291541
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387575371140126217}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: bb338e1036eea1a448fd255098243613, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!95 &5198696412082291542
+--- !u!95 &1839914367
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -92,7 +76,7 @@ Animator:
   m_GameObject: {fileID: 387575371140126217}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9543477cafebe2d4d97da0cf85d57de0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

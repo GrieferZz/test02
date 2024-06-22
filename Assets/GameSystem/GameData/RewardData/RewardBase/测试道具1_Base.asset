@@ -17,5 +17,6 @@ MonoBehaviour:
   effectDescription: "\u5BF9\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\u540E\u83B7\u5F97\u6301\u7EED2\u79D2\u768420%\u7684\u79FB\u901F\u52A0\u6210\uFF0C\n\u91CD\u590D\u4F24\u5BB3\u654C\u4EBA\u4F1A\u5237\u65B0\u5012\u8BA1\u65F6"
   backgroundDescription: 
   rewardicon: {fileID: -1307059962, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
+  rewardCoin: 100
   rewardPrefab: {fileID: 0}
   rewardExert: {fileID: 11400000, guid: 50bcfc4f67fb79c4a936f9f976c44383, type: 2}

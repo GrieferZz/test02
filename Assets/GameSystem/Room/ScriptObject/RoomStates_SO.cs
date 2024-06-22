@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomStates_SO : ScriptableObject
 {
     public enum RoomType{Origin,Basic,Store,Reward,Boss};
-    public enum RoomState{Unload,Finish};
+    public enum RoomState{Unload,Finish,Ban};
     public RoomType roomType;
     public RoomState roomState;
     public List<GameObject> TerrainPool=new List<GameObject>();

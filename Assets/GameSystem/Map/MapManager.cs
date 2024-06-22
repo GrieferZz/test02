@@ -17,6 +17,7 @@ public class MapManager : MonoBehaviour
     private GameObject EndRoom;
     private GameObject FirstRoom;
     public GameObject AwardRoom;
+    public GameObject StoreRoom;
 
     public Transform GeneratorPoint;
     public static Transform OriginPoint;
@@ -65,7 +66,7 @@ public class MapManager : MonoBehaviour
 
     private void MapTest(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        Player.Instance.NowState=Player.PlayerState.Idle;
+        
     }
 
     void onen()
@@ -89,7 +90,9 @@ public class MapManager : MonoBehaviour
         }
 
        
-        for(int i=0;i<Rooms.Count-1;i++)
+       
+         
+          for(int i=0;i<Rooms.Count;i++)
         {
             /*if(Vector3.Distance(room.transform.position,Rooms[0].transform.position)>Vector3.Distance(EndRoom.transform.position,Rooms[0].transform.position))
             {
@@ -98,7 +101,7 @@ public class MapManager : MonoBehaviour
             
             SetupRoom(Rooms[i],Rooms[i].transform.position);
         }
-         FirstRoomSetup();
+        FirstRoomSetup();
         /* switch(lastdirection)
         {
            case Direction.UP:
@@ -119,8 +122,11 @@ public class MapManager : MonoBehaviour
         EndRoom.transform.GetChild(1).gameObject.SetActive(true);
         FindAwardRoom();
         AwardRoom.transform.GetChild(2).gameObject.SetActive(true);
+        FindStoreRoom();
+        StoreRoom.transform.GetChild(3).gameObject.SetActive(true);
         GameManager.Instance.RigisterFinalRoom(EndRoom.gameObject);
         GameManager.Instance.RigisterAwardRoom(AwardRoom);
+        GameManager.Instance.RigisterStoreRoom(StoreRoom);
     }
 
     
@@ -209,10 +215,11 @@ public class MapManager : MonoBehaviour
         GameManager.Instance.RigisterRooms(Rooms[Rooms.Count-1].gameObject);
         Rooms[Rooms.Count-1].transform.GetChild(0).gameObject.GetComponent<Image>().color=StartColor;
         Nowroom=Rooms[Rooms.Count-1];
+        FirstRoom=Rooms[Rooms.Count-1].gameObject;
         GameManager.Instance.RigisterNowRoom(Nowroom.gameObject);
         GameManager.Instance.RigisterOriginRoom(Rooms[Rooms.Count-1].gameObject);
         Nowroom.Target.SetActive(true);
-        EndRoom=Rooms[Rooms.Count-1].gameObject;
+       //EndRoom=Rooms[Rooms.Count-1].gameObject;
         switch(lastdirection)
         {
            case Direction.UP:
@@ -220,8 +227,9 @@ public class MapManager : MonoBehaviour
                 Physics2D.OverlapCircle(Nowroom.transform.position + new Vector3(0, -Yoffset, 0), 0.2f, RoomLayer).GetComponent<RoomInformation>().hasUp=true;
                  break;
             case Direction.Down:
-                Physics2D.OverlapCircle(Nowroom.transform.position + new Vector3(0, Yoffset, 0), 0.2f, RoomLayer).GetComponent<RoomInformation>().hasDown=true; 
                 Nowroom.hasUp=true;
+                Physics2D.OverlapCircle(Nowroom.transform.position + new Vector3(0, Yoffset, 0), 0.2f, RoomLayer).GetComponent<RoomInformation>().hasDown=true; 
+                
                  break;
             case Direction.Left:
                 Nowroom.hasRight=true;
@@ -273,11 +281,11 @@ public class MapManager : MonoBehaviour
         }
         foreach(var room in Rooms)
         {
-            if(room.SteptoStart==MaxStep)
+            if(room.SteptoStart==MaxStep&&room!=Nowroom)
             {
                 Farrooms.Add(room.gameObject);
             }
-            if(room.SteptoStart==MaxStep-1)
+            if(room.SteptoStart==MaxStep-1&&room!=Nowroom)
             {
                 LessFarrooms.Add(room.gameObject);
             }
@@ -314,9 +322,31 @@ public class MapManager : MonoBehaviour
         while (AwardRoom==null)
         {
                  RoomInformation random = Rooms[Random.Range(0, Rooms.Count)];
-                 if(random!=FirstRoom&&random!=EndRoom)
+                 if(random.gameObject!=FirstRoom&&random.gameObject!=EndRoom&&random.gameObject!=Nowroom)
                  {
                     AwardRoom=random.gameObject;
+                    break;
+                 }
+                 else
+                 {
+                    Debug.Log("奖励查找");
+                 }
+        }
+        
+    }
+    private void FindStoreRoom()
+    {
+        while (StoreRoom==null)
+        {
+                 RoomInformation random = Rooms[Random.Range(0, Rooms.Count)];
+                 if(random.gameObject!=FirstRoom&&random.gameObject!=EndRoom&&random.gameObject!=Nowroom&&random.gameObject!=AwardRoom)
+                 {
+                    StoreRoom=random.gameObject;
+                     break;
+                 }
+                  else
+                 {
+                    Debug.Log("商店查找");
                  }
         }
         

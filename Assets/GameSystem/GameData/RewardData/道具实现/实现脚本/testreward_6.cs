@@ -30,7 +30,7 @@ public class testreward_6 : BaseBuffModule
 
     public void AttackAddition(GameObject parent,GameObject target)
     {
-        if(target.CompareTag("Enermy"))
+        if(target.CompareTag("Enermy")&&parent.GetComponent<Bullet>().attackObject==Bullet.AttackObject.ForEnermy)
         {
             
         {

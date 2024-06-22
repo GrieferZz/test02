@@ -24,6 +24,16 @@ public class EnermyInformationBar : MonoBehaviour
     void OnEnable()
     {
         cm=Camera.main.transform;
+        
+    }
+    void OnDisable() 
+    {
+        Destroy(HealthUIbar.gameObject);
+        GameEventSystem.instance.onHealthBarUpdate-=UpdateHealthBar;
+        
+    }
+    public void InformationBarInitialization(bool active)
+    {
         foreach(Canvas canvas in FindObjectsOfType<Canvas>())
         {
             if(canvas.renderMode==RenderMode.WorldSpace)
@@ -32,14 +42,11 @@ public class EnermyInformationBar : MonoBehaviour
                 GetComponent<BuffBarUI>().buffHolder=HealthUIbar.transform.GetChild(1).gameObject;
                 HealthFrontSlider=HealthUIbar.transform.GetChild(0).GetChild(1).GetComponent<Image>();
                 HealthBackSlider=HealthUIbar.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-                //HealthUIbar.gameObject.SetActive(false);
+                HealthUIbar.gameObject.SetActive(active);
             }
 
         }
-    }
-    void OnDisable() 
-    {
-        GameEventSystem.instance.onHealthBarUpdate-=UpdateHealthBar;
+
     }
 
     public void UpdateHealthBar(GameObject target)

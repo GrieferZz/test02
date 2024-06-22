@@ -351,6 +351,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2823009816840016840, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3184801279552154871, guid: ac4668a3945f5ba4b8cb4ae40c83a4ec, type: 3}
       propertyPath: m_Name
       value: Sticky Buff

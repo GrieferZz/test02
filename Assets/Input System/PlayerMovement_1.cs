@@ -69,8 +69,8 @@ public class PlayerMovement_1 : MonoBehaviour
      {
 
        
-        Animate();
-        Sprint();
+        //Animate();
+       // Sprint();
         if (IsStep(out hitPointVector))
     {
         // 执行台阶跳跃或其他操作
@@ -136,53 +136,7 @@ public class PlayerMovement_1 : MonoBehaviour
         
     }
 
-    private void Animate()
-    {
-        //if(Mathf.Abs(MoveInput0.x)>0.0001f)
-        anim.SetFloat("MovementX", MoveInput0.x);
-         //if( Mathf.Abs(MoveInput0.y)>0.0001f)
-        anim.SetFloat("MovementZ", MoveInput0.y);
-        if(Mathf.Abs(MoveInput0.x)>0.0001f)
-         anim.SetFloat("IdleX", MoveInput0.x);
-         if( Mathf.Abs(MoveInput0.y)>0.0001f)
-         anim.SetFloat("IdleZ", MoveInput0.y);
-         if(MoveInput0.y!=1&&MoveInput0.x!=0)
-         {
-             anim.SetFloat("IdleZ", -1f);
-         }
-    }
-    private void Sprint()
-    {
-        if(Player.Instance.NowState==Player.PlayerState.Move||Player.Instance.NowState==Player.PlayerState.Idle)
-        {
-         if(inputControl.GamePlay.Skill.IsPressed()&& sprintTime <= 0&&canSprint)
-         {
-            StartCoroutine(SprintCd());
-            anim.SetTrigger("Roll");
-            SprintDistance = moveDirection*sprintSpeed;
-            sprintTime = sprintDuration;
-         }
-         if (sprintTime > 0)
-        {
-            Player.Instance.NowState=Player.PlayerState.Sprint;
-            //rb.AddForce(SprintDistance * Time.deltaTime);
-            //cr.Move(SprintDistance * Time.deltaTime);
-            sprintTime -= Time.deltaTime;
-        }
-        else if(sprintTime==0&&Player.Instance.NowState==Player.PlayerState.Sprint)
-        {
-            Player.Instance.NowState=Player.PlayerState.Move;
-        }
-        }
-    }
-    IEnumerator SprintCd()
-    {
-       canSprint=false;
-
-       yield return new WaitForSeconds(sprintCooldown);// 等待冷却时间
-       canSprint=true;
-
-    }
+   
     public bool IsStep(out Vector3 point)
 {
     Ray ray = new Ray(transform.position + moveDirection.normalized * stepCheckRange + Vector3.up * stepCheckHeight, Vector3.down);
